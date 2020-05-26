@@ -1,5 +1,6 @@
 
 from flask import Flask, request, abort
+from flask_sqlalchemy import SQLAlchemy
 from functools import wraps
 import requests
 from twilio.request_validator import RequestValidator
@@ -15,7 +16,19 @@ import os
 # import mysql.connector
 
 app = Flask(__name__)
+app.config["DEBUG"]  = True
 
+SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
+    username="korstiaan",
+    password="MI5Ql0G:",
+    hostname="korstiaan.mysql.pythonanywhere-services.com",
+    databasename="korstiaan$gbotdata",
+)
+app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+db = SQLAlchemy(app)
 
 # validates Twilio requests
 def validate_twilio_request(f):
@@ -50,7 +63,7 @@ out = ''
 #     return "Hello world!"
 
 # actual bot logic
-@app.route('/bot', methods=['POST'])
+@app.route('/bot', methods=['GET', 'POST'])
 def bot():
     # writes data to a csv (will be modified to interact with MySQL)
     with io.open('response.csv','a', encoding = 'utf-8') as f1:
