@@ -9,11 +9,10 @@ from bs4 import BeautifulSoup as bs
 import numpy as np
 from random import choice
 from gresponses import Dictionary
-import io
+
 import datetime
 import os
-
-# import mysql.connector
+# import mysql
 
 app = Flask(__name__)
 app.config["DEBUG"]  = True
@@ -77,11 +76,14 @@ out = ''
 def bot():
     # writes data to a csv (will be modified to interact with MySQL)
 
-    incoming_msg = request.form.get('Body').lower()
     num = request.form.get('From')
     num = num.replace('whatsapp:', '')
+    incoming_msg = request.form.get('Body').lower()
     dt=datetime.datetime.now().strftime("%y%m%d--%H%M%S")
-    data = num + ',' + incoming_msg + ',' + dt + '\n'
+    data = BotData(number = num, user_input = incoming_msg, date = dt)
+
+    db.session.add(data)
+    db.session.commit()
 
 
 
