@@ -30,6 +30,16 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 
+
+class BotData(db.Model):
+
+    __tablename__ = "gdata"
+
+    id = db.Column(db.Integer, primary_key = True)
+    number = db.Column(db.String(4096))
+    user_input = db.Column(db.String(4096))
+    date = db.Column(db.String(4096))
+
 # validates Twilio requests
 def validate_twilio_request(f):
     """Validates that incoming requests genuinely originated from Twilio"""
@@ -66,114 +76,114 @@ out = ''
 @app.route('/bot', methods=['GET', 'POST'])
 def bot():
     # writes data to a csv (will be modified to interact with MySQL)
-    with io.open('response.csv','a', encoding = 'utf-8') as f1:
-        incoming_msg = request.form.get('Body').lower()
-        num = request.form.get('From')
-        num = num.replace('whatsapp:', '')
-        dt=datetime.datetime.now().strftime("%y%m%d--%H%M%S")
-        data = num + ',' + incoming_msg + ',' + dt + '\n'
-        f1.write(data)
+
+    incoming_msg = request.form.get('Body').lower()
+    num = request.form.get('From')
+    num = num.replace('whatsapp:', '')
+    dt=datetime.datetime.now().strftime("%y%m%d--%H%M%S")
+    data = num + ',' + incoming_msg + ',' + dt + '\n'
 
 
 
 
-        resp = MessagingResponse()
-        msg = resp.message()
-        responded = False
 
-        if ('hi' in incoming_msg) or ('hello' in incoming_msg):
-            msg.body(Dictionary['hello'])
-            responded = True
+    resp = MessagingResponse()
+    msg = resp.message()
+    responded = False
 
-        if 'covid' in incoming_msg:
-            msg.body(Dictionary['covid'])
-            responded = True
+    if ('hi' in incoming_msg) or ('hello' in incoming_msg):
+        msg.body(Dictionary['hello'])
+        responded = True
 
-        if ('1' in incoming_msg) or (incoming_msg == 'isafricaflatteningthecurve'):
-            msg.body(Dictionary['isafricaflatteningthecurve'])
-            responded = True
+    if 'covid' in incoming_msg:
+        msg.body(Dictionary['covid'])
+        responded = True
 
-        if ('2' in incoming_msg) or (incoming_msg == 'healthcareriskcalculator'):
-            msg.body(Dictionary['healthcareriskcalculator'])
-            responded = True
+    if ('1' in incoming_msg) or (incoming_msg == 'isafricaflatteningthecurve'):
+        msg.body(Dictionary['isafricaflatteningthecurve'])
+        responded = True
 
-        if ('3' in incoming_msg) or ('covidnews' in incoming_msg):
-            covnews = news_scrape('https://www.genesis-analytics.com/covid19', 3)
-            out = Dictionary['covidnews']
-            for x, y in covnews.items():
-                headline = "*" + x + "*\n"
-                ref = "Read more at: " + y + "\n\n"
-                out = out + "\U0001F6A9" + headline + ref
+    if ('2' in incoming_msg) or (incoming_msg == 'healthcareriskcalculator'):
+        msg.body(Dictionary['healthcareriskcalculator'])
+        responded = True
 
-            out += '\n\n'
-            msg.body(out)
-            responded = True
+    if ('3' in incoming_msg) or ('covidnews' in incoming_msg):
+        covnews = news_scrape('https://www.genesis-analytics.com/covid19', 3)
+        out = Dictionary['covidnews']
+        for x, y in covnews.items():
+            headline = "*" + x + "*\n"
+            ref = "Read more at: " + y + "\n\n"
+            out = out + "\U0001F6A9" + headline + ref
 
-        if 'news' in incoming_msg:
+        out += '\n\n'
+        msg.body(out)
+        responded = True
 
-            news = news_scrape("https://www.genesis-analytics.com/news", 3)
-            out = Dictionary['news']
-            emoji = ["\U0001F6A9"]
-            for x, y in news.items():
-                headline = "*" + x + "*\n"
-                ref = "Read more at: " + y + "\n\n"
-                out = out + choice(emoji) + headline + ref
+    if 'news' in incoming_msg:
 
-            out += '\n\n'
-            msg.body(out)
-            responded = True
+        news = news_scrape("https://www.genesis-analytics.com/news", 3)
+        out = Dictionary['news']
+        emoji = ["\U0001F6A9"]
+        for x, y in news.items():
+            headline = "*" + x + "*\n"
+            ref = "Read more at: " + y + "\n\n"
+            out = out + choice(emoji) + headline + ref
 
-        if 'about' in incoming_msg:
-            msg.body(Dictionary['about'])
+        out += '\n\n'
+        msg.body(out)
+        responded = True
 
-            responded = True
+    if 'about' in incoming_msg:
+        msg.body(Dictionary['about'])
 
-        if 'value' in incoming_msg:
+        responded = True
 
-            url = "https://www.genesis-analytics.com/value-unlocked-intro"
-            r1 = requests.get(url)
-            cont = r1.content
-            soup = bs(cont, "lxml")
-            articles = soup.find_all(class_='panel-title')
+    if 'value' in incoming_msg:
 
-            out = Dictionary["value1"] + str(articles[0].get_text()) + "* and *" \
-                + str(articles[1].get_text()) + Dictionary['value2']
+        url = "https://www.genesis-analytics.com/value-unlocked-intro"
+        r1 = requests.get(url)
+        cont = r1.content
+        soup = bs(cont, "lxml")
+        articles = soup.find_all(class_='panel-title')
 
-            msg.body(out)
-            responded = True
+        out = Dictionary["value1"] + str(articles[0].get_text()) + "* and *" \
+            + str(articles[1].get_text()) + Dictionary['value2']
 
-        if 'contact' in incoming_msg:
-            msg.body(Dictionary['contact'])
-            responded = True
+        msg.body(out)
+        responded = True
 
-        if 'bdu' in incoming_msg:
-            msg.body(Dictionary['bdu'])
-            responded = True
+    if 'contact' in incoming_msg:
+        msg.body(Dictionary['contact'])
+        responded = True
 
-        if 'careers' in incoming_msg:
-            msg.body(Dictionary['careers'])
-            responded = True
+    if 'bdu' in incoming_msg:
+        msg.body(Dictionary['bdu'])
+        responded = True
 
-        if 'offices' in incoming_msg:
-            msg.body(Dictionary["offices"])
-            responded = True
+    if 'careers' in incoming_msg:
+        msg.body(Dictionary['careers'])
+        responded = True
 
-        if 'corporate' in incoming_msg:
-            msg.body(Dictionary['corporate'])
-            responded = True
+    if 'offices' in incoming_msg:
+        msg.body(Dictionary["offices"])
+        responded = True
 
-        if responded:
-            nl = '\n\n'
+    if 'corporate' in incoming_msg:
+        msg.body(Dictionary['corporate'])
+        responded = True
+
+    if responded:
+        nl = '\n\n'
 #             msg.body(nl +
 # "You can navigate back to the main menu at any time by saying *Hi*. \
 # You can also visit our website at www.genesis-analytics.com")
-        else:
-            msg.body("I'm sorry, I'm still young and don't understand your request. \
+    else:
+        msg.body("I'm sorry, I'm still young and don't understand your request. \
 Please use the words in bold to talk to me.")
 
-        return str(resp)
+    return str(resp)
 
-    f1.close()
+
 
 # for scraping headlines and links from websites
 def news_scrape(url, n):
