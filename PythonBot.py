@@ -97,19 +97,16 @@ def bot():
         msg.body(Dictionary['hello'])
         responded = True
 
-    if 'covid' in incoming_msg:
-        msg.body(Dictionary['covid'])
-        responded = True
 
-    if ('1' in incoming_msg) or (incoming_msg == 'africa'):
+    elif ('1' in incoming_msg) or (incoming_msg == 'africa'):
         msg.body(Dictionary['isafricaflatteningthecurve'])
         responded = True
 
-    if ('2' in incoming_msg) or (incoming_msg == 'healthcare'):
+    elif ('2' in incoming_msg) or (incoming_msg == 'healthcare'):
         msg.body(Dictionary['healthcareriskcalculator'])
         responded = True
 
-    if ('3' in incoming_msg) or ('info' in incoming_msg):
+    elif ('3' in incoming_msg) or ('info' in incoming_msg):
         covnews = news_scrape('https://www.genesis-analytics.com/covid19', 3, None)
         out = Dictionary['covidnews']
         for x, y in covnews.items():
@@ -121,28 +118,28 @@ def bot():
         msg.body(out)
         responded = True
 
-    if 'news' in incoming_msg:
+    elif 'news' in incoming_msg:
         msg.body(Dictionary['news_main'])
         responded = True
 
-    if 'headline' in incoming_msg:
+    elif 'headline' in incoming_msg:
         msg.body(news_out('headlines', 'https://www.genesis-analytics.com/news', 3, 'tab1'))
         responded = True
 
-    if 'bulletin' in incoming_msg:
+    elif 'bulletin' in incoming_msg:
         msg.body(news_out('bulletins', 'https://www.genesis-analytics.com/news', 3, 'tab2'))
         responded = True
 
-    if 'report' in incoming_msg:
+    elif 'report' in incoming_msg:
         msg.body(news_out('reports', 'https://www.genesis-analytics.com/news', 3,'tab3'))
         responded = True
 
-    if 'about' in incoming_msg:
+    elif 'about' in incoming_msg:
         msg.body(Dictionary['about'])
 
         responded = True
 
-    if 'value' in incoming_msg:
+    elif 'value' in incoming_msg:
 
         url = "https://www.genesis-analytics.com/value-unlocked-intro"
         r1 = requests.get(url)
@@ -156,27 +153,61 @@ def bot():
         msg.body(out)
         responded = True
 
-    if 'contact' in incoming_msg:
+    elif 'covid' in incoming_msg:
+        msg.body(Dictionary['covid'])
+        responded = True
+
+    elif 'contact' in incoming_msg:
         msg.body(Dictionary['contact'])
         responded = True
 
-    if 'bdu' in incoming_msg:
+    elif 'bdu' in incoming_msg:
         msg.body(Dictionary['bdu'])
         responded = True
 
-    if 'careers' in incoming_msg:
+    elif 'careers' in incoming_msg:
         msg.body(Dictionary['careers'])
         responded = True
 
-    if 'offices' in incoming_msg:
+    elif 'offices' in incoming_msg:
         msg.body(Dictionary["offices"])
         responded = True
 
-    if 'corporate' in incoming_msg:
+    elif 'corporate' in incoming_msg:
         msg.body(Dictionary['corporate'])
         responded = True
 
-    if not responded:
+    elif 'za' in incoming_msg:
+        msg.body(Dictionary['za'])
+        responded = True
+
+    elif 'ke' in incoming_msg:
+        msg.body(Dictionary['ke'])
+        responded = True
+
+    elif 'uk' in incoming_msg:
+        msg.body(Dictionary['uk'])
+        responded = True
+
+    elif 'ca' in incoming_msg:
+        msg.body(Dictionary['za'])
+        responded = True
+
+    elif 'ae' in incoming_msg:
+        msg.body(Dictionary['za'])
+        responded = True
+
+    elif 'in' in incoming_msg:
+        msg.body(Dictionary['in'])
+        responded = True
+
+    elif 'ng' in incoming_msg:
+        msg.body(Dictionary['ng'])
+        responded = True
+
+
+
+    else:
         msg.body("I'm sorry, I'm still young and don't understand your request. \
 Please use the words in bold to talk to me.")
 
