@@ -101,16 +101,16 @@ def bot():
         msg.body(Dictionary['covid'])
         responded = True
 
-    if ('1' in incoming_msg) or (incoming_msg == 'isafricaflatteningthecurve'):
+    if ('1' in incoming_msg) or (incoming_msg == 'africa'):
         msg.body(Dictionary['isafricaflatteningthecurve'])
         responded = True
 
-    if ('2' in incoming_msg) or (incoming_msg == 'healthcareriskcalculator'):
+    if ('2' in incoming_msg) or (incoming_msg == 'healthcare'):
         msg.body(Dictionary['healthcareriskcalculator'])
         responded = True
 
-    if ('3' in incoming_msg) or ('covidnews' in incoming_msg):
-        covnews = news_scrape('https://www.genesis-analytics.com/covid19', 3)
+    if ('3' in incoming_msg) or ('info' in incoming_msg):
+        covnews = news_scrape('https://www.genesis-analytics.com/covid19', 3, None)
         out = Dictionary['covidnews']
         for x, y in covnews.items():
             headline = "*" + x + "*\n"
@@ -122,17 +122,19 @@ def bot():
         responded = True
 
     if 'news' in incoming_msg:
+        msg.body(Dictionary['news_main'])
+        responded = True
 
-        news = news_scrape("https://www.genesis-analytics.com/news", 3)
-        out = Dictionary['news']
-        emoji = ["\U0001F6A9"]
-        for x, y in news.items():
-            headline = "*" + x + "*\n"
-            ref = "Read more at: " + y + "\n\n"
-            out = out + choice(emoji) + headline + ref
+    if 'headline' in incoming_msg:
+        msg.body(news_out('headlines', 'https://www.genesis-analytics.com/news', 3, 'tab1'))
+        responded = True
 
-        out += '\n\n'
-        msg.body(out)
+    if 'bulletin' in incoming_msg:
+        msg.body(news_out('bulletins', 'https://www.genesis-analytics.com/news', 3, 'tab2'))
+        responded = True
+
+    if 'report' in incoming_msg:
+        msg.body(news_out('reports', 'https://www.genesis-analytics.com/news', 3,'tab3'))
         responded = True
 
     if 'about' in incoming_msg:
@@ -174,12 +176,7 @@ def bot():
         msg.body(Dictionary['corporate'])
         responded = True
 
-    if responded:
-        nl = '\n\n'
-#             msg.body(nl +
-# "You can navigate back to the main menu at any time by saying *Hi*. \
-# You can also visit our website at www.genesis-analytics.com")
-    else:
+    if not responded:
         msg.body("I'm sorry, I'm still young and don't understand your request. \
 Please use the words in bold to talk to me.")
 
@@ -188,9 +185,9 @@ Please use the words in bold to talk to me.")
 
 
 # for scraping headlines and links from websites
-def news_scrape(url, n):
+def news_scrape(url, n, tab_no):
     number_of_articles = n  # how many we want scraped
-
+    tab = tab_no
     # creates empty lists
     articles = []
     links = []
@@ -201,9 +198,13 @@ def news_scrape(url, n):
     r1 = requests.get(url)
     cont = r1.content
     soup = bs(cont, "lxml")
-    articles = soup.find_all(class_='panel panel-default')
+    articles = soup.find(class_='tab_content', id=tab)
+    if articles is not None:
+        articles = articles.find_all(class_='panel panel-default')
+    else:
+        articles = soup.find_all(class_='panel panel-default')
 
-    # loops through top articles, adds title and link to dictionary
+    # # loops through top articles, adds title and link to dictionary
     for n in np.arange(0, number_of_articles):
 
         # getting titles
@@ -215,9 +216,18 @@ def news_scrape(url, n):
         links.append(link)
 
         out_dict[titles[n]] = links[n]
-
     return out_dict
 
+def news_out(msg, url, n, tab):
+    out = Dictionary[msg]
+    news = news_scrape(url, n, tab)
+    emoji = ["\U0001F6A9"]
+    for x, y in news.items():
+        headline = "*" + x + "*\n"
+        ref = "Read more at: " + y + "\n\n"
+        out = out + choice(emoji) + headline + ref
+
+    return out
 
 if __name__ == '__main__':
     app.run(debug=True)
