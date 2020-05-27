@@ -1,6 +1,7 @@
 
 from flask import Flask, request, abort
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from functools import wraps
 import requests
 from twilio.request_validator import RequestValidator
@@ -14,6 +15,7 @@ import datetime
 import os
 # import mysql
 
+# initialises app and creates a connection to the database
 app = Flask(__name__)
 app.config["DEBUG"]  = True
 
@@ -27,8 +29,12 @@ app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
 app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
+'''
+if " Error: Could not locate Flask application. You did not provide the FLASK_APP environment variable."
+go to console and type 'export FLASK_APP=PythonBot.py' in venv to recreate bash variable
+'''
 db = SQLAlchemy(app)
-
+migrate = Migrate(app, db)
 
 class BotData(db.Model):
 
@@ -119,7 +125,7 @@ def bot():
         responded = True
 
     elif 'news' in incoming_msg:
-        msg.body(Dictionary['news_main'])
+        msg.body(Dictionary['news'])
         responded = True
 
     elif 'headline' in incoming_msg:
