@@ -1,5 +1,5 @@
-# vim: set ft=rst:
+G:Bot
 
-See https://help.pythonanywhere.com/ (or click the "Help" link at the top
-right) for help on how to use PythonAnywhere, including tips on copying and
-pasting from consoles, and writing your own web applications.
+Marketing tool using Twilio and Flask
+Currently deployed on PythonAnywhere
+Uses MySQL for DB making use of SQLAlchemy and Flask-Migrate
