@@ -15,5 +15,9 @@
         st = status
 
 [user]
-	name = Korstiaan
-	email = korstiaanw@genesis-analytics.com
+	name = Ben Hack
+	email = benh@genesis-analytics.com
+[push]
+	default = simple
+[credential]
+	helper = cache --timeout=604800\n
