@@ -121,9 +121,13 @@ def bot():
 
     elif 'about' in incoming_msg:
         msg.body(Dictionary['about'])
+<<<<<<< HEAD
+=======
+        responded = True
 
     elif 'core' in incoming_msg:
         msg.body(Dictionary['core'])
+>>>>>>> master
 
     elif 'value' in incoming_msg:
         msg.body(WebScrape.value)
