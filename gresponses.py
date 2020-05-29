@@ -59,6 +59,25 @@ If you want to learn more about what my human colleagues get up to, \
 you can visit https://www.genesis-analytics.com/about-us#who-we-are\
 \n\n",
 
+    #core values
+    "core": "At Genesis, we align ourselves with three key values: \
+\n\n\
+*SIYAKHANA* \U0001F9F1\n\
+I am _open_ and _inclusive_, and show _compassion_ and _respect_.\n\
+_We build each other_\
+\n\n\
+*PLUS ULTRA* \U00002728\n\
+_Rigour, imagination and courage_ - these set my work apart.\n\
+We push frontiers to _unlock value_.\
+\n\n\
+*GLASS BOX* \U0001F50D\n\
+My work and decisons can withstand _scrutiny_.\n\
+We act with _integrity_.\
+\n\n\
+If you want to learn more about us, you can visit \
+https://www.genesis-analytics.com/about-us#who-we-are\
+",
+
     # value unlocked
     "value1": "Our projects have unlocked value across 41 countries \
 in Africa and 76 countries in the world \U0001F513\

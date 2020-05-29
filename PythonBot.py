@@ -142,8 +142,10 @@ def bot():
 
     elif 'about' in incoming_msg:
         msg.body(Dictionary['about'])
-
         responded = True
+
+    elif 'core' in incoming_msg:
+        msg.body(Dictionary['core'])
 
     elif 'value' in incoming_msg:
 
