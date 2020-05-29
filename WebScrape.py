@@ -1,5 +1,4 @@
-import schedule
-import time
+
 import numpy as np
 import requests
 from bs4 import BeautifulSoup as bs
@@ -50,13 +49,27 @@ def news_out(msg, url, n, tab):
 
     return out
 
-headlines = news_out(Dictionary['headlines'], 'https://www.genesis-analytics.com/news', 3, 'tab1')
-# headlines = schedule.every().minute.do(headlines)
-# print(headlines)
+def value():
+        url = "https://www.genesis-analytics.com/value-unlocked-intro"
+        r1 = requests.get(url)
+        cont = r1.content
+        soup = bs(cont, "lxml")
+        articles = soup.find_all(class_='panel-title')
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+        out = Dictionary["value1"] + str(articles[0].get_text()) + "* and *" \
+            + str(articles[1].get_text()) + Dictionary['value2']
+
+        return out
+
+headlines = news_out('headlines', 'https://www.genesis-analytics.com/news', 3, 'tab1')
+bulletins = news_out('bulletins', 'https://www.genesis-analytics.com/news', 3, 'tab2')
+reports = news_out('reports', 'https://www.genesis-analytics.com/news', 3,'tab3')
+covnews = news_out('covidnews', 'https://www.genesis-analytics.com/covid19', 3, None)
+value = value()
+
+
+
+
 
 
 

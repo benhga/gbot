@@ -21,7 +21,7 @@ If you want more information on the pandemic in South Africa, you can WhatsApp \
 \n\n",
 
     # initial introduction
-    "hello": "*Hello*!\U0001F44B\U0001F916\n\n\
+    "hello": "*Hi*!\U0001F44B\U0001F916\n\n\
 I am the G:Bot and I’m here to let you know about the ground-breaking work \
 done by Genesis Analytics, Africa’s largest economics-based consulting firm \
 \U0001F30D\
