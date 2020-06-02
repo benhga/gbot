@@ -94,84 +94,85 @@ def bot():
     resp = MessagingResponse()
     msg = resp.message()
 
-    if ('hi' in incoming_msg) or ('hello' in incoming_msg):
-        msg.body(Dictionary['hello'])
+    if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg):
+        out = Dictionary['hello']
 
 
     elif ('1' in incoming_msg) or (incoming_msg == 'africa'):
-        msg.body(Dictionary['isafricaflatteningthecurve'])
+        out = Dictionary['isafricaflatteningthecurve']
 
     elif ('2' in incoming_msg) or (incoming_msg == 'healthcare'):
-        msg.body(Dictionary['healthcareriskcalculator'])
+        out = Dictionary['healthcareriskcalculator']
 
     elif ('3' in incoming_msg) or ('info' in incoming_msg):
-        msg.body(WebScrape.covnews)
+        out = WebScrape.covnews
+
+    elif 'newsletter' in incoming_msg:
+        out = WebScrape.bulletins
 
     elif 'news' in incoming_msg:
-        msg.body(Dictionary['news'])
+        out = Dictionary['news']
 
     elif 'headline' in incoming_msg:
-        msg.body(WebScrape.headlines)
-
-    elif 'bulletin' in incoming_msg:
-        msg.body(WebScrape.bulletins)
+        out = WebScrape.headlines
 
     elif 'report' in incoming_msg:
-        msg.body(WebScrape.reports)
+        out = WebScrape.reports
 
     elif 'about' in incoming_msg:
-        msg.body(Dictionary['about'])
+        out = Dictionary['about']
 
-    elif 'core' in incoming_msg:
-        msg.body(Dictionary['core'])
+    elif 'values' in incoming_msg:
+        out = Dictionary['core']
 
     elif 'value' in incoming_msg:
-        msg.body(WebScrape.value)
+        out = WebScrape.value
 
     elif 'covid' in incoming_msg:
-        msg.body(Dictionary['covid'])
+        out = Dictionary['covid']
 
     elif 'contact' in incoming_msg:
-        msg.body(Dictionary['contact'])
+        out = Dictionary['contact']
 
     elif 'bdu' in incoming_msg:
-        msg.body(Dictionary['bdu'])
+        out = Dictionary['bdu']
 
     elif 'careers' in incoming_msg:
-        msg.body(Dictionary['careers'])
+        out = Dictionary['careers']
 
     elif 'offices' in incoming_msg:
-        msg.body(Dictionary["offices"])
+        out = Dictionary["offices"]
 
     elif 'corporate' in incoming_msg:
-        msg.body(Dictionary['corporate'])
+        out = Dictionary['corporate']
 
     elif 'za' in incoming_msg:
-        msg.body(Dictionary['za'])
+        out = Dictionary['za']
 
     elif 'ke' in incoming_msg:
-        msg.body(Dictionary['ke'])
+        out = Dictionary['ke']
 
     elif 'uk' in incoming_msg:
-        msg.body(Dictionary['uk'])
+        out = Dictionary['uk']
 
     elif 'ca' in incoming_msg:
-        msg.body(Dictionary['za'])
+        out = Dictionary['za']
 
     elif 'ae' in incoming_msg:
-        msg.body(Dictionary['za'])
+        out = Dictionary['za']
 
     elif 'in' in incoming_msg:
-        msg.body(Dictionary['in'])
+        out = Dictionary['in']
 
     elif 'ng' in incoming_msg:
-        msg.body(Dictionary['ng'])
+        out = Dictionary['ng']
 
 
     else:
-        msg.body("I'm sorry, I'm still young and don't understand your request. \
-Please use the words in bold to talk to me.")
+        out = "I'm sorry, I'm still young and don't understand your request. \
+Please use the words in bold to talk to me."
 
+    msg.body(out + "\n\nIf you would like to return the menu, just say *Hi* or type *Menu*.")
     return str(resp)
 
 

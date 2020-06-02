@@ -11,14 +11,14 @@ Covid-19 pandemic. These include:\
 2. *Healthcare* RiskCalculator \U000026D1\n\
 3. COVID-19 *Info*, News & Insights \U0001F4E1\
 \n\n\
-Just press the number or type the bolded work for the option that you want to know more about! \
+Just press the number or type the bolded word for the option that you want to know more about! \
 Alternatively, visit https://www.genesis-analytics.com/covid19 for all of our \
 COVID-19 related information.\n\n\
 You can return to this menu at any time by typing *COVID*.\
 \n\n\
 If you want more information on the pandemic in South Africa, you can WhatsApp \
 ‘Hi’ to 0600 123 456 or visit www.sacoronavirus.co.za.\
-\n\n",
+",
 
     # initial introduction
     "hello": "*Hi*!\U0001F44B\U0001F916\n\n\
@@ -28,21 +28,21 @@ done by Genesis Analytics, Africa’s largest economics-based consulting firm \
 \n\n\
 For more information on specific topics, please reply with one of the bolded words below:\
 \n\n\
-\U00002139 *About*\n\
-\U0001F9A0 *COVID*-19\n\
-\U0001F4E2 *News*\n\
-\U0001F454 *Careers* \n\
+*About* \U00002139 \n\
+*COVID* \U0001F9A0 \n\
+*News* \U0001F4E2 \n\
+*Careers* \U0001F454 \n\
 \n\n\
 To see how we have helped clients in the corporate, donor, and public sectors, reply with\
 \n\n\
-\U0001F5DD *Value*\
+*Value* \U0001F5DD \
 \n\n\
 If none of these are what you're looking for, you can reach out to one of my \
 human associates by typing *Contact* \
 \n\n\
 I hope you find what you’re looking for and gain some valuable information \
 about Genesis Analytics.\
-\n\n",
+",
 
 # gives information about Genesis
 "about": "Great! Let me tell you more about us. \
@@ -52,15 +52,15 @@ capabilities to improve decision-making and to reveal substantial opportunities 
 clients and society. We are the largest economics-based consulting firm in Africa. \
 We work in many different sectors and offer a variety of services.\
 \n\n\
-We base our work off 3 core values.Type *core* if you would like to hear more \
+We base our work on 3 core values. Type *values* if you would like to hear more \
 about these. \
 \n\n\
 If you want to learn more about what my human colleagues get up to, \
 you can visit https://www.genesis-analytics.com/about-us#who-we-are\
-\n\n",
+",
 
     #core values
-    "core": "At Genesis, we align ourselves with three key values: \
+    "core": "At Genesis, we align ourselves with the following three values: \
 \n\n\
 *SIYAKHANA* \U0001F9F1\n\
 I am _open_ and _inclusive_, and show _compassion_ and _respect_.\n\
@@ -86,16 +86,16 @@ Some of the areas where we have unlocked value include: *",
 
     'value2': "*\n\nIf you want to read more about projects like these, \
 visit https://www.genesis-analytics.com/value-unlocked-intro. \
-\n\n",
+",
 
 
     # news
     "news": "Would you like to see our \n\n\
 Recent *Headlines* \U0001F4F0 \n\
-*Bulletins* \U0001F4C4\n\
+*Newsletters* \U0001F4C4\n\
 *Reports* and other Documents \U0001F5C2\
 \n\n\
-Just type the bolded work for the option that you want to know more about! \
+Just type the bolded word for the option that you want to know more about! \
 Alternatively, visit https://www.genesis-analytics.com/news for all of our \
 News and Insights.\n\n\
 You can return to this menu at any time by typing *News*.\
@@ -141,12 +141,12 @@ The *Healthcare Risk Calculator* can be found at www.genesis-analytics.com/covid
     # contact
     'contact': 'Would you like to contact our \
 \n\n\
-\U0001F4BC *BDU* \n\
-\U0001F454 *Careers* team\n\
-\U0001F3E2 *Offices* \
+*BDU* \U0001F4BC\n\
+*Careers* team \U0001F454 \n\
+*Offices* \U0001F3E2 \
 \n\n\
 or would you like to make a *Corporate* Enquiry?\
-\n\n',
+',
 
     #BDU
     'bdu': 'The *Business Development Unit* is responsible for the \
@@ -156,10 +156,16 @@ opportunities, and engagement with clients and partners on potential collaborati
 \n\n\
 To get in touch with our *BDU*, you can email bdu@genesis-analytics.com or \
 visit https://www.genesis-analytics.com/contact-us/#business-development-unit\
-\n\n',
+',
 
     # Careers
-    'careers': 'For information about *careers* at Genesis, please contact our \
+    'careers': 'Our goal is to recruit and build an exceptional cadre of \
+professionals who are passionate about unlocking value on the continent. \
+Successful candidates are placed into a niche practice area that best suits \
+their skill set, interests and personal capability. We recruit at both a \
+graduate (honours/masters) and experienced hire level.\
+\n\n\
+For information about *careers* at Genesis, please contact our \
 recruitment specialists Cobie Hönicke and Zandile Shabangu \
 by emailing recruitment@genesis-analytics.com. \U0001F4C1\
 \n\n\

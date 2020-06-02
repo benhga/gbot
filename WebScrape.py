@@ -49,6 +49,16 @@ def news_out(msg, url, n, tab):
 
     return out
 
+def rep_out(msg, url, n, tab):
+    out = Dictionary[msg]
+    news = news_scrape(url, n, tab)
+    emoji = "\U0001F6A9"
+    for x, y in news.items():
+        headline = "*" + x + "*\n"
+        ref = "Read more at: https://www.genesis-analytics.com/" + y + "\n\n"
+        out = out + emoji + headline + ref
+
+    return out
 def value():
         url = "https://www.genesis-analytics.com/value-unlocked-intro"
         r1 = requests.get(url)
@@ -63,7 +73,7 @@ def value():
 
 headlines = news_out('headlines', 'https://www.genesis-analytics.com/news', 3, 'tab1')
 bulletins = news_out('bulletins', 'https://www.genesis-analytics.com/news', 3, 'tab2')
-reports = news_out('reports', 'https://www.genesis-analytics.com/news', 3,'tab3')
+reports = rep_out('reports', 'https://www.genesis-analytics.com/news', 3,'tab3')
 covnews = news_out('covidnews', 'https://www.genesis-analytics.com/covid19', 3, None)
 value = value()
 
