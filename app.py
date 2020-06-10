@@ -68,7 +68,7 @@ def validate_twilio_request(f):
 out_dict = {}
 out = ''
 
-tester to see response
+# tester to see response
 @app.route("/")
 def hello():
     return "Hello world!"
