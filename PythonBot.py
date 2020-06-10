@@ -68,10 +68,10 @@ def validate_twilio_request(f):
 out_dict = {}
 out = ''
 
-# tester to see response
-# @app.route("/")
-# def hello():
-#     return "Hello world!"
+tester to see response
+@app.route("/")
+def hello():
+    return "Hello world!"
 
 # actual bot logic
 @app.route('/bot', methods=['GET', 'POST'])
