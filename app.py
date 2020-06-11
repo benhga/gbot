@@ -15,54 +15,54 @@ import os
 app = Flask(__name__)
 # app.config["DEBUG"]  = True
 
-SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
-    username="korstiaan",
-    password="MI5Ql0G:",
-    hostname="korstiaan.mysql.pythonanywhere-services.com",
-    databasename="korstiaan$gbotdata",
-)
-app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
-app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+# SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
+#     username="korstiaan",
+#     password="MI5Ql0G:",
+#     hostname="korstiaan.mysql.pythonanywhere-services.com",
+#     databasename="korstiaan$gbotdata",
+# )
+# app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+# app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
+# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-'''
-if " Error: Could not locate Flask application. You did not provide the FLASK_APP environment variable."
-go to console and type 'export FLASK_APP=PythonBot.py' in venv to recreate bash variable
-'''
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
+# '''
+# if " Error: Could not locate Flask application. You did not provide the FLASK_APP environment variable."
+# go to console and type 'export FLASK_APP=PythonBot.py' in venv to recreate bash variable
+# '''
+# db = SQLAlchemy(app)
+# migrate = Migrate(app, db)
 
-class BotData(db.Model):
+# class BotData(db.Model):
 
-    __tablename__ = "gdata"
+#     __tablename__ = "gdata"
 
-    id = db.Column(db.Integer, primary_key = True)
-    number = db.Column(db.String(4096))
-    user_input = db.Column(db.String(4096))
-    date = db.Column(db.String(4096))
+#     id = db.Column(db.Integer, primary_key = True)
+#     number = db.Column(db.String(4096))
+#     user_input = db.Column(db.String(4096))
+#     date = db.Column(db.String(4096))
 
-# validates Twilio requests
-def validate_twilio_request(f):
-    """Validates that incoming requests genuinely originated from Twilio"""
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        # Create an instance of the RequestValidator class
-        validator = RequestValidator(os.environ.get('TWILIO_AUTH_TOKEN'))
+# # validates Twilio requests
+# def validate_twilio_request(f):
+#     """Validates that incoming requests genuinely originated from Twilio"""
+#     @wraps(f)
+#     def decorated_function(*args, **kwargs):
+#         # Create an instance of the RequestValidator class
+#         validator = RequestValidator(os.environ.get('TWILIO_AUTH_TOKEN'))
 
-        # Validate the request using its URL, POST data,
-        # and X-TWILIO-SIGNATURE header
-        request_valid = validator.validate(
-            request.url,
-            request.form,
-            request.headers.get('X-TWILIO-SIGNATURE', ''))
+#         # Validate the request using its URL, POST data,
+#         # and X-TWILIO-SIGNATURE header
+#         request_valid = validator.validate(
+#             request.url,
+#             request.form,
+#             request.headers.get('X-TWILIO-SIGNATURE', ''))
 
-        # Continue processing the request if it's valid, return a 403 error if
-        # it's not
-        if request_valid:
-            return f(*args, **kwargs)
-        else:
-            return abort(403)
-    return decorated_function
+#         # Continue processing the request if it's valid, return a 403 error if
+#         # it's not
+#         if request_valid:
+#             return f(*args, **kwargs)
+#         else:
+#             return abort(403)
+#     return decorated_function
 
 # initialises some variables
 out_dict = {}
@@ -82,10 +82,10 @@ def bot():
     num = num.replace('whatsapp:', '')
     incoming_msg = request.form.get('Body').lower()
     dt=datetime.datetime.now().strftime("%y%m%d--%H%M%S")
-    data = BotData(number = num, user_input = incoming_msg, date = dt)
+#     data = BotData(number = num, user_input = incoming_msg, date = dt)
 
-    db.session.add(data)
-    db.session.commit()
+#     db.session.add(data)
+#     db.session.commit()
 
 
 
