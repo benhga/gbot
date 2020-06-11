@@ -13,7 +13,7 @@ import os
 
 # initialises app and creates a connection to the database
 app = Flask(__name__)
-app.config["DEBUG"]  = True
+# app.config["DEBUG"]  = True
 
 SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
     username="korstiaan",
