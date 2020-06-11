@@ -82,10 +82,10 @@ def bot():
     num = num.replace('whatsapp:', '')
     incoming_msg = request.form.get('Body').lower()
     dt=datetime.datetime.now().strftime("%y%m%d--%H%M%S")
-#     data = BotData(number = num, user_input = incoming_msg, date = dt)
+    data = BotData(number = num, user_input = incoming_msg, date = dt)
 
-#     db.session.add(data)
-#     db.session.commit()
+    db.session.add(data)
+    db.session.commit()
 
 
 
