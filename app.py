@@ -6,7 +6,7 @@ from functools import wraps
 from twilio.request_validator import RequestValidator
 from twilio.twiml.messaging_response import MessagingResponse
 from gresponses import Dictionary
-# import pyodbc
+import urllib.parse
 import  WebScrape
 
 import datetime
@@ -22,7 +22,10 @@ SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostnam
     hostname="gbot.mysql.database.azure.com",
     databasename="gbotinitialdata",
 )
-app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+params = urllib.parse.quote_plus("DRIVER={SQL Server};SERVER=gbot.database.windows.net;DATABASE=gbotdata;UID=myadmin@sqldb;PWD=pipQe8-sadjej-covcaf")
+# app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI  ///PythonAnywhere
+app.config["SQLALCHEMY_DATABASE_URI"] = "mssql+pyodbc:///?odbc_connect=%s" % params
+app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
