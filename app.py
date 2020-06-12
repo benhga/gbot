@@ -24,7 +24,9 @@ SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostnam
 )
 params = urllib.parse.quote_plus("DRIVER={SQL Server};SERVER=gbot.database.windows.net;DATABASE=gbotdata;UID=myadmin@gbot;PWD=pipQe8-sadjej-covcaf")
 # app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI  ///PythonAnywhere
-app.config["SQLALCHEMY_DATABASE_URI"] = "mssql+pyodbc:///?odbc_connect=%s" % params
+# app.config["SQLALCHEMY_DATABASE_URI"] = "mssql+pyodbc:///?odbc_connect=%s" % params
+app.config["SQLALCHEMY_DATABASE_URI"] = "mssql+pyodbc://myadmin:pipQe8-sadjej-covcaf@gbot.database.windows.net" \
+                                        "/gbotdata?driver=ODBC+Driver+17+for+SQL+Server "
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
