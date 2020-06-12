@@ -6,7 +6,7 @@ from functools import wraps
 from twilio.request_validator import RequestValidator
 from twilio.twiml.messaging_response import MessagingResponse
 from gresponses import Dictionary
-import pyodbc
+# import pyodbc
 import  WebScrape
 
 import datetime
