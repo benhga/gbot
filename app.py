@@ -1,12 +1,9 @@
 
 from flask import Flask, request, abort
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from functools import wraps
 from twilio.request_validator import RequestValidator
 from twilio.twiml.messaging_response import MessagingResponse
 from gresponses import Dictionary
-import urllib.parse
 import  WebScrape
 
 import datetime
@@ -15,37 +12,6 @@ import os
 # initialises app and creates a connection to the database
 app = Flask(__name__)
 # app.config["DEBUG"]  = True
-
-SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
-    username="myadmin@gbot",
-    password="Gb0T!dB:@!",
-    hostname="gbot.mysql.database.azure.com",
-    databasename="gbotinitialdata",
-)
-params = urllib.parse.quote_plus("DRIVER={SQL Server};SERVER=gbot.database.windows.net;DATABASE=gbotdata;UID=myadmin@gbot;PWD=pipQe8-sadjej-covcaf")
-# app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI  ///PythonAnywhere
-# app.config["SQLALCHEMY_DATABASE_URI"] = "mssql+pyodbc:///?odbc_connect=%s" % params
-app.config["SQLALCHEMY_DATABASE_URI"] = "mssql+pyodbc://myadmin:pipQe8-sadjej-covcaf@gbot.database.windows.net" \
-                                        "/gbotdata?driver=ODBC+Driver+17+for+SQL+Server "
-app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
-app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
-'''
-if " Error: Could not locate Flask application. You did not provide the FLASK_APP environment variable."
-go to console and type 'export FLASK_APP=PythonBot.py' in venv to recreate bash variable
-'''
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-
-class BotData(db.Model):
-
-    __tablename__ = "gdata"
-
-    id = db.Column(db.Integer, primary_key = True)
-    number = db.Column(db.String(4096))
-    user_input = db.Column(db.String(4096))
-    date = db.Column(db.String(4096))
 
 # validates Twilio requests
 def validate_twilio_request(f):
@@ -88,14 +54,6 @@ def bot():
     num = num.replace('whatsapp:', '')
     incoming_msg = request.form.get('Body').lower()
     dt=datetime.datetime.now().strftime("%y%m%d--%H%M%S")
-    data = BotData(number = num, user_input = incoming_msg, date = dt)
-
-    db.session.add(data)
-    db.session.commit()
-
-
-
-
 
     resp = MessagingResponse()
     msg = resp.message()
