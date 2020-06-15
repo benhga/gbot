@@ -4,14 +4,34 @@ from functools import wraps
 from twilio.request_validator import RequestValidator
 from twilio.twiml.messaging_response import MessagingResponse
 from gresponses import Dictionary
-import  WebScrape
+import WebScrape
+import pyodbc
 
-import datetime
 import os
-
 # initialises app and creates a connection to the database
 app = Flask(__name__)
 # app.config["DEBUG"]  = True
+
+server = 'tcp:gbot.database.windows.net'
+database = 'GBotOperational'
+username = 'myadmin'
+password = 'pipQe8-sadjej-covcaf'
+cnxn = pyodbc.connect(
+    'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
+try:
+    cursor = cnxn.cursor()
+except Exception as e:
+    print("Unexpected error: {}".format(e))
+
+def add_data(num, msg):
+    # cursor.execute("INSERT INTO DummyTable VALUES(1,2,3)")
+    cursor.execute("insert into DummyTable(number, user_input) values (?,?)",
+                   num,
+                   msg
+                   )
+    cnxn.commit()
+    
+
 
 # validates Twilio requests
 def validate_twilio_request(f):
@@ -53,7 +73,8 @@ def bot():
     num = request.form.get('From')
     num = num.replace('whatsapp:', '')
     incoming_msg = request.form.get('Body').lower()
-    dt=datetime.datetime.now().strftime("%y%m%d--%H%M%S")
+    add_data(num, incoming_msg)
+
 
     resp = MessagingResponse()
     msg = resp.message()
