@@ -165,11 +165,11 @@ Successful candidates are placed into a niche practice area that best suits \
 their skill set, interests and personal capability. We recruit at both a \
 graduate (honours/masters) and experienced hire level.\
 \n\n\
-For information about *careers* at Genesis, please contact our \
+For information about _careers_ at Genesis, please contact our \
 recruitment specialists Cobie Hönicke and Zandile Shabangu \
 by emailing recruitment@genesis-analytics.com. \U0001F4C1\
 \n\n\
-We also offer *bursaries* for South African economics students from previously \
+We also offer _bursaries_ for South African economics students from previously \
 disadvantaged backgrounds to pursue their studies to Master’s \
 level, as well as internships.\
 \n\n\
