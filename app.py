@@ -25,7 +25,7 @@ except Exception as e:
 
 def add_data(num, msg):
     # cursor.execute("INSERT INTO DummyTable VALUES(1,2,3)")
-    cursor.execute("insert into DummyTable(number, user_input) values (?,?)",
+    cursor.execute("insert into gdata_from_GBot_v1(number, user_input) values (?,?)",
                    num,
                    msg
                    )
