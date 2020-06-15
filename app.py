@@ -6,11 +6,12 @@ from twilio.twiml.messaging_response import MessagingResponse
 from gresponses import Dictionary
 import WebScrape
 import pyodbc
-import datetime
+
 import os
 # initialises app and creates a connection to the database
 app = Flask(__name__)
 # app.config["DEBUG"]  = True
+
 server = 'tcp:gbot.database.windows.net'
 database = 'GBotOperational'
 username = 'myadmin'
@@ -29,6 +30,8 @@ def add_data(num, msg):
                    msg
                    )
     cnxn.commit()
+    
+
 
 # validates Twilio requests
 def validate_twilio_request(f):
@@ -71,10 +74,6 @@ def bot():
     num = num.replace('whatsapp:', '')
     incoming_msg = request.form.get('Body').lower()
     add_data(num, incoming_msg)
-
-
-
-
 
 
     resp = MessagingResponse()
