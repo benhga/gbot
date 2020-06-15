@@ -1,46 +1,34 @@
 
 from flask import Flask, request, abort
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from functools import wraps
 from twilio.request_validator import RequestValidator
 from twilio.twiml.messaging_response import MessagingResponse
 from gresponses import Dictionary
+import WebScrape
 import pyodbc
-import  WebScrape
-
 import datetime
 import os
-
 # initialises app and creates a connection to the database
 app = Flask(__name__)
 # app.config["DEBUG"]  = True
+server = 'tcp:gbot.database.windows.net'
+database = 'GBotOperational'
+username = 'myadmin'
+password = 'pipQe8-sadjej-covcaf'
+cnxn = pyodbc.connect(
+    'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
+try:
+    cursor = cnxn.cursor()
+except Exception as e:
+    print("Unexpected error: {}".format(e))
 
-SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
-    username="myadmin@gbot",
-    password="Gb0T!dB:@!",
-    hostname="gbot.mysql.database.azure.com",
-    databasename="gbotinitialdata",
-)
-app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
-app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
-'''
-if " Error: Could not locate Flask application. You did not provide the FLASK_APP environment variable."
-go to console and type 'export FLASK_APP=PythonBot.py' in venv to recreate bash variable
-'''
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-
-class BotData(db.Model):
-
-    __tablename__ = "gdata"
-
-    id = db.Column(db.Integer, primary_key = True)
-    number = db.Column(db.String(4096))
-    user_input = db.Column(db.String(4096))
-    date = db.Column(db.String(4096))
+def add_data(num, msg):
+    # cursor.execute("INSERT INTO DummyTable VALUES(1,2,3)")
+    cursor.execute("insert into DummyTable(number, user_input) values (?,?)",
+                   num,
+                   msg
+                   )
+    cnxn.commit()
 
 # validates Twilio requests
 def validate_twilio_request(f):
@@ -82,11 +70,8 @@ def bot():
     num = request.form.get('From')
     num = num.replace('whatsapp:', '')
     incoming_msg = request.form.get('Body').lower()
-    dt=datetime.datetime.now().strftime("%y%m%d--%H%M%S")
-    data = BotData(number = num, user_input = incoming_msg, date = dt)
+    add_data(num, incoming_msg)
 
-    db.session.add(data)
-    db.session.commit()
 
 
 
