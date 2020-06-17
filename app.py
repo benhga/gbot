@@ -73,7 +73,7 @@ def bot():
     num = request.form.get('From')
     num = num.replace('whatsapp:', '')
     incoming_msg = request.form.get('Body').lower()
-#     add_data(num, incoming_msg)
+    add_data(num, incoming_msg)
 
 
     resp = MessagingResponse()
