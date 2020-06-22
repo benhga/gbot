@@ -163,4 +163,4 @@ Please use the words in bold to talk to me."
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
