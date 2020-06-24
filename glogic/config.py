@@ -1,3 +1,4 @@
+import os
 import urllib.parse
 import pyodbc
 
@@ -16,7 +17,15 @@ class MSSQLConfig(object):
     SQLALCHEMY_DATABASE_URI = "mssql+pyodbc:///?odbc_connect=%s" % params
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+class TestConfig(object):
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    SQLALCHEMY_DATABASE_URI = ('sqlite:///' +
+                               os.path.join(basedir, 'test.sqlite'))
+    PRESERVE_CONTEXT_ON_EXCEPTION = False
+    DEBUG = True
+
 
 config_env_files = {
-    'ms': 'glogic.config.MSSQLConfig'
+    'ms': 'glogic.config.MSSQLConfig',
+    'test': 'glogic.config.TestConfig'
 }

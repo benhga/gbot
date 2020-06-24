@@ -1,4 +1,4 @@
-from .config import config_env_files
+from glogic.config import config_env_files
 from flask import Flask
 
 from flask_sqlalchemy import SQLAlchemy
