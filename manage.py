@@ -1,5 +1,3 @@
-POST_BUILD_COMMAND = 'python manage.py runserver'
-
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from flask_migrate import upgrade as upgrade_database

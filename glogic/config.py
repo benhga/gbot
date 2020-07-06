@@ -16,6 +16,7 @@ class MSSQLConfig(object):
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = "mssql+pyodbc:///?odbc_connect=%s" % params
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    POST_BUILD_COMMAND = 'python manage.py runserver'
 
 class TestConfig(object):
     basedir = os.path.abspath(os.path.dirname(__file__))
