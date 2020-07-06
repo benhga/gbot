@@ -1,0 +1,1 @@
+POST_BUILD_COMMAND=python manage.py runserver
