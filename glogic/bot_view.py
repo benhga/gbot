@@ -7,6 +7,7 @@ from twilio.twiml.messaging_response import MessagingResponse
 
 @app.route('/message', methods=['GET', 'POST'])
 def bot():
+
     num = request.form.get('From')
     num = num.replace('whatsapp:', '')
     incoming_msg = request.form.get('Body').lower()
@@ -92,5 +93,5 @@ def bot():
         out = "I'm sorry, I'm still young and don't understand your request. \
     Please use the words in bold to talk to me."
 
-    msg(out + "\n\nIf you would like to return the menu, just say *Hi* or type *Menu*.")
+    msg.body(out + "\n\nIf you would like to return the menu, just say *Hi* or type *Menu*.")
     return str(resp)

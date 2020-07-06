@@ -1,4 +1,5 @@
 from . import app
+from .import bot_view
 
 
 @app.route('/', methods=['GET', 'POST'])
