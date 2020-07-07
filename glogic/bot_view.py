@@ -78,10 +78,10 @@ def bot():
         out = Dictionary['uk']
 
     elif 'ca' in incoming_msg:
-        out = Dictionary['za']
+        out = Dictionary['ca']
 
     elif 'ae' in incoming_msg:
-        out = Dictionary['za']
+        out = Dictionary['ae']
 
     elif 'in' in incoming_msg:
         out = Dictionary['in']

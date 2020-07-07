@@ -12,11 +12,10 @@ params = urllib.parse.quote_plus("DRIVER={ODBC Driver 17 for SQL Server};SERVER=
 
 
 class MSSQLConfig(object):
-    SECRET_KEY = 'ih8dbs'
+    SECRET_KEY = '018b3f7-vg1(&$^Goib{U(_(*G9-wfeb92-ypv8y06680^&)C0vy-vucrvp689[--#JBC&TQWgiuoccto877050fvh'
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = "mssql+pyodbc:///?odbc_connect=%s" % params
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    POST_BUILD_COMMAND = 'python manage.py runserver'
 
 class TestConfig(object):
     basedir = os.path.abspath(os.path.dirname(__file__))
