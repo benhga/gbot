@@ -3,7 +3,7 @@ import urllib.parse
 import pyodbc
 
 server = 'tcp:gbot.database.windows.net'
-database = 'gbotdata'
+database = 'GBotOperational'
 username = 'myadmin@gbot'
 password = 'pipQe8-sadjej-covcaf'
 
@@ -16,6 +16,7 @@ class MSSQLConfig(object):
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = "mssql+pyodbc:///?odbc_connect=%s" % params
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
 
 class TestConfig(object):
     basedir = os.path.abspath(os.path.dirname(__file__))
