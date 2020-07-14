@@ -32,6 +32,7 @@ def add_data(num, msg):
     cnxn.commit()
     
 
+
 # validates Twilio requests
 def validate_twilio_request(f):
     """Validates that incoming requests genuinely originated from Twilio"""
@@ -163,4 +164,4 @@ Please use the words in bold to talk to me."
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
