@@ -6,7 +6,7 @@ from decouple import config
 
 server = config('SERVER')
 database = config('DATABASE')
-username = config('USERNAME')
+username = 'myadmin@gbot'
 password = config('PASSWORD')
 
 params = urllib.parse.quote_plus("DRIVER={ODBC Driver 17 for SQL Server};SERVER=" + server + ';DATABASE=' + database +
