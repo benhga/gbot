@@ -27,7 +27,7 @@ Then install the required dependencies by running
 #### MSSQL
 
 Microsoft SQL databases requires a driver for connection. The one used in this project 
-can be downloaded [here](https://www.microsoft.com/en-us/download/details.aspx?id=56567)
+can be downloaded [here](https://www.microsoft.com/en-us/download/details.aspx?id=56567).
 
 ## Bot Content
 
@@ -70,6 +70,6 @@ In Twilio, the webhook must be set to `<ngrok link>/message`.
 All that's left now is to send your bot a message and watch it reply!
 ~~~~
 ## DOCS
-Twilio: https://www.twilio.com/docs
+[Twilio](https://www.twilio.com/docs)
 
-Flask: https://flask.palletsprojects.com/en/1.1.x/
+[Flask](https://flask.palletsprojects.com/en/1.1.x/)
