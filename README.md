@@ -24,6 +24,11 @@ Then install the required dependencies by running
 
 `pip install -r requirements.txt`
 
+#### MSSQL
+
+Microsoft SQL databases requires a driver for connection. The one used in this project 
+can be downloaded [here](https://www.microsoft.com/en-us/download/details.aspx?id=56567)
+
 ## Bot Content
 
 The content of the bot is stored in `gresponses.py`.
