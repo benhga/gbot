@@ -2,9 +2,9 @@ import os
 import urllib.parse
 import pyodbc
 
-server = 'tcp:gbot.database.windows.net'
-database = 'GBotOperational'
-username = 'myadmin@gbot'
+server = 'tcp:gbot-euro-server.database.windows.net'
+database = 'gbot-francedb'
+username = 'myadmin@gbot-euro-server'
 password = 'pipQe8-sadjej-covcaf'
 
 params = urllib.parse.quote_plus("DRIVER={ODBC Driver 17 for SQL Server};SERVER=" + server + ';DATABASE=' + database +
