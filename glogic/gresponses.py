@@ -11,7 +11,7 @@ Covid-19 pandemic. These include:\
 2. *Healthcare* RiskCalculator \U000026D1\n\
 3. COVID-19 *Info*, News & Insights \U0001F4E1\
 \n\n\
-Just press the number or type the bolded word for the option that you want to know more about! \
+Just type the bolded word for the option that you want to know more about! \
 Alternatively, visit https://www.genesis-analytics.com/covid19 for all of our \
 COVID-19 related information.\n\n\
 You can return to this menu at any time by typing *COVID*.\
