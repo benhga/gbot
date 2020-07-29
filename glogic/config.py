@@ -3,10 +3,12 @@ import urllib.parse
 import pyodbc
 # noinspection PyUnresolvedReferences
 
+
 server = os.environ.get('SERVER')
 database = os.environ.get('DATABASE')
 username = os.environ.get('NAME')
 password = os.environ.get('PASSWORD')
+
 
 params = urllib.parse.quote_plus("DRIVER={ODBC Driver 17 for SQL Server};SERVER=" + server + ';DATABASE=' + database +
                                  ";UID=" + username + ';PWD=' + password)
