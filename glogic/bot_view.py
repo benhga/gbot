@@ -19,7 +19,10 @@ def bot():
 
     if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg):
         out = Dictionary['hello']
-
+    
+    elif ('are you still working' in incoming_msg):
+        out = "Yes, all is well"
+        
     elif ('1' in incoming_msg) or (incoming_msg == 'africa'):
         out = Dictionary['isafricaflatteningthecurve']
 
