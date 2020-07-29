@@ -1,3 +1,4 @@
+
 # **G:BOT SETUP**
 
 Welcome to the G:Bot repository. The purpose of this readme is to help you set up the repo 
@@ -28,6 +29,17 @@ Then install the required dependencies by running
 
 Microsoft SQL databases requires a driver for connection. The one used in this project 
 can be downloaded [here](https://www.microsoft.com/en-us/download/details.aspx?id=56567).
+
+#### Flask environment
+
+Make a copy of the `.env.template` file and save it as `.env`. Declare your environment variables in this file. _DO NOT COMMIT THIS FILE TO GITHUB_.
+Note: the username of the database must be set in the config.py file.
+
+In the terminal, run the code 
+
+`source .env` 
+
+to set the environment variables.
 
 ## Bot Content
 
@@ -73,3 +85,4 @@ All that's left now is to send your bot a message and watch it reply!
 [Twilio](https://www.twilio.com/docs)
 
 [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+

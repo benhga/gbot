@@ -1,19 +1,22 @@
 import os
 import urllib.parse
 import pyodbc
+# noinspection PyUnresolvedReferences
 
-server = 'tcp:gbot-euro-server.database.windows.net'
-database = 'gbot-francedb'
-username = 'myadmin@gbot-euro-server'
-password = 'pipQe8-sadjej-covcaf'
+
+server = os.environ.get('SERVER')
+database = os.environ.get('DATABASE')
+username = os.environ.get('NAME')
+password = os.environ.get('PASSWORD')
+
 
 params = urllib.parse.quote_plus("DRIVER={ODBC Driver 17 for SQL Server};SERVER=" + server + ';DATABASE=' + database +
                                  ";UID=" + username + ';PWD=' + password)
 
 
 class MSSQLConfig(object):
-    SECRET_KEY = '018b3f7-vg1(&$^Goib{U(_(*G9-wfeb92-ypv8y06680^&)C0vy-vucrvp689[--#JBC&TQWgiuoccto877050fvh'
-    DEBUG = False
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    DEBUG = os.environ.get('DEBUG')
     SQLALCHEMY_DATABASE_URI = "mssql+pyodbc:///?odbc_connect=%s" % params
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
