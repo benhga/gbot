@@ -159,7 +159,7 @@ visit https://www.genesis-analytics.com/contact-us/#business-development-unit\
 ',
 
     # Careers
-    'careers': 'Our goal is to recruit and build an exceptional cadre of \
+    'careers': "Our goal is to recruit and build an exceptional cadre of \
 professionals who are passionate about unlocking value on the continent. \
 Successful candidates are placed into a niche practice area that best suits \
 their skill set, interests and personal capability. We recruit at both a \
@@ -173,7 +173,14 @@ We also offer _bursaries_ for South African economics students from previously \
 disadvantaged backgrounds to pursue their studies to Master’s \
 level, as well as internships.\
 \n\n\
-You can find out more at https://www.genesis-analytics.com/contact-us/#careers',
+If you want to find out more, select\
+\n\n\
+1. For the first option\n\
+2. For the second option\n\
+3. For the third option\n\
+\n\n\
+Just type the number of the option you would like to know more about.\
+You can find out more at https://www.genesis-analytics.com/contact-us/#careers",
 
     # Offices
     'offices': "While our head office is in Johannesburg, we have offices in \
@@ -241,4 +248,10 @@ For media enquiries, please contact the head of marketing, Didi Moyle at \
 didim@genesis-analytics.com\
 \n\n\
 For more contact information, you can visit https://www.genesis-analytics.com/contact-us'
+}
+
+careers_dict = {
+    '1': 'This is your first option!',
+    '2': 'This is your second option',
+    '3': 'This is your third option'
 }
