@@ -6,6 +6,10 @@ from twilio.twiml.messaging_response import MessagingResponse
 
 @app.route('/careers', methods=['GET', 'POST'])
 def careers():
+    """
+    Redirect for the careers view. Holds careers logic.
+    :return str: response
+    """
     session['View'] = 'careers'
 
     incoming_msg = request.form.get('Body').lower()
@@ -21,7 +25,6 @@ def careers():
     elif incoming_msg in careers_dict.keys():
         out = careers_dict[incoming_msg]
 
-
     else:
         out = "I'm sorry, I'm still young and don't understand your request. \
     Please use the words in bold to talk to me."
@@ -32,7 +35,12 @@ def careers():
 
 
 def return_to_menu():
-    response = MessagingResponse()
+    """
+    Main function is to remove 'View' from session.
+    Should probably be put in views/bot_view and imported to each other view.
+
+    :return str: out
+    """
     out = Dictionary['hello']
     if 'View' in session:
         del session['View']

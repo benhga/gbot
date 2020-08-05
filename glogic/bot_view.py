@@ -7,6 +7,11 @@ from twilio.twiml.messaging_response import MessagingResponse
 
 @app.route('/message', methods=['GET', 'POST'])
 def bot():
+    """
+    Where the logic of the bot is filtered through. Saves response and checks if a redirect is necessary
+
+    :return str: response
+    """
     num = request.form.get('From')
     num = num.replace('whatsapp:', '')
     incoming_msg = request.form.get('Body').lower()
@@ -17,6 +22,7 @@ def bot():
     # msg = response.message()
     out = ''
 
+    # checks to see what view it should be looking at
     if 'View' in session:
         response.redirect(url_for(session['View']))
     else:
@@ -27,6 +33,7 @@ def bot():
 
 def run_through_main_options(incoming_msg):
     """
+    Main menu view
 
     :param incoming_msg: str
     :return out: str
