@@ -1,22 +1,36 @@
 from . import app, db, WebScrape
 from .gresponses import Dictionary
 from .models import User
-from flask import request
+from flask import url_for, session, request
 from twilio.twiml.messaging_response import MessagingResponse
 
 
 @app.route('/message', methods=['GET', 'POST'])
 def bot():
-
     num = request.form.get('From')
     num = num.replace('whatsapp:', '')
     incoming_msg = request.form.get('Body').lower()
     db.save(User(number=num,
                  response=incoming_msg))
 
-    resp = MessagingResponse()
-    msg = resp.message()
+    response = MessagingResponse()
+    # msg = response.message()
+    out = ''
 
+    if 'View' in session:
+        response.redirect(url_for(session['View']))
+    else:
+        out = run_through_main_options(incoming_msg)
+        response.message(out + "\n\nIf you would like to return the menu, just say *Hi* or type *Menu*.")
+    return str(response)
+
+
+def run_through_main_options(incoming_msg):
+    """
+
+    :param incoming_msg: str
+    :return out: str
+    """
     if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg):
         out = Dictionary['hello']
 
@@ -61,6 +75,7 @@ def bot():
 
     elif 'careers' in incoming_msg:
         out = Dictionary['careers']
+        session['View'] = 'careers'
 
     elif 'offices' in incoming_msg:
         out = Dictionary["offices"]
@@ -93,5 +108,4 @@ def bot():
         out = "I'm sorry, I'm still young and don't understand your request. \
     Please use the words in bold to talk to me."
 
-    msg.body(out + "\n\nIf you would like to return the menu, just say *Hi* or type *Menu*.")
-    return str(resp)
+    return out
