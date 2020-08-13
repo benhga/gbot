@@ -261,7 +261,7 @@ You can find out more about\
 3. Bursaries\n\
 4. Internships\n\
 5. Experienced Hires\n\
-6. Project hires\
+6. Project hires\n\
 7. Submitting your profile to our database\n\
 8. How to apply\n\n Just press the number of the option you would like!',
     'work_at_g': 'What it\'s like to work at Genesis \
@@ -274,12 +274,12 @@ I hope you enjoyed the video! If you would like to know \
 \n\n\
 Just press the number of the option you would like.',
     'practice_areas': 'At Genesis, our practices work in a variety of areas. If you would like to find out more about\
-a specific areas you can visit their websites.\n\n\
+ specific areas you can visit their websites.\n\n\
 Applied Behavioural Economics\n\
 https://www.genesis-analytics.com/services/applied-behavioural-economics#intro\n\n\
 Competition Economics\
 https://www.genesis-analytics.com/services/competition-economics\n\n\
-Monitoring and Evalutation\n\
+Monitoring and Evaluation\n\
 https://www.genesis-analytics.com/services/monitoring-and-evaluation\n\n\
 Health\n\
 https://www.genesis-analytics.com/sectors/health\n\n\
