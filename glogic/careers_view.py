@@ -34,7 +34,7 @@ def careers():
         out = careers_dict['practice_areas']
 
     elif '4' in incoming_msg:
-        out = careers_dict['principles']
+        out = Dictionary['core']
 
     elif '5' in incoming_msg:
         out = "Do FAQs"
