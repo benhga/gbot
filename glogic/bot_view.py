@@ -22,6 +22,8 @@ def bot():
     # msg = response.message()
     out = ''
 
+    # del session['View'] # for misconfigured endpoints
+
     # checks to see what view it should be looking at
     if 'View' in session:
         response.redirect(url_for(session['View']))

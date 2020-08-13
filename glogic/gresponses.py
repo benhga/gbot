@@ -88,7 +88,6 @@ Some of the areas where we have unlocked value include: *",
 visit https://www.genesis-analytics.com/value-unlocked-intro. \
 ",
 
-
     # news
     "news": "Would you like to see our \n\n\
 Recent *Headlines* \U0001F4F0 \n\
@@ -175,9 +174,12 @@ level, as well as internships.\
 \n\n\
 If you want to find out more, select\
 \n\n\
-1. For the first option\n\
-2. For the second option\n\
-3. For the third option\n\
+1. For Current Opportunities\n\
+2. For What It's Like To Work At Genesis\n\
+3. For Our Practice Areas\n\
+4. For Our Guiding Principles and Genesis Values\n\
+5. For Frequently Asked Questions\n\
+6. To Recieve Alerts\n\
 \n\n\
 Just type the number of the option you would like to know more about.\
 You can find out more at https://www.genesis-analytics.com/contact-us/#careers",
@@ -251,7 +253,81 @@ For more contact information, you can visit https://www.genesis-analytics.com/co
 }
 
 careers_dict = {
-    '1': 'This is your first option!',
-    '2': 'This is your second option',
-    '3': 'This is your third option'
+    'current_opportunities': 'We\'re delighted that you want to find out more about our current opportunities! \
+You can find out more about\
+\n\n\
+1. What we look for\n\
+2. Graduates\n\
+3. Bursaries\n\
+4. Internships\n\
+5. Experienced Hires\n\
+6. Project hires\
+7. Submitting your profile to our database\n\
+8. How to apply\n\n Just press the number of the option you would like!',
+    'work_at_g': 'What it\'s like to work at Genesis \
+https://www.youtube.com/watch?time_continue=21&v=DxN8XTVn3QA&feature=emb_logo\
+\n\n\
+I hope you enjoyed the video! If you would like to know \
+\n\n\
+1. What we look for or\n\
+2. What it\'s like to work for Genesis\
+\n\n\
+Just press the number of the option you would like.',
+    'practice_areas': 'At Genesis, our practices work in a variety of areas. If you would like to find out more about\
+a specific areas you can visit their websites.\n\n\
+Applied Behavioural Economics\n\
+https://www.genesis-analytics.com/services/applied-behavioural-economics#intro\n\n\
+Competition Economics\
+https://www.genesis-analytics.com/services/competition-economics\n\n\
+Monitoring and Evalutation\n\
+https://www.genesis-analytics.com/services/monitoring-and-evaluation\n\n\
+Health\n\
+https://www.genesis-analytics.com/sectors/health\n\n\
+Human Development\n\
+http://genesis-analytics.com/sectors/human-development\n\n\
+Shared Value and Impact\n\
+https://www.genesis-analytics.com/services/shared-value\n\n\
+Financial Services Strategy\n\
+https://www.genesis-analytics.com/sectors/financial-services\n\n\
+Business Support and Group Services\n\
+',
+    'principles': 'You can find our guiding principles and values at https://www.genesis-analytics.com/careers',
 }
+
+current_opportunities_dict = {
+    '1': "You can find out what we look for on our website at https://www.genesis-analytics.com/careers",
+    '2': "You can find out about recruitment of graduates on our website at https://www.genesis-analytics.com/careers#graduates",
+    '3': "You can find out more about applying for bursaries at https://www.genesis-analytics.com/careers#bursaries",
+    '4': "You can find out about applying for internships at https://www.genesis-analytics.com/careers#internships",
+    '5': "You can find out about job opportunities for experienced hires at https://www.genesis-analytics.com/careers#experienced",
+    '6': "You can find out about project hires at https://www.genesis-analytics.com/careers#projects",
+    '7': "To add your profile to our database, visit shorturl.at/frJOU",
+    '8': "'We\'re very excited that you\'re interested! Here\'s some information for you application.\n\n\
+*Your Application Must Consist of the Following*\
+\n\n\
+- A motivational letter\n\
+- A comprehensive CV\n\
+- A certified copy of your identity document or passport\n\
+- Copies of all academic certificates obtained\n\
+\n\
+Usual Process\
+\n\n\
+- The application is received and screened against all criteria including required skills, competencies, and experience.\n\
+- The candidate is required to complete a technical case study (could also be requested after 1st year)\n\
+- Face-to-face and online psychometric assessments are conducted\n\
+- An interview is conducted\n\
+- Credential checks and references are completed\n\
+- If the candidate is successful, an offer of employment is extended\
+\n\n\
+_Please note that processes may change from time to time and depending on the role_\
+"
+}
+
+work_at_g_dict = {
+    '1': "Our goal is to recruit an exceptional cadre of professionals who are passionate about unlocking value on the \
+continent. Successful candidates are placed into a practice that best suits their skill set, interests and personal \
+capability. We recruit at both a graduate (honours/master's) and experienced hire level.",
+    '2': "To find out what it's like to work at Genesis, watch the videos on our careers page at \
+https://www.genesis-analytics.com/careers"
+}
+

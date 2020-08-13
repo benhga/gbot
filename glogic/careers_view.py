@@ -22,9 +22,28 @@ def careers():
     elif ('hi' in incoming_msg) or ('menu' in incoming_msg):
         out = return_to_menu()
 
-    elif incoming_msg in careers_dict.keys():
-        out = careers_dict[incoming_msg]
+    elif '1' in incoming_msg:
+        out = careers_dict['current_opportunities']
+        session['View'] = 'current_opportunities'
 
+    elif '2' in incoming_msg:
+        out = careers_dict['work_at_g']
+        session['View'] = 'work_at_g'
+
+    elif '3' in incoming_msg:
+        out = careers_dict['practice_areas']
+
+    elif '4' in incoming_msg:
+        out = careers_dict['principles']
+
+    elif '5' in incoming_msg:
+        out = "Do FAQs"
+
+    elif '6' in incoming_msg:
+        out = 'Receive alerts'
+
+    elif 'apply' in incoming_msg:
+        out = careers_dict['apply']
     else:
         out = "I'm sorry, I'm still young and don't understand your request. \
     Please use the words in bold to talk to me."
