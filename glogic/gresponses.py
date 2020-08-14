@@ -277,19 +277,22 @@ Just press the number of the option you would like.',
  specific areas you can visit their websites.\n\n\
 Applied Behavioural Economics\n\
 https://www.genesis-analytics.com/services/applied-behavioural-economics#intro\n\n\
+Business Support and Group Services\n\
+<link>\n\n\
+Centre of Digital Excellence\n\
+https://www.genesis-analytics.com/sectors/digital-economy\n\n\
 Competition Economics\
 https://www.genesis-analytics.com/services/competition-economics\n\n\
-Monitoring and Evaluation\n\
-https://www.genesis-analytics.com/services/monitoring-and-evaluation\n\n\
+Financial Services Strategy\n\
+https://www.genesis-analytics.com/sectors/financial-services\n\n\
 Health\n\
 https://www.genesis-analytics.com/sectors/health\n\n\
 Human Development\n\
 http://genesis-analytics.com/sectors/human-development\n\n\
+Monitoring and Evaluation\n\
+https://www.genesis-analytics.com/services/monitoring-and-evaluation\n\n\
 Shared Value and Impact\n\
 https://www.genesis-analytics.com/services/shared-value\n\n\
-Financial Services Strategy\n\
-https://www.genesis-analytics.com/sectors/financial-services\n\n\
-Business Support and Group Services\n\
 ',
     'principles': 'You can find our guiding principles and values at https://www.genesis-analytics.com/careers',
 }
