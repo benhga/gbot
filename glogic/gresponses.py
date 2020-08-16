@@ -275,6 +275,8 @@ I hope you enjoyed the video! If you would like to know \
 Just press the number of the option you would like.',
     'practice_areas': 'At Genesis, our practices work in a variety of areas. If you would like to find out more about\
  specific areas you can visit their websites.\n\n\
+Agriculture and Agribusiness\n\
+https://www.genesis-analytics.com/sectors/agriculture-and-agribusiness\n\n\
 Applied Behavioural Economics\n\
 https://www.genesis-analytics.com/services/applied-behavioural-economics#intro\n\n\
 Business Support and Group Services\n\
@@ -289,6 +291,8 @@ Health\n\
 https://www.genesis-analytics.com/sectors/health\n\n\
 Human Development\n\
 http://genesis-analytics.com/sectors/human-development\n\n\
+Infrastructure and Public-Private Practices\n\
+https://www.genesis-analytics.com/sectors/infrastructure\n\n\
 Monitoring and Evaluation\n\
 https://www.genesis-analytics.com/services/monitoring-and-evaluation\n\n\
 Shared Value and Impact\n\
@@ -298,12 +302,28 @@ https://www.genesis-analytics.com/services/shared-value\n\n\
 }
 
 current_opportunities_dict = {
-    '1': "You can find out what we look for on our website at https://www.genesis-analytics.com/careers",
-    '2': "You can find out about recruitment of graduates on our website at https://www.genesis-analytics.com/careers#graduates",
-    '3': "You can find out more about applying for bursaries at https://www.genesis-analytics.com/careers#bursaries",
-    '4': "You can find out about applying for internships at https://www.genesis-analytics.com/careers#internships",
-    '5': "You can find out about job opportunities for experienced hires at https://www.genesis-analytics.com/careers#experienced",
-    '6': "You can find out about project hires at https://www.genesis-analytics.com/careers#projects",
+    '1': "<Please advise on script as Mark (candidates at international unis, candidates at African unis, experienced \
+and project hires). \n\n\You can find out what we look for on our website at https://www.genesis-analytics.com/careers",
+    '2': "We recruit globally for professionals who are passionate about unlocking value on the continent. Successful \
+candidates are placed into a niche practice area that best suits their skill set, interests and personal capability.\n\n\
+You can find out about recruitment of graduates on our website at https://www.genesis-analytics.com/careers#graduates",
+    '3': "The Genesis Educational Foundation Trust (GEFT) bursary is the educational arm of Genesis Analytics. The \
+principal objective of the foundation is to support the educational and professional development of young people in \
+the designated groups, as described by the Employment Equity Act 55 of 1998, in the discipline of Economics and related \
+fields.\n\n\
+You can find out more about applying for bursaries at https://www.genesis-analytics.com/careers#bursaries",
+    '4': "Internships are ideal for top-performing students who are ready for a real-life business experience in an \
+energetic and highly deadline-driven environment. Internships usually take place bi-annually from May to July, and again\
+ from October to December.\n\n\
+You can find out about applying for internships at https://www.genesis-analytics.com/careers#internships",
+    '5': "We recruit experienced professionals for key positions. Experienced professionals with an honours or master’s \
+degree in Economics and more than two years of work experience, qualify for recruitment as associates and above\n\n\
+You can find out about job opportunities for experienced hires at https://www.genesis-analytics.com/careers#experienced",
+    '6': "As we grow our portfolio of projects, we seek equally talented associate consultants to collaborate with on \
+project-specific engagements. We invite expert consultants with more than seven years of experience in one or more of \
+our technical areas to contact us. Whether you are applying for an existing project position or just expressing \
+interest in future collaboration, we will store your details in our database for easy reference as opportunities arise.\
+\n\n\You can find out about project hires at https://www.genesis-analytics.com/careers#projects",
     '7': "To add your profile to our database, visit shorturl.at/frJOU",
     '8': "'We\'re very excited that you\'re interested! Here\'s some information for you application.\n\n\
 *Your Application Must Consist of the Following*\
