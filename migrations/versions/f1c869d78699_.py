@@ -25,6 +25,22 @@ def upgrade():
     sa.Column('date_added', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     )
+    op.create_table("Alerts",
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('number', sa.String(length=20), nullable=False),
+    sa.Column('AA', sa.Boolean, default=False),
+    sa.Column('ABE', sa.Boolean, default=False),
+    sa.Column('BSGS', sa.Boolean, default=False),
+    sa.Column('C0DE', sa.Boolean, default=False),
+    sa.Column('CE', sa.Boolean, default=False),
+    sa.Column('FSS', sa.Boolean, default=False),
+    sa.Column('HEL', sa.Boolean, default=False),
+    sa.Column('HD', sa.Boolean, default=False),
+    sa.Column('IPPP', sa.Boolean, default=False),
+    sa.Column('ME', sa.Boolean, default=False),
+    sa.Column('SVI', sa.Boolean, default=False),
+    sa.PrimaryKeyConstraint('id')
+    )
 
     # ### end Alembic commands ###
 

@@ -40,7 +40,8 @@ def careers():
         out = "Do FAQs"
 
     elif '6' in incoming_msg:
-        out = 'Receive alerts'
+        out = careers_dict['alerts']
+        session['View'] = 'alerts'
 
     elif 'apply' in incoming_msg:
         out = careers_dict['apply']

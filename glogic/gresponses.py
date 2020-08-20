@@ -299,11 +299,25 @@ Shared Value and Impact\n\
 https://www.genesis-analytics.com/services/shared-value\n\n\
 ',
     'principles': 'You can find our guiding principles and values at https://www.genesis-analytics.com/careers',
+    'FAQ': 'To be populated',
+    'alerts': 'We will send you notices based on your areas of interest. Select the number of the practice/s \
+you would like to receive alerts from.\n\n\
+1. Agriculture and Agribusiness\n\
+2. Applied Behavioural Economics\n\
+3. Business Support and Group Services\n\
+4. Centre of Digital Excellence\n\
+5. Competition Economics\n\
+6. Financial Services Strategy\n\
+7. Health\n\
+8. Human Development\n\
+9. Infrastructure and Public-Private Practices\n\
+10. Monitoring and Evaluation\n\
+11. Shared Value and Impact'
 }
 
 current_opportunities_dict = {
     '1': "<Please advise on script as Mark (candidates at international unis, candidates at African unis, experienced \
-and project hires). \n\n\You can find out what we look for on our website at https://www.genesis-analytics.com/careers",
+and project hires)>. \n\n\You can find out what we look for on our website at https://www.genesis-analytics.com/careers",
     '2': "We recruit globally for professionals who are passionate about unlocking value on the continent. Successful \
 candidates are placed into a niche practice area that best suits their skill set, interests and personal capability.\n\n\
 You can find out about recruitment of graduates on our website at https://www.genesis-analytics.com/careers#graduates",
