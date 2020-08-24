@@ -33,7 +33,6 @@ can be downloaded [here](https://www.microsoft.com/en-us/download/details.aspx?i
 #### Flask environment
 
 Make a copy of the `.env.template` file and save it as `.env`. Declare your environment variables in this file. _DO NOT COMMIT THIS FILE TO GITHUB_.
-Note: the username of the database must be set in the config.py file.
 
 In the terminal, run the code 
 
