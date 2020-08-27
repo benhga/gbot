@@ -1,7 +1,7 @@
 from . import app, db, WebScrape
 from .gresponses import Dictionary
 from .models import User
-from flask import request
+from flask import request, session, url_for
 from twilio.twiml.messaging_response import MessagingResponse
 
 
@@ -14,15 +14,28 @@ def bot():
     db.save(User(number=num,
                  response=incoming_msg))
 
-    resp = MessagingResponse()
-    msg = resp.message()
+    out = ''
+    response = MessagingResponse()
 
+    if 'View' in session:
+        response.redirect(url_for(session['View']))
+    else:
+        out = run_through_main_options(incoming_msg)
+        response.message(out + "\n\nIf you would like to return the menu, just say *Hi* or type *Menu*.")
+
+    return str(response)
+
+def run_through_main_options(incoming_msg):
     if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg):
         out = Dictionary['hello']
-    
+
     elif ('are you still working' in incoming_msg):
         out = "Yes, all is well"
-        
+
+    elif 'send' in incoming_msg:
+        out = Dictionary['send']
+        session["View"] = 'send_contact'
+
     elif ('1' in incoming_msg) or (incoming_msg == 'africa'):
         out = Dictionary['isafricaflatteningthecurve']
 
@@ -96,5 +109,5 @@ def bot():
         out = "I'm sorry, I'm still young and don't understand your request. \
     Please use the words in bold to talk to me."
 
-    msg.body(out + "\n\nIf you would like to return the menu, just say *Hi* or type *Menu*.")
-    return str(resp)
+    return out
+

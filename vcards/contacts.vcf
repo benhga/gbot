@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:ez-vcard 0.10.6
+FN:Ben Hack
+N:Hack;Ben
+EMAIL;TYPE=internet:ben10.hack@gmail.com
+ORG:Stupid Deleted Videos!
+TEL;TYPE=cell:+27 82 220 5729
+TEL;TYPE=iphone:+27 82 220 5729
+TEL;TYPE=home:+27 11 468 2010
+END:VCARD

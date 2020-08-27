@@ -14,3 +14,9 @@ class User(db.Model):
     def __init__(self, number, response):
         self.number = number
         self.response = response
+
+# class Vcard(db.Model):
+#     __tablename__ = 'vCards'
+#
+#     id = db.Column(db.Integer, primary_key=True)
+
