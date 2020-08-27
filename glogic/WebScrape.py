@@ -1,7 +1,7 @@
 import numpy as np
 import requests
 from bs4 import BeautifulSoup as bs
-from .gresponses import Dictionary
+from .gresponses import eng as Dictionary
 
 
 def news_scrape(url, n, tab_no):
