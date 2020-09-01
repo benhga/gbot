@@ -165,7 +165,7 @@ their skill set, interests and personal capability. We recruit at both a \
 graduate (honours/masters) and experienced hire level.\
 \n\n\
 For information about _careers_ at Genesis, please contact our \
-recruitment specialists Cobie Hönicke and Zandile Shabangu \
+recruitment specialists \
 by emailing recruitment@genesis-analytics.com. \U0001F4C1\
 \n\n\
 We also offer _bursaries_ for South African economics students from previously \

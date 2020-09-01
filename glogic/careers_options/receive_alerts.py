@@ -30,6 +30,16 @@ def alerts():
     out = 'Your message: {}\n\n'.format(incoming_msg)
     counter = 0
 
+    if '10' in incoming_msg:
+        user.ME = 1
+        counter += 1
+        incoming_msg = incoming_msg.replace('10', " ")
+
+    if '11' in incoming_msg:
+        user.SVI = 1
+        counter += 1
+        incoming_msg = incoming_msg.replace('11', " ")
+
     if '1' in incoming_msg:
         user.AA = 1
         counter += 1
@@ -64,14 +74,6 @@ def alerts():
 
     if '9' in incoming_msg:
         user.IPPP = 1
-        counter += 1
-
-    if '10' in incoming_msg:
-        user.ME = 1
-        counter += 1
-
-    if '11' in incoming_msg:
-        user.SVI = 1
         counter += 1
 
     if counter > 0:
