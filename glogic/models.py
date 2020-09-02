@@ -20,6 +20,7 @@ class Alerts(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     number = db.Column(db.String(20), nullable=False)
+    email = db.Column(db.String(60), nullable=False, default="")
     AA = db.Column(db.Boolean, default=False)
     ABE = db.Column(db.Boolean, default=False)
     BSGS = db.Column(db.Boolean, default=False)

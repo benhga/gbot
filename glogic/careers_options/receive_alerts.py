@@ -40,6 +40,21 @@ def alerts():
         counter += 1
         incoming_msg = incoming_msg.replace('11', " ")
 
+    if '12' in incoming_msg:
+        user.AA = 1
+        user.ABE = 1
+        user.BSGS = 1
+        user.C0DE = 1
+        user.CE = 1
+        user.FSS = 1
+        user.HEL = 1
+        user.HD = 1
+        user.IPPP = 1
+        user.ME = 1
+        user.SVI = 1
+        counter += 1
+        incoming_msg = incoming_msg.replace('12', " ")
+
     if '1' in incoming_msg:
         user.AA = 1
         counter += 1
@@ -77,8 +92,9 @@ def alerts():
         counter += 1
 
     if counter > 0:
-        out += 'Thank you for signing up. If you would like to add more practice areas, type *alerts*.'
+        out += 'Thank you for signing up. Please send me your email address.'
         db.session.commit()
+        session['View'] = 'email'
 
     elif 'careers' in incoming_msg:
         out = return_to_careers()

@@ -312,7 +312,8 @@ you would like to receive alerts from.\n\n\
 8. Human Development\n\
 9. Infrastructure and Public-Private Practices\n\
 10. Monitoring and Evaluation\n\
-11. Shared Value and Impact'
+11. Shared Value and Impact\n\
+12. All practices\n'
 }
 
 current_opportunities_dict = {
