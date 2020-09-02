@@ -21,21 +21,24 @@ def bot():
     # msg = response.message()
     out = ''
 
-    # del session['View'] # for misconfigured endpoints
+    # del session['Lang']  # for misconfigured endpoints
+    # del session['View']
 
     # language check
-    if 'Lang' not in session:
 
-        response.message(choose_language_text())
-        session['View'] = 'lang'
-        return str(response)
+
 
     # checks to see what view it should be looking at
     if 'View' in session:
         response.redirect(url_for(session['View']))
     else:
-        out = run_through_main_options(incoming_msg, session['Lang'])
-        response.message(out + "\n\nIf you would like to return the menu, just say *Hi* or type *Menu*.")
+        if 'Lang' not in session:
+            session['View'] = 'lang'
+            response.message(choose_language_text(incoming_msg))
+            return str(response)
+        else:
+            out = run_through_main_options(incoming_msg, session['Lang'])
+            response.message(out + "\n\nIf you would like to return the menu, just say *Hi* or type *Menu*.")
     return str(response)
 
 
@@ -144,6 +147,7 @@ def return_to_menu(lang):
     Should probably be put in views/bot_view and imported to each other view.
     :return str: out
     """
+    lang  = session['Lang']
     if lang is 'eng':
         dict = gresponses.eng
     if lang is 'zulu':

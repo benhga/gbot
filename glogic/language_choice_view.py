@@ -26,9 +26,9 @@ def lang():
 
     else:
         out = "I'm sorry, I'm still young and don't understand your request. \
-            Please use the words in bold to talk to me."
+            Please press *1* for English or *2* for isiZulu."
 
-    msg = bot_view.return_to_menu(session['Lang'])
-    msg.body(out + '\n\n' + msg)
+    out2 = bot_view.return_to_menu(session['Lang'])
+    msg.body(out + '\n\n' + out2)
 
     return str(response)
