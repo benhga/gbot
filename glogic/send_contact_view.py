@@ -4,6 +4,9 @@ from .gresponses import Dictionary
 from twilio.twiml.messaging_response import MessagingResponse
 
 import  requests
+import vobject
+
+from .models import Vcard
 
 
 @app.route('/send_contact', methods=['GET', 'POST'])
@@ -29,6 +32,7 @@ def send_contact():
         url = request.form.get('MediaUrl0')
         r = requests.get(url, allow_redirects=True)
         open('vcards/contacts.vcf', 'wb').write(r.content)
+        print(parse_vcard('vcards/contacts.vcf'))
         out = 'should be saved'
 
 
@@ -53,3 +57,10 @@ def return_to_menu():
     if 'View' in session:
         del session['View']
     return out
+
+def parse_vcard(path):
+    with open(path, 'r') as f:
+        vcard = vobject.readOne(f.read())
+        db.save(Vcard(name=vcard.contents['fn'][0].value,
+                      number=str([tel.value for tel in vcard.contents])))
+        return {vcard.contents['fn'][0].value: [tel.value for tel in vcard.contents['tel']] }
