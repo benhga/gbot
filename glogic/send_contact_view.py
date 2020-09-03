@@ -28,7 +28,6 @@ def send_contact():
         out = return_to_menu()
 
     elif request.form.get('MediaContentType0') == 'text/vcard':
-        print(request.form)
         url = request.form.get('MediaUrl0')
         r = requests.get(url, allow_redirects=True)
         open('vcards/contacts.vcf', 'wb').write(r.content)
@@ -62,5 +61,5 @@ def parse_vcard(path):
     with open(path, 'r') as f:
         vcard = vobject.readOne(f.read())
         db.save(Vcard(name=vcard.contents['fn'][0].value,
-                      number=str([tel.value for tel in vcard.contents])))
+                      number=";".join(tel.value for tel in vcard.contents['tel'])))
         return {vcard.contents['fn'][0].value: [tel.value for tel in vcard.contents['tel']] }
