@@ -30,19 +30,8 @@ def alerts():
     out = 'Your message: {}\n\n'.format(incoming_msg)
     counter = 0
 
+
     if '10' in incoming_msg:
-        user.ME = 1
-        counter += 1
-        incoming_msg = incoming_msg.replace('10', " ")
-
-    if '11' in incoming_msg:
-        user.SVI = 1
-        counter += 1
-        incoming_msg = incoming_msg.replace('11', " ")
-
-    if '12' in incoming_msg:
-        user.AA = 1
-        user.ABE = 1
         user.BSGS = 1
         user.C0DE = 1
         user.CE = 1
@@ -56,40 +45,42 @@ def alerts():
         incoming_msg = incoming_msg.replace('12', " ")
 
     if '1' in incoming_msg:
-        user.AA = 1
-        counter += 1
-
-    if '2' in incoming_msg:
-        user.ABE = 1
-        counter += 1
-
-    if '3' in incoming_msg:
         user.BSGS = 1
         counter += 1
 
-    if '4' in incoming_msg:
+    if '2' in incoming_msg:
         user.C0DE = 1
         counter += 1
 
-    if '5' in incoming_msg:
+    if '3' in incoming_msg:
         user.CE = 1
         counter += 1
 
-    if '6' in incoming_msg:
+    if '4' in incoming_msg:
         user.FSS = 1
         counter += 1
 
-    if '7' in incoming_msg:
+    if '5' in incoming_msg:
         user.HEL = 1
         counter += 1
 
-    if '8' in incoming_msg:
+    if '6' in incoming_msg:
         user.HD = 1
         counter += 1
 
-    if '9' in incoming_msg:
+    if '7' in incoming_msg:
         user.IPPP = 1
         counter += 1
+
+    if '8' in incoming_msg:
+        user.ME = 1
+        counter += 1
+        incoming_msg = incoming_msg.replace('10', " ")
+
+    if '9' in incoming_msg:
+        user.SVI = 1
+        counter += 1
+        incoming_msg = incoming_msg.replace('11', " ")
 
     if counter > 0:
         out += 'Thank you for signing up. Please send me your email address.'

@@ -302,18 +302,16 @@ https://www.genesis-analytics.com/services/shared-value\n\n\
     'FAQ': 'To be populated',
     'alerts': 'We will send you notices based on your areas of interest. Select the number of the practice/s \
 you would like to receive alerts from.\n\n\
-1. Agriculture and Agribusiness\n\
-2. Applied Behavioural Economics\n\
-3. Business Support and Group Services\n\
-4. Centre of Digital Excellence\n\
-5. Competition Economics\n\
-6. Financial Services Strategy\n\
-7. Health\n\
-8. Human Development\n\
-9. Infrastructure and Public-Private Practices\n\
-10. Monitoring and Evaluation\n\
-11. Shared Value and Impact\n\
-12. All practices\n'
+1. Business Support and Group Services\n\
+2. Centre of Digital Excellence\n\
+3. Competition Economics\n\
+4. Financial Services Strategy\n\
+5. Health\n\
+6. Human Development\n\
+7. Infrastructure and Public-Private Practices\n\
+8. Monitoring and Evaluation\n\
+9. Shared Value and Impact\n\
+10. All practices\n'
 }
 
 current_opportunities_dict = {

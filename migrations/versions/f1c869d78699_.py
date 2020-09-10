@@ -29,8 +29,6 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('number', sa.String(length=20), nullable=False),
     sa.Column('email', sa.String(length=60), nullable=False, default=""),
-    sa.Column('AA', sa.Boolean, default=False),
-    sa.Column('ABE', sa.Boolean, default=False),
     sa.Column('BSGS', sa.Boolean, default=False),
     sa.Column('C0DE', sa.Boolean, default=False),
     sa.Column('CE', sa.Boolean, default=False),
