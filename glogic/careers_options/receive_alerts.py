@@ -83,7 +83,7 @@ def alerts():
         incoming_msg = incoming_msg.replace('11', " ")
 
     if counter > 0:
-        out += 'Thank you for signing up. Please send me your email address.'
+        out += 'Thank you for signing up. _Please send me your email address_.'
         db.session.commit()
         session['View'] = 'email'
 
