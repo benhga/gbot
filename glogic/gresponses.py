@@ -298,6 +298,8 @@ https://www.genesis-analytics.com/services/shared-value\n\n\
     'FAQ': 'To be populated',
     'alerts': 'We will send you notices based on your areas of interest. Select the number of the practice/s \
 you would like to receive alerts from.\n\n\
+_*Example*_\n\
+_If you want to sign up for alerts from the Centre of Digital Excellence and Health, type:_ 2,5\n\n\
 1. Business Support and Group Services\n\
 2. Centre of Digital Excellence\n\
 3. Competition Economics\n\
