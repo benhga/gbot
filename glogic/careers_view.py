@@ -28,7 +28,6 @@ def careers():
 
     elif '2' in incoming_msg:
         out = careers_dict['work_at_g']
-        session['View'] = 'work_at_g'
 
     elif '3' in incoming_msg:
         out = careers_dict['practice_areas']

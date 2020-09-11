@@ -1,6 +1,6 @@
 from . import app
 from . import bot_view, careers_view
-from .careers_options import careers_current_opportunities, work_at_g, receive_alerts, email
+from .careers_options import careers_current_opportunities, receive_alerts, email
 
 
 @app.route('/', methods=['GET', 'POST'])

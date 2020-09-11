@@ -267,12 +267,8 @@ You can find out more about\
     'work_at_g': 'What it\'s like to work at Genesis \
 https://www.youtube.com/watch?time_continue=21&v=DxN8XTVn3QA&feature=emb_logo\
 \n\n\
-I hope you enjoyed the video! If you would like to know \
-\n\n\
-1. What we look for or\n\
-2. What it\'s like to work for Genesis\
-\n\n\
-Just press the number of the option you would like.',
+I hope you enjoyed the video! To find out what it\'s like to work at Genesis, watch the videos on our careers page at \
+https://www.genesis-analytics.com/careers',
     'practice_areas': 'At Genesis, our practices work in a variety of areas. If you would like to find out more about\
  specific areas you can visit their websites.\n\n\
 Agriculture and Agribusiness\n\
@@ -280,7 +276,7 @@ https://www.genesis-analytics.com/sectors/agriculture-and-agribusiness\n\n\
 Applied Behavioural Economics\n\
 https://www.genesis-analytics.com/services/applied-behavioural-economics#intro\n\n\
 Business Support and Group Services\n\
-<link>\n\n\
+https://www.genesis-analytics.com/about-us#corporate-responsibility\n\n\
 Centre of Digital Excellence\n\
 https://www.genesis-analytics.com/sectors/digital-economy\n\n\
 Competition Economics\
@@ -315,10 +311,16 @@ you would like to receive alerts from.\n\n\
 }
 
 current_opportunities_dict = {
-    '1': "<Please advise on script as Mark (candidates at international unis, candidates at African unis, experienced \
-and project hires)>. \n\n\You can find out what we look for on our website at https://www.genesis-analytics.com/careers",
-    '2': "We recruit globally for professionals who are passionate about unlocking value on the continent. Successful \
-candidates are placed into a niche practice area that best suits their skill set, interests and personal capability.\n\n\
+    '1': "The recruitment process is structured according to three cohorts: candidates currently studying at \
+international universities, candidates currently studying at African universities, and experienced and project hires. \
+The ideal Genesis candidate carries a balanced combination of powerful intellect, strong technical skills, and a \
+consulting character to match. \
+\n\nYou can find out about recruitment of graduates on our website at https://www.genesis-analytics.com/careers#graduates\
+\n\nYou can also find ",
+    '2': "We recruit globally for professionals who are passionate about unlocking value on the continent. We recruit \
+master's graduates from leading South African, African and international universities to join as analysts. On occasion, \
+honours students and external junior hires with up to one year's working experience may also be considered for analyst \
+positions.\n\n\
 You can find out about recruitment of graduates on our website at https://www.genesis-analytics.com/careers#graduates",
     '3': "The Genesis Educational Foundation Trust (GEFT) bursary is the educational arm of Genesis Analytics. The \
 principal objective of the foundation is to support the educational and professional development of young people in \
@@ -337,7 +339,7 @@ project-specific engagements. We invite expert consultants with more than seven 
 our technical areas to contact us. Whether you are applying for an existing project position or just expressing \
 interest in future collaboration, we will store your details in our database for easy reference as opportunities arise.\
 \n\n\You can find out about project hires at https://www.genesis-analytics.com/careers#projects",
-    '7': "To add your profile to our database, visit shorturl.at/frJOU",
+    '7': "To add your profile to our database, visit https://tinyurl.com/yys36w64",
     '8': "'We\'re very excited that you\'re interested! Here\'s some information for you application.\n\n\
 *Your Application Must Consist of the Following*\
 \n\n\
