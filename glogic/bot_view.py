@@ -34,7 +34,7 @@ def run_through_main_options(incoming_msg):
 
     elif 'send' in incoming_msg:
         out = Dictionary['send']
-        session["View"] = 'send_contact'
+        session["View"] = 'send_video'
 
     elif ('1' in incoming_msg) or (incoming_msg == 'africa'):
         out = Dictionary['isafricaflatteningthecurve']

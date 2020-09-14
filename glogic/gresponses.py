@@ -32,7 +32,7 @@ For more information on specific topics, please reply with one of the bolded wor
 *COVID* \U0001F9A0 \n\
 *News* \U0001F4E2 \n\
 *Careers* \U0001F454 \n\
-*Send Contact*\n\
+*Send Vid*\n\
 \n\n\
 To see how we have helped clients in the corporate, donor, and public sectors, reply with\
 \n\n\
