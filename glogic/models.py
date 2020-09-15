@@ -15,11 +15,13 @@ class User(db.Model):
         self.number = number
         self.response = response
 
-class Vcard(db.Model):
-    __tablename__ = 'vCards'
+class Videos(db.Model):
+    __tablename__ = 'videos'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(), nullable=False)
-    number =  db.Column(db.String(length=20),  nullable=False)
+    url = db.Column(db.String)
+
+    def __init__(self, url):
+        self.url = url
 
 

@@ -25,6 +25,11 @@ def upgrade():
     sa.Column('date_added', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     )
+    op.create_table("videos",
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('url', sa.String(length=1000), nullable=False),
+    sa.PrimaryKeyConstraint('id'),
+    )
 
     # ### end Alembic commands ###
 

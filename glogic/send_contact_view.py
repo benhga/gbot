@@ -5,7 +5,7 @@ from twilio.twiml.messaging_response import MessagingResponse
 
 import requests
 
-from .models import Vcard
+from .models import Videos
 
 
 @app.route('/send_video', methods=['GET', 'POST'])
@@ -20,23 +20,26 @@ def send_video():
     response = MessagingResponse()
     msg = response.message()
 
-    # if 'send' in incoming_msg:
-    #     out = Dictionary['send']
-    #
-    # elif ('hi' in incoming_msg) or ('menu' in incoming_msg):
-    #     out = return_to_menu()
+    if 'send' in incoming_msg:
+        out = Dictionary['send']
 
-    if request.form.get('MediaContentType0') == 'video/mp4':
+    elif ('hi' in incoming_msg) or ('menu' in incoming_msg):
+        out = return_to_menu()
+
+    elif request.form.get('MediaContentType0') == 'video/mp4':
         print(request.form)
-        url = request.form.get('MediaUrl0')
-        r = requests.get(url, allow_redirects=True)
-        open('vcards/video.mp4', 'wb').write(r.content)
+        # url = request.form.get('MediaUrl0')
+        # r = requests.get(url, allow_redirects=True)
+        url = request.form.get(('MediaUrl0'))
+        db.save(Videos(url=url))
+        # open('videos/video.mp4', 'wb').write(request.form.get('MediaUrl0'))
+
         out = 'should be saved'
 
 
-    # else:
-    #     out = "I'm sorry, I'm still young and don't understand your request. \
-    # Please use the words in bold to talk to me."
+    else:
+        out = "I'm sorry, I'm still young and don't understand your request. \
+    Please use the words in bold to talk to me."
 
     msg.body(out + "\n\nIf you would like to return to the careers menu, type *careers*.\n\nIf you would like to " +
                    "return the main menu, just say *Hi* or type *Menu*.")
