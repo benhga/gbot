@@ -178,8 +178,7 @@ If you want to find out more, select\
 2. For What It's Like To Work At Genesis\n\
 3. For Our Practice Areas\n\
 4. For Our Guiding Principles and Genesis Values\n\
-5. For Frequently Asked Questions\n\
-6. To Recieve Alerts\n\
+5. To Recieve Alerts\n\
 \n\n\
 Just type the number of the option you would like to know more about.\
 You can find out more at https://www.genesis-analytics.com/contact-us/#careers",
