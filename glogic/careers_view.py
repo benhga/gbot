@@ -36,6 +36,10 @@ def careers():
         out = Dictionary['core']
 
     elif '5' in incoming_msg:
+        out = careers_dict['FAQ']
+        session['View'] = 'faq'
+
+    elif '6' in incoming_msg:
         out = careers_dict['alerts']
         session['View'] = 'alerts'
 
