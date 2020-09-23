@@ -35,7 +35,7 @@ def faq():
         out = "I'm sorry, I'm still young and don't understand your request. \
             Please use the words in bold to talk to me."
 
-    msg.body(out + "\n\nIf you would like to return to the careers menu, type *careers*.\n\nIf you would like to " +
+    msg.body(out + "\n\nYou can return to the FAQ menu by typing *back*. If you would like to return to the careers menu, type *careers*.\n\nIf you would like to " +
              "return the main menu, just say *Hi* or type *Menu*.")
     return str(response)
 
