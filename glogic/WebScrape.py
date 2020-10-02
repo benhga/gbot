@@ -16,7 +16,7 @@ def news_scrape(url, n, tab_no):
     # connects to page and saves articles in a soup
     r1 = requests.get(url)
     cont = r1.content
-    soup = bs(cont, "lxml")
+    soup = bs(cont, "html.parser")
     articles = soup.find(class_='tab_content', id=tab)
     if articles is not None:
         articles = articles.find_all(class_='panel panel-default')
@@ -65,7 +65,7 @@ def value():
     url = "https://www.genesis-analytics.com/value-unlocked-intro"
     r1 = requests.get(url)
     cont = r1.content
-    soup = bs(cont, "lxml")
+    soup = bs(cont, "html.parser")
     articles = soup.find_all(class_='panel-title')
 
     out = Dictionary["value1"] + str(articles[0].get_text()) + "* and *" \

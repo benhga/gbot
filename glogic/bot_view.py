@@ -15,6 +15,7 @@ def bot():
                  response=incoming_msg))
 
     out = ''
+    # del session['View']
     response = MessagingResponse()
 
     if 'View' in session:
@@ -34,7 +35,7 @@ def run_through_main_options(incoming_msg):
 
     elif 'send' in incoming_msg:
         out = Dictionary['send']
-        session["View"] = 'send_video'
+        session["View"] = 'send_location'
 
     elif ('1' in incoming_msg) or (incoming_msg == 'africa'):
         out = Dictionary['isafricaflatteningthecurve']

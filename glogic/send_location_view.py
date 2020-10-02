@@ -8,13 +8,13 @@ import requests
 from .models import Videos
 
 
-@app.route('/send_video', methods=['GET', 'POST'])
-def send_video():
+@app.route('/send_location', methods=['GET', 'POST'])
+def send_location():
     """
     Redirect for the careers view. Holds careers logic.
     :return str: response
     """
-    session['View'] = 'send_video'
+    session['View'] = 'send_location'
 
     incoming_msg = request.form.get('Body').lower()
     response = MessagingResponse()
@@ -23,19 +23,21 @@ def send_video():
     if 'send' in incoming_msg:
         out = Dictionary['send']
 
-    elif ('hi' in incoming_msg) or ('menu' in incoming_msg):
-        out = return_to_menu()
-
-    elif request.form.get('MediaContentType0') == 'video/mp4':
+    # elif ('hi' in incoming_msg) or ('menu' in incoming_msg):
+    #     out = return_to_menu()
+    #
+    # elif request.form.get('MediaContentType0') == 'video/mp4':
+    #     print(request.form)
+    #     # url = request.form.get('MediaUrl0')
+    #     # r = requests.get(url, allow_redirects=True)
+    #     url = request.form.get(('MediaUrl0'))
+    #     db.save(Videos(url=url))
+    #     # open('videos/video.mp4', 'wb').write(request.form.get('MediaUrl0'))
+    #
+    #     out = 'should be saved'
+    elif request.form:
         print(request.form)
-        # url = request.form.get('MediaUrl0')
-        # r = requests.get(url, allow_redirects=True)
-        url = request.form.get(('MediaUrl0'))
-        db.save(Videos(url=url))
-        # open('videos/video.mp4', 'wb').write(request.form.get('MediaUrl0'))
-
-        out = 'should be saved'
-
+        out = ''
 
     else:
         out = "I'm sorry, I'm still young and don't understand your request. \
