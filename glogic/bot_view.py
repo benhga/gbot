@@ -13,6 +13,7 @@ def bot():
     incoming_msg = request.form.get('Body').lower()
     db.save(User(number=num,
                  response=incoming_msg))
+    # del session['View']
 
     out = ''
     response = MessagingResponse()
@@ -34,7 +35,7 @@ def run_through_main_options(incoming_msg):
 
     elif 'send' in incoming_msg:
         out = Dictionary['send']
-        session["View"] = 'send_contact'
+        session["View"] = 'read_barcode'
 
     elif ('1' in incoming_msg) or (incoming_msg == 'africa'):
         out = Dictionary['isafricaflatteningthecurve']

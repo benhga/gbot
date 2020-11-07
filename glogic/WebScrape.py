@@ -1,4 +1,3 @@
-import numpy as np
 import requests
 from bs4 import BeautifulSoup as bs
 from .gresponses import Dictionary
@@ -24,7 +23,7 @@ def news_scrape(url, n, tab_no):
         articles = soup.find_all(class_='panel panel-default')
 
     # # loops through top articles, adds title and link to dictionary
-    for n in np.arange(0, number_of_articles):
+    for n in range(0, number_of_articles):
         # getting titles
         title = articles[n].find('h1').get_text()
         titles.append(title)
