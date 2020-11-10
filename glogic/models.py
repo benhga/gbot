@@ -21,10 +21,11 @@ class Items(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     product_name = db.Column(db.String(), nullable=False)
+    barcode_number = db.Column(db.String(), nullable=False)
 
-
-    def __init__(self, name):
+    def __init__(self, name, number):
         self.product_name = name
+        self.barcode_number = number
 
 
 

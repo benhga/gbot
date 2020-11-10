@@ -39,10 +39,12 @@ def read_barcode():
         # open('barcodes/barcode', 'wb').write(r.content)
         img = Image.open(BytesIO(r.content))
         type, data = decode(img)
-        barcode_url = "https://api.barcodelookup.com/v2/products?barcode={data}&key=za1vlihzm8ish3ex57tw1u0wk0per6".format(data=data)
-        product = requests.get(barcode_url, allow_redirects=True)
-        print(product)
-        out = 'should be saved'
+        product = Items.query.filter(Items.barcode_number == data).first()
+        if product is not None:
+            out = "The product you have scanned is: {}".format(product.product_name)
+        else:
+            out = 'This product cannot be found in our database'
+
 
 
 

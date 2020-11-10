@@ -29,6 +29,8 @@ def upgrade():
     op.create_table("items",
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('product_name', sa.String(length=1000), nullable=False),
+    sa.Column('barcode_number', sa.String(length=1000), nullable=False),
+    sa.PrimaryKeyConstraint('id'),
     )
 
     # ### end Alembic commands ###
