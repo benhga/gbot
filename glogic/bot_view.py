@@ -16,7 +16,7 @@ def bot():
     msg = resp.message()
 
     if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg):
-        out = f"Dictionary['welcome']\n\n{Dictionary['question']}"
+        out = f"{Dictionary['welcome']}\n\n{Dictionary['question']}"
 
     
     elif ('are you still working' in incoming_msg):
