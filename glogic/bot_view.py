@@ -16,8 +16,7 @@ def bot():
     msg = resp.message()
 
     if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg):
-        send_question(resp)
-        out = Dictionary['welcome']
+        out = f"Dictionary['welcome']\n\n{Dictionary['question']}"
 
     
     elif ('are you still working' in incoming_msg):
@@ -34,9 +33,8 @@ def bot():
                           response="Allowed entry"))
 
     else:
-        out = "I'm sorry, I'm still young and don't understand your request. \
-Please use the words in bold to talk to me."
-        send_question(resp)
+        out = f"I'm sorry, I'm still young and don't understand your request. \
+Please use the words in bold to talk to me.\n\n {Dictionary['question']}"
 
     msg.body(out)
     return str(resp)
