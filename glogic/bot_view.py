@@ -1,4 +1,4 @@
-from . import app, db, WebScrape
+from . import app, db
 from .gresponses import Dictionary
 from .models import Responses
 from flask import request
@@ -16,7 +16,9 @@ def bot():
     msg = resp.message()
 
     if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg):
+        send_question(resp)
         out = Dictionary['welcome']
+
     
     elif ('are you still working' in incoming_msg):
         out = "Yes, all is well"
@@ -36,4 +38,8 @@ def bot():
     Please use the words in bold to talk to me."
 
     msg.body(out)
+    return str(resp)
+
+def send_question(resp):
+    resp.message(Dictionary['question'])
     return str(resp)
