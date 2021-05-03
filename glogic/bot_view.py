@@ -35,7 +35,7 @@ def bot():
 
     else:
         out = "I'm sorry, I'm still young and don't understand your request. \
-    Please use the words in bold to talk to me."
+Please use the words in bold to talk to me."
         send_question(resp)
 
     msg.body(out)
