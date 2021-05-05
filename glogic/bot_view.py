@@ -3,6 +3,7 @@ from .gresponses import Dictionary
 from .models import Responses
 from flask import request
 from twilio.twiml.messaging_response import MessagingResponse
+from datetime import date
 
 
 @app.route('/message', methods=['GET', 'POST'])
@@ -23,12 +24,12 @@ def bot():
         out = "Yes, all is well"
         
     elif 'yes' in incoming_msg:
-        out = Dictionary['yes']
+        out = f"*{date.today()}*\n\n{Dictionary['yes']}"
         db.save(Responses(number=num,
                           response="Denied entry"))
 
     elif ('no' in incoming_msg) or (incoming_msg == 'healthcare'):
-        out = Dictionary['no']
+        out = f"*{date.today()}*\n\n{Dictionary['no']}"
         db.save(Responses(number=num,
                           response="Allowed entry"))
 

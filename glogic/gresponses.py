@@ -4,8 +4,8 @@
 Dictionary = {
 
     # covid related information
-    "welcome": "Dear Colleage/Visitor,\n\n\
-This screening form is for indviduals to complete prior to arrival at the Genesis Analytics office. \
+    "welcome": "Dear Colleague/Visitor,\n\n\
+This screening form is for individuals to complete prior to arrival at the Genesis Analytics office. \
 Your phone number will be recorded when you submit this form.\
 ",
 
@@ -20,8 +20,8 @@ Your phone number will be recorded when you submit this form.\
 \n\
 Please reply with a single message of *Yes* or *No*.\
 ",
-    "yes" : "Regrettably, we are unable to offer you access as a result of your answers. We further \
+    "yes" : "\U0001F6AB Regrettably, we are unable to offer you access as a result of your answers. We further \
 recommend you to self-isolate and take a COVID test in order to protect the people around you. ",
 
-    "no": "Thank you for completing the clearance. We look forward to seeing you!",
+    "no": "\U00002705 Thank you for completing the clearance. We look forward to seeing you!",
 }
