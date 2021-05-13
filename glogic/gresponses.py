@@ -16,7 +16,8 @@ Your phone number will be recorded when you submit this form solely for the purp
 - any flu like symptoms? \n\
 - a fever, sore throat, headache or cough? \n\
 - shortness of breath/difficulty breathing? \n\
-- chills or muscle pain? Nausea, any vomiting or diarrhea? \n\
+- chills or muscle pain? \n\
+- nausea, any vomiting or diarrhea? \n\
 - loss of taste or smell?\n\
 \n\
 Please reply with a single message of *Yes* or *No*.\n\n\
