@@ -24,12 +24,12 @@ def bot():
         out = "Yes, all is well"
         
     elif 'yes' in incoming_msg:
-        out = f"*{date.today()}*\n\n{Dictionary['yes']}"
+        out = f"{Dictionary['yes']}"
         db.save(Responses(number=num,
                           response="Denied entry"))
 
     elif ('no' in incoming_msg) or (incoming_msg == 'healthcare'):
-        out = f"*{date.today()}*\n\n{Dictionary['no']}"
+        out = f"{Dictionary['no']}"
         db.save(Responses(number=num,
                           response="Allowed entry"))
 
