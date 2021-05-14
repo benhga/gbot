@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from datetime import date
 
+today = date.today()
 Dictionary = {
 
     # covid related information
@@ -23,9 +24,10 @@ Your phone number will be recorded when you submit this form solely for the purp
 Please reply with a single message of *Yes* or *No*.\n\n\
 _This screening application has been developed by Genesis Analytics_\
 ",
-    "yes" : f"\U0001F6AB Regrettably, we are unable to offer you access on *{date.today()}* as a result of your answers. \
-We recommend you monitor your condition and engage a medical expert. DoH guidance on COVID-19 can be found here (http://health.gov.za/covid19/faq/covid19.html).",
+    "yes" : f"\U0001F6AB Regrettably, we are unable to offer you access on *{today}* as a result of your answers. \
+Please contact your meeting contact, practice partner or Genesis HR to discuss further options. We recommend you monitor \
+your condition and engage a medical expert. DoH guidance on COVID-19 can be found here (http://health.gov.za/covid19/faq/covid19.html).",
 
-    "no": f"\U00002705 Thank you for completing the clearance. You are clear for access on *{date.today()}*. \
+    "no": f"\U00002705 Thank you for completing the clearance. You are clear for access on *{today}*. \
 We look forward to seeing you! Please be ready to present this message on arrival.",
 }
