@@ -13,6 +13,7 @@ params = urllib.parse.quote_plus("DRIVER={ODBC Driver 18 for SQL Server};SERVER=
                                  ";UID=" + username + ';PWD=' + password)
 
 
+
 class MSSQLConfig(object):
     SECRET_KEY = os.environ.get('SECRET_KEY')
     DEBUG = os.environ.get('DEBUG')
