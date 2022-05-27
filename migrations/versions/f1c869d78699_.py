@@ -21,8 +21,11 @@ def upgrade():
     op.create_table("responses",
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('number', sa.String(length=20), nullable=False),
-    sa.Column('response', sa.String(length=1000), nullable=False),
-    sa.Column('date_added', sa.DateTime(), nullable=True),
+    sa.Column('month', sa.Integer(), nullable = False),
+    sa.Column('question_1', sa.Integer(), nullable=False),
+    sa.Column('question_2', sa.Integer(), nullable=False),
+    sa.Column('question_3', sa.Integer(), nullable=False),
+    sa.Column('date_completed', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     )
 

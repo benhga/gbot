@@ -1,44 +1,64 @@
+
 from . import app, db
 from .gresponses import Dictionary
 from .models import Responses
-from flask import request
+from flask import request, session, url_for
 from twilio.twiml.messaging_response import MessagingResponse
-from datetime import date
+from datetime import datetime
 
 
 @app.route('/message', methods=['GET', 'POST'])
 def bot():
 
+    # del session['view']
+    # del session['q1']
+    # del session['q2']
+    # del session['q3']
+    
+    
+    
     num = request.form.get('From')
     num = num.replace('whatsapp:', '')
     incoming_msg = request.form.get('Body').lower()
 
     resp = MessagingResponse()
-    msg = resp.message()
+    # msg = resp.message()
+    
+    # if user_error(num):
+    #     mydate = datetime.now()
+    #     mon = mydate.strftime("%B")
+    #     resp.message(f"Our records indicate that you have already completed the survey for {mon}. We look forward to hearing from you next month.")
+    #     return str(resp)
+    
+    if "view" in session:
+        resp.redirect(url_for(session["view"]))
+    else:        
+    
+        if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg):
+            # session['view'] = 'survey'
+            out = Dictionary['welcome']
+            
+        elif ('are you still working' in incoming_msg):
+            out = "Yes, all is well"
+            
+        elif 'y' in incoming_msg:
+            out = Dictionary['question1']
+            session['view'] = 'survey'
+            session['started'] = True
+            
 
-    if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg):
-        out = f"{Dictionary['welcome']}\n\n{Dictionary['question']}"
+        else:
+            out = f"I'm sorry, I'm still young and don't understand your request. \
+    Please use the words in bold to talk to me."
 
-    elif ('are you still working' in incoming_msg):
-        out = "Yes, all is well"
+        resp.message(out)
+        # try resp.message or other format where there's no msg.body
         
-    elif 'yes' in incoming_msg:
-        out = Dictionary['yes1'] + "*"+str(date.today()) + "*" +Dictionary['yes2']
-        db.save(Responses(number=num,
-                          response="Denied entry"))
-
-    elif ('no' in incoming_msg) or (incoming_msg == 'healthcare'):
-        out = Dictionary['no1'] + "*" + str(date.today()) + "*" + Dictionary['no2']
-        db.save(Responses(number=num,
-                          response="Allowed entry"))
-
-    else:
-        out = f"I'm sorry, I'm still young and don't understand your request. \
-Please use the words in bold to talk to me.\n\n {Dictionary['question']}"
-
-    msg.body(out)
     return str(resp)
 
-def send_question(resp):
-    resp.message(Dictionary['question'])
-    return str(resp)
+# checks to see if user is in DB and, if not, adds them
+def user_error(num):
+    if Responses.query.filter(Responses.number == num).first() is not None:
+        return True
+
+    return False

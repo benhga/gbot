@@ -1,5 +1,5 @@
 from . import app
-from .import bot_view
+from .import bot_view, survey_view
 
 
 @app.route('/', methods=['GET', 'POST'])
