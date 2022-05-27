@@ -5,6 +5,7 @@ from twilio.twiml.messaging_response import MessagingResponse
 from . import app, db
 from .gresponses import Dictionary
 from .models import Responses
+from .send_airtime import send_airtime_after_survey
 from datetime import date, datetime
 from .utils import return_to_menu
 
@@ -24,7 +25,11 @@ def survey():
     
     if 'q3' in session:
         db.save(Responses(num, session['q1'], session['q2'], session['q3']))
-        out = "Thank you for your cooperation. DO AIRTIME"
+        airtime = send_airtime_after_survey(num)
+        if airtime > 0:
+            out = "Thank you for your cooperation. We look forward to hearing from you again next month."
+        else:
+            out = "Unfortunately there has been an error getting you your airtime. Please contact XXXXXXXXXX to follow up."
     else:
         out = do_survey(num, incoming_msg)
     
