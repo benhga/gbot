@@ -1,6 +1,6 @@
 import os
 import urllib.parse
-import pyodbc
+# import pyodbc
 # noinspection PyUnresolvedReferences
 
 
