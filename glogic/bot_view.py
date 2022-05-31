@@ -1,6 +1,6 @@
 
 from . import app, db
-from .gresponses import Dictionary
+from .gresponses import Dictionary, survey_questions
 from .models import Responses
 from flask import request, session, url_for
 from twilio.twiml.messaging_response import MessagingResponse
@@ -42,7 +42,7 @@ def bot():
             out = "Yes, all is well"
             
         elif 'y' in incoming_msg:
-            out = Dictionary['question1']
+            out = survey_questions['question1']
             session['view'] = 'survey'
             session['started'] = True
             

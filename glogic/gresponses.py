@@ -5,12 +5,13 @@ from datetime import date
 today = date.today()
 Dictionary = {
 
-    # covid related information
     "welcome": "Welcome and thank you for participating in this survey.\n\n\
 Would you like to start? (y/n)\
 ",
+    "thanks": "\U00002705 Thank you for completing the survey. "
+}
 
-    # initial introduction
+survey_questions = {
     "question1": "What is your gender?\n\n\
 1. Male\n\
 2. Female\n\
@@ -85,5 +86,4 @@ Would you like to start? (y/n)\
 2. No\n\
 3. Prefer not to say\n\
 ",
-    "thanks": "\U00002705 Thank you for completing the survey. "
 }

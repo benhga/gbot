@@ -3,7 +3,7 @@ from flask import request, session
 from twilio.twiml.messaging_response import MessagingResponse
 
 from . import app, db
-from .gresponses import Dictionary
+from .gresponses import Dictionary, survey_questions
 from .models import Responses
 from .send_airtime import send_airtime_after_survey
 from datetime import date, datetime
@@ -20,6 +20,8 @@ def survey():
     num = num.replace('whatsapp:', '')
     incoming_msg = request.form.get('Body').lower()
 
+    for i in session.keys():
+        print(i)
     resp = MessagingResponse()
     msg = resp.message()
     
@@ -43,10 +45,10 @@ def do_survey(num, incoming_msg):
         if format_ans(incoming_msg)[1]:
             if 'q1' not in session:
                 session['q1'], _ = format_ans(incoming_msg)
-                out = Dictionary['question2']
+                out = survey_questions['question2']
             elif 'q2' not in session:
                 session['q2'], _ = format_ans(incoming_msg)
-                out = Dictionary['question3']
+                out = survey_questions['question3']
             else: 
                 session['q3'], _ = format_ans(incoming_msg)
                 db.save(Responses(number=num, question_1=session['q1'], question_2=session['q2'], question_3=session['q3']))
