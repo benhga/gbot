@@ -2,11 +2,7 @@ from urllib import response
 from flask import request, session
 from twilio.twiml.messaging_response import MessagingResponse
 
-from . import app, db
-from .gresponses import Dictionary, survey_questions
-from .models import Responses
-from .send_airtime import send_airtime_after_survey
-from datetime import date, datetime
+from . import app
 
 from .survey_runner import do_survey
 from .utils import return_to_menu
@@ -26,7 +22,7 @@ def survey():
     resp = MessagingResponse()
     msg = resp.message()
 
-    out, done = do_survey(incoming_msg)
+    out, done = do_survey(incoming_msg, num)
 
     msg.body(out)
 

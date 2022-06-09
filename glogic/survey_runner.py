@@ -1,8 +1,10 @@
 from flask import session
 from .gresponses import survey_questions
+from . import db
+from .models import Responses
 
 # fucntion for keeping track of survey space, quite hardcoded
-def do_survey(incoming_msg):
+def do_survey(incoming_msg, num):
     done = False
 
     if format_ans(incoming_msg)[1]:
@@ -15,7 +17,7 @@ def do_survey(incoming_msg):
             out = survey_questions['question3']
         else:
             session['q3'] = format_ans(incoming_msg)[0]
-            # db.save(Responses(number=num, question_1=session['q1'], question_2=session['q2'], question_3=session['q3']))
+            db.save(Responses(number=num, question_1=session['q1'], question_2=session['q2'], question_3=session['q3']))
             print('-'*20)
             print("TO DB: "+ str(session['q1']) + " " + str(session['q2']) + " "+ str(session['q3']))
 
