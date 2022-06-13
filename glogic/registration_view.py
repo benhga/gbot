@@ -23,8 +23,10 @@ def registration():
         if "YES" not in request.form.get('Body'):
             response.message(Dictionary["welcome3"])
 
-        first_question = redirect_to_first_question(response)
-        response.message(first_question.content)
+        else:
+            first_question = redirect_to_first_question(response)
+            response.message(first_question.content)
+
     return str(response)
 
 

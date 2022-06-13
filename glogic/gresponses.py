@@ -17,7 +17,7 @@ receive future financial or training support. You can stop at any time by sendin
 }
 
 survey_questions = {
-    "question1": "When you experienced a financialvemergency or had an expense that you didn’t plan for, in the last month \
+    "question1": "When you experienced a financial emergency or had an expense that you didn’t plan for, in the last month \
 did you…\n\n\
 1) Have enough saved to pay for the unexpected expense\n\
 2) Take a loan from a bank or from your home loan\n\

@@ -19,7 +19,7 @@ def do_survey(incoming_msg, num):
             session['q2'] = format_ans(incoming_msg)[0]
             out = survey_questions['question3']
         else:
-            session['q3'] = format_ans(incoming_msg)[0]
+            session['q3'] = incoming_msg
             db.save(Responses(number=num, question_1=session['q1'], question_2=session['q2'], question_3=session['q3']))
             print('-'*20)
             print("TO DB: "+ str(session['q1']) + " " + str(session['q2']) + " "+ str(session['q3']))

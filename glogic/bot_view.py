@@ -59,6 +59,9 @@ def bot():
             session['view'] = 'survey'
             session.modified = True
 
+        elif "thank" in incoming_msg:
+            out = "You're welcome :)"
+
         else:
             out = f"I'm sorry, but there's been a problem. \
 Please say \"Hi\" to try again."

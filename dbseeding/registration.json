@@ -16,7 +16,7 @@
       "body": "*[Registration 5/10]*\n\nWhich Province do you live in?\n\n1) Eastern Cape\n2) Free State\n3) Gauteng\n4) KwaZulu Natal\n5) Limpopo\n6) Mpumalanga\n7) Northern Cape\n8) North West\n9) Western Cape"
     },
     {
-      "body": "*[Registration 6/10]*\n\nWhat is your employment status?\n\n2) Part-time employed\n3) Self-employed\n4) Unemployed\n5) Employed"
+      "body": "*[Registration 6/10]*\n\nWhat is your employment status?\n\n1) Student\n2) Part-time employed\n3) Self-employed\n4) Unemployed\n5) Employed"
     },
     {
       "body": "*[Registration 7/10]*\n\nWhat sector are you employed in?\n\n1) Public sector\n2) Private Sector\n3) Student or unemployed"
