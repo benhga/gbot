@@ -4,6 +4,9 @@ from . import db
 from .models import Responses
 
 # fucntion for keeping track of survey space, quite hardcoded
+from .send_airtime import send_airtime_after_survey
+
+
 def do_survey(incoming_msg, num):
     done = False
 
@@ -21,8 +24,8 @@ def do_survey(incoming_msg, num):
             print('-'*20)
             print("TO DB: "+ str(session['q1']) + " " + str(session['q2']) + " "+ str(session['q3']))
 
-            # airtime = send_airtime_after_survey(num)
-            airtime = 0
+            airtime = send_airtime_after_survey(num)
+            # airtime = 0
             if airtime > 0:
                 out = "Thank you for your cooperation. We look forward to hearing from you again next month. If " \
                       "you have not received your airtime, please contact XXXXXXXXXX for assistance "

@@ -4,7 +4,8 @@ import africastalking
 import pandas as pd
 
 def multiple_send():
-    nums = pd.read_csv("Airtime 29+30.xlsx - Sheet1.csv")
+    # nums = pd.read_csv("Airtime 29+30.xlsx - Sheet1.csv")
+    nums = None
     print(len(nums))
     for i in nums['Phone Numbers']:
         num = "+" + str(i)
@@ -23,7 +24,7 @@ def send_airtime_after_survey(num):
 
     phone_number = num
     currency_code = "ZAR"  # Change this to your country's code
-    amount = 15
+    amount = 5
 
     try:
         response = airtime.send(phone_number=phone_number, amount=amount, currency_code=currency_code)
