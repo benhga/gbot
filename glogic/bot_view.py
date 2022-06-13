@@ -45,7 +45,10 @@ def bot():
                 session['view'] = 'registration'
 
             else:
-                out = "You have completed your registration. You can opt out yadayadaya"
+                resp.message("You have completed your registration.")
+                out = "You are able to take part in the monthly surveys. You can start now by replying to this message \
+            with *Y*. You can also restart this chat at any time to do the survey."
+
 
 
         elif ('are you still working' in incoming_msg):

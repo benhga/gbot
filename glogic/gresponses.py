@@ -17,25 +17,36 @@ receive future financial or training support. You can stop at any time by sendin
 }
 
 survey_questions = {
-    "question1": "What is your gender?\n\n\
-1. Male\n\
-2. Female\n\
-3. Other\n\
-4. Prefer not to say\n\
-",
-    "question2" : "Please confirm your race.\n\n\
-1. African\n\
-2. Coloured\n\
-3. Indian\n\
-4. White\n\
-5. Other\n\
-6. Prefer not to say\n\
+    "question1": "When you experienced a financialvemergency or had an expense that you didn’t plan for, in the last month \
+did you…\n\n\
+1) Have enough saved to pay for the unexpected expense\n\
+2) Take a loan from a bank or from your home loan\n\
+3) Borrow money from friends or family\n\
+4) Borrow money from a microlender or somewhere else other than a bank\n\
+5) Borrow money from a funding source like a stokvel\n\
+6) Use a credit card to pay the expense\n\
+7) Not pay\n\
+8) I did not have a financial emergency in the last month",
+
+    "question2" : "When you faced a financial problem, in the last month did you…\n\n\
+1) Refer to the WageWise booklet and tools\n\
+2) Refer to the WageWise website for helpful resources\n\
+3) Refer to the WageWise Facebook Page\n\
+4) Reach out to other WageWise participants\n\
+5) Refer to another source of assistance\n\
+6) None of the above\
 ",
 
-    "question3":"Are you a South African citizen?\n\n\
-1. Yes\n\
-2. No\n\
-3. Prefer not to say\n\
+    "question3":"In the last month, have you done any of the following (select all that apply)\n\n\
+1) Budgeted\n\
+2) Opened a savings account to start saving\n\
+3) Paid off a debt or credit obligation, e.g., closed a clothing\n\
+store account\n\
+4) Met your monthly debt repayments\n\
+5) Negotiated a better interest rate on your debt\n\
+6) Seen a financial advisor\n\
+7) Started saving for retirement\n\
+8) Shared what I have learned from WageWise with my family and friends\n\
 ",
     "question4": "How old are you?\n\n\
 1. 18-35 years old\n\
