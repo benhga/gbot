@@ -1,6 +1,6 @@
 from . import app, db
 from .gresponses import Dictionary, survey_questions
-from .models import Responses
+from .models import Responses, User
 from flask import request, session, url_for
 from twilio.twiml.messaging_response import MessagingResponse
 from datetime import datetime
@@ -8,7 +8,8 @@ from datetime import datetime
 
 @app.route('/message', methods=['GET', 'POST'])
 def bot():
-    # session.pop('view')
+    # del session['view']
+    # del session['question_id']
     # session.pop('q1')
     #
     # session.pop('q2')
@@ -35,9 +36,17 @@ def bot():
         resp.redirect(url_for(session["view"]))
     else:
 
-        if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg):
-            # session['view'] = 'survey'
-            out = Dictionary['welcome']
+        if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg):
+            resp.message(Dictionary['welcome1'])
+            resp.message(Dictionary['welcome2'])
+
+            if not registered(num):
+                out = Dictionary['welcome3']
+                session['view'] = 'registration'
+
+            else:
+                out = "You have completed your registration. You can opt out yadayadaya"
+
 
         elif ('are you still working' in incoming_msg):
             out = "Yes, all is well"
@@ -65,5 +74,15 @@ Please say \"Hi\" to try again."
 def user_error(num):
     if Responses.query.filter(Responses.number == num).first() is not None:
         return True
+
+    return False
+
+def registered(num):
+    user = User.query.filter(User.number == num).first()
+    if user is not None:
+        if user.registered == 1:
+            return True
+    else:
+        db.save(User(number=num))
 
     return False

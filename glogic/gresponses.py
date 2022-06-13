@@ -5,9 +5,14 @@ from datetime import date
 today = date.today()
 Dictionary = {
 
-    "welcome": "Welcome and thank you for participating in this survey.\n\n\
-Would you like to start? (y/n)\
+    "welcome1": "Welcome to the WageWise Survey. This survey will run for 21 months, we will ask you 3 questions each \
+month via WhatsApp. You can earn up to R17 each month by answering the questions.\
 ",
+    "welcome2": "Your personal information and answers to the surveys will not be shared, this is for research purposes \
+only. Your participation will not impact your ability to participate in WageWise or have any bearing on your ability to \
+receive future financial or training support. You can stop at any time by sending STOP.",
+
+    "welcome3": "To consent to participation and register, please send *YES* to continue",
     "thanks": "\U00002705 Thank you for completing the survey. "
 }
 
