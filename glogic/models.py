@@ -31,12 +31,70 @@ class RegistrationAnswers(db.Model):
         self.question = question
         self.user = user
 
+
+class BaselineQuestions(db.Model):
+    __tablename__ = 'baseline_questions'
+
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String, nullable=False)
+    answers = db.relationship("BaselineAnswers", backref='question', lazy='dynamic')
+
+    def __init__(self, content):
+        self.content = content
+
+    def next(self):
+        return self.query.filter(BaselineQuestions.id > self.id) \
+            .order_by('id').first()
+
+
+class BaselineAnswers(db.Model):
+    __tablename__ = 'baseline_answers'
+
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String, nullable=False)
+    question_id = db.Column(db.Integer, db.ForeignKey('baseline_questions.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def __init__(self, content, question, user):
+        self.content = content
+        self.question = question
+        self.user = user
+
+class MonthlyQuestions(db.Model):
+    __tablename__ = 'monthly_questions'
+
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String, nullable=False)
+    answers = db.relationship("MonthlyAnswers", backref='question', lazy='dynamic')
+
+    def __init__(self, content):
+        self.content = content
+
+    def next(self):
+        return self.query.filter(MonthlyQuestions.id > self.id) \
+            .order_by('id').first()
+
+
+class MonthlyAnswers(db.Model):
+    __tablename__ = 'monthly_answers'
+
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String, nullable=False)
+    question_id = db.Column(db.Integer, db.ForeignKey('monthly_questions.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def __init__(self, content, question, user):
+        self.content = content
+        self.question = question
+        self.user = user
+
 class User(db.Model):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
     number = db.Column(db.String, unique=True)
     registered = db.Column(db.Integer, default=0)
+    last_month_completed = db.Column(db.Integer, default=0)
 
     registration = db.relationship("RegistrationAnswers", backref='user', lazy='dynamic')
 

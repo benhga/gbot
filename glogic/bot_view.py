@@ -25,11 +25,7 @@ def bot():
     resp = MessagingResponse()
     # msg = resp.message()
 
-    # if user_error(num):
-    #     mydate = datetime.now()
-    #     mon = mydate.strftime("%B")
-    #     resp.message(f"Our records indicate that you have already completed the survey for {mon}. We look forward to hearing from you next month.")
-    #     return str(resp)
+
 
     if "view" in session:
         print("Redirect to: " + session['view'])

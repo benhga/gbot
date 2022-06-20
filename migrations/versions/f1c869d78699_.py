@@ -23,6 +23,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('number', sa.String(length=20), nullable=False),
     sa.Column('registered', sa.Integer(), nullable=True),
+    sa.Column('last_month_completed', sa.Integer(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     )
 
@@ -38,6 +39,38 @@ def upgrade():
     sa.Column('question_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['question_id'], ['registration_questions.id']),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id']),
+    sa.PrimaryKeyConstraint('id'),
+    ),
+
+    op.create_table("baseline_questions",
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('content', sa.String(length=1600), nullable=False),
+    sa.PrimaryKeyConstraint('id'),
+    ),
+
+    op.create_table("baseline_answers",
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('content', sa.String(length=1600), nullable=False),
+    sa.Column('question_id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['question_id'], ['baseline_questions.id']),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id']),
+    sa.PrimaryKeyConstraint('id'),
+    ),
+
+    op.create_table("monthly_questions",
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('content', sa.String(length=1600), nullable=False),
+    sa.PrimaryKeyConstraint('id'),
+    ),
+
+    op.create_table("monthly_answers",
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('content', sa.String(length=1600), nullable=False),
+    sa.Column('question_id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['question_id'], ['monthyl_questions.id']),
     sa.ForeignKeyConstraint(['user_id'], ['users.id']),
     sa.PrimaryKeyConstraint('id'),
     ),
@@ -61,6 +94,8 @@ def downgrade():
 
     op.drop_table('registration_answers')
     op.drop_table('registration_questions')
+    op.drop_table('baseline_answers')
+    op.drop_table('baseline_questions')
     op.drop_table('users')
     op.drop_table('responses')
     # ### end Alembic commands ###

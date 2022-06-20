@@ -16,6 +16,11 @@ def dbseed():
         for i in parser.questions_parse(survey_file.read(), models.RegistrationQuestions):
             db.save(i)
 
+    with open('dbseeding/baseline.json') as survey_file:
+        for i in parser.questions_parse(survey_file.read(), models.BaselineQuestions):
+            db.save(i)
+
+
 if __name__ == "__main__":
     app.jinja_env.cache = {}
     manager.run()

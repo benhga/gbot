@@ -1,8 +1,10 @@
+from datetime import datetime
 from urllib import response
 from flask import request, session
 from twilio.twiml.messaging_response import MessagingResponse
 
-from . import app
+from . import app, db
+from .models import MonthlyQuestions, MonthlyAnswers, User
 
 from .survey_runner import do_survey
 from .utils import return_to_menu
@@ -22,23 +24,75 @@ def survey():
     resp = MessagingResponse()
     msg = resp.message()
 
-    out, done = do_survey(incoming_msg, num)
+    if 'question_id' in session:
+        return answers(session['question_id'], response, num)
+    else:
+        if user_error(num):
+            mydate = datetime.now()
+            mon = mydate.strftime("%B")
+            resp.message(f"Our records indicate that you have already completed the survey for {mon}. We look forward to hearing from you next month.")
+            return str(resp)
+        first_question = redirect_to_first_question(response)
+        response.message(first_question.content)
+    return str(response)
 
-    msg.body(out)
+def answers(question_id, response, num):
+    question = MonthlyQuestions.query.get(question_id)
 
-    if done:
-        session.pop('view')
-        session.pop('q1')
-        session.pop('q2')
-        session.pop('q3')
+    incoming_msg = request.form.get('Body').lower()
 
-        if len(session) > 0:
-            print("DELETION UNSUCCESSFUL")
-        else:
-            print("NO SESSION VARS")
+    db.save(MonthlyAnswers(content=incoming_msg,
+                             question=question,
+                             user=User.query.filter(User.number == num).first()))
 
-    print('*' * 20)
-    for i in session.keys():
-        print(i + ": " + str(session.get(i)))
+    next_question = question.next()
 
-    return str(resp)
+    if next_question:
+        response.message(questions(next_question.id))
+
+    else:
+        response.message("The first part of the survey has been completed. Please continue to finish registration and "
+                         "receive your airtime")
+        del (session['question_id'])
+
+
+
+    return str(response)
+
+
+def questions(question_id):
+    question = MonthlyQuestions.query.get(question_id)
+    session['question_id'] = question.id
+    return question.content
+
+
+# goes to question view and finds first question
+def redirect_to_first_question(response):
+    current_month = int(datetime.now().month)
+
+    # for running every 3 months
+    # starting_q_mo = current_month % 3
+    #
+    # if starting_q_mo == 1:
+    #     starting_q = 1
+    # elif starting_q_mo == 2:
+    #     stating_q = 4
+    # else:
+    #     starting_q = 7
+
+    starting_q = 1
+    session['question_id'] = starting_q
+
+    return MonthlyQuestions.query.filter(MonthlyQuestions.id == starting_q)
+
+
+# checks to see if user is in DB and, if not, adds them
+def user_error(num):
+    user = User.query.filter(User.number == num).first()
+
+    if user is not None:
+        current_month = int(datetime.now().month)
+        if user.last_month_completed >= current_month:
+            return True
+
+    return False
