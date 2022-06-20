@@ -5,6 +5,7 @@ from twilio.twiml.messaging_response import MessagingResponse
 
 from . import app, db
 from .models import MonthlyQuestions, MonthlyAnswers, User
+from .send_airtime import send_airtime_after_survey
 
 from .survey_runner import do_survey
 from .utils import return_to_menu
@@ -51,9 +52,15 @@ def answers(question_id, response, num):
         response.message(questions(next_question.id))
 
     else:
-        response.message("The first part of the survey has been completed. Please continue to finish registration and "
-                         "receive your airtime")
+        airtime = send_airtime_after_survey(num)
+        # airtime = 0
+        if airtime > 0:
+            out = "Thank you for your cooperation. We look forward to hearing from you again next month. If " \
+                  "you have not received your airtime, please contact XXXXXXXXXX for assistance "
+        else:
+            out = "Unfortunately there has been an error getting you your airtime. Please contact XXXXXXXXXX to follow up."
         del (session['question_id'])
+        del session["view"]
 
 
 
