@@ -7,6 +7,9 @@ from .gresponses import Dictionary
 
 
 # view for collecting organisation details
+from .send_airtime import send_airtime_after_survey
+
+
 @app.route('/baseline', methods=["GET", "POST"])
 def baseline():
     session['View'] = 'baseline'
@@ -41,9 +44,16 @@ def answers(question_id, response, num):
         user = User.query.filter(User.number == num).first()
         user.registered = 1
         db.session.commit()
+
+        airtime = send_airtime_after_survey(num)
+        # airtime = 0
+
         response.message(
-            'Thank you! You have completed our first survey and you’ve earned R75 airtime which is on its way to you now.')
-        response.message("You are now registered for our monthly surveys and we kindly ask you to complete the 3 questions every month, for the next one and a half years. You will be notified when a new survey is available.\n\nIf you want to stop receiving the surveys, please send *STOP*.")
+            'Thank you! You have completed our first survey and you’ve earned R75 airtime which is on its way to you '
+            'now.')
+        response.message("You are now registered for our monthly surveys and we kindly ask you to complete the 3 "
+                         "questions every month, for the next one and a half years. You will be notified when a new "
+                         "survey is available.\n\nIf you want to stop receiving the surveys, please send *STOP*.")
         del (session['question_id'])
         del session['view']
 

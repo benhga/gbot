@@ -13,7 +13,7 @@ def multiple_send():
 
 
 
-def send_airtime_after_survey(num):
+def send_airtime_after_survey(num, amt=5):
     # username = os.environ.get("AT_USERNAME")
     # api_key = os.environ.get("AT_API_KEY")
     username = "ASIS038"
@@ -24,7 +24,7 @@ def send_airtime_after_survey(num):
 
     phone_number = num
     currency_code = "ZAR"  # Change this to your country's code
-    amount = 5
+    amount = amt
 
     try:
         response = airtime.send(phone_number=phone_number, amount=amount, currency_code=currency_code)
