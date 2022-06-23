@@ -20,11 +20,25 @@ def survey():
     """
     num = request.form.get('From')
     num = num.replace('whatsapp:', '')
-    incoming_msg = request.form.get('Body').lower()
 
+    incoming_msg = request.form.get('Body')
     resp = MessagingResponse()
-    msg = resp.message()
 
+    if incoming_msg == "STOP":
+        resp.message("We will be sad to see you go. BETTER MESSAGE HERE")
+
+        #TODO: write this not in pseudocode
+        """
+        user = User.query.filter(User.number = num).first()
+        Users.delete(user)
+        """
+        return resp.message()
+
+
+
+
+
+    incoming_msg = incoming_msg.lower()
     if 'question_id' in session:
         return answers(session['question_id'], response, num)
     else:
@@ -55,7 +69,7 @@ def answers(question_id, response, num):
         airtime = send_airtime_after_survey(num)
         # airtime = 0
         if airtime > 0:
-            out = "Thank you for your cooperation. We look forward to hearing from you again next month. If " \
+            out = "Thank you for completing the survey. Your R17 is on its way to you now. If " \
                   "you have not received your airtime, please contact XXXXXXXXXX for assistance "
         else:
             out = "Unfortunately there has been an error getting you your airtime. Please contact XXXXXXXXXX to follow up."

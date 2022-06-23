@@ -42,8 +42,8 @@ def answers(question_id, response, num):
         user.registered = 1
         db.session.commit()
         response.message(
-            'Thank you! You are now registered for our monthly surveys. It is important you complete each one over the \
-next 21 months. If you want to stop receiving the surveys, please send STOP. Reply to this message with *Hi* to be returned to the main menu')
+            'Thank you! You have completed our first survey and you’ve earned R75 airtime which is on its way to you now.')
+        response.message("You are now registered for our monthly surveys and we kindly ask you to complete the 3 questions every month, for the next one and a half years. You will be notified when a new survey is available.\n\nIf you want to stop receiving the surveys, please send *STOP*.")
         del (session['question_id'])
         del session['view']
 

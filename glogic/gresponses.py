@@ -5,14 +5,15 @@ from datetime import date
 today = date.today()
 Dictionary = {
 
-    "welcome1": "Welcome to the WageWise Survey. This survey will run for 21 months, we will ask you 3 questions each \
-month via WhatsApp. You can earn up to R17 each month by answering the questions.\
+    "welcome1": "Hello 😀 \n\n\
+    WageWise supports workers to gain financial knowledge and skills to manage their 💰 better and positively influence \
+financial behaviour and attitudes. On behalf of the ASISA Foundation, Genesis invites you to participate in a research \
+study to understand the impact of Wage Wise over 3️ years.\
 ",
-    "welcome2": "Your personal information and answers to the surveys will not be shared, this is for research purposes \
-only. Your participation will not impact your ability to participate in WageWise or have any bearing on your ability to \
-receive future financial or training support. You can stop at any time by sending STOP.",
+    "welcome2": "You earn R1️7 each month in airtime by answering 3️ questions monthly via WhatsApp AND you can earn R75 in airtime by responding to an annual survey.",
+    "welcome2_1":"Your personal information and responses will not be shared and are only used for research purposes. Your participation will not impact your ability to participate in WageWise or affect your ability to receive future financial or training support. Please see our T&Cs here: XXXXXXXXXX",
 
-    "welcome3": "To consent to participation and register, please send *YES* to continue",
+    "welcome3": "You can opt out at any time by sending *STOP*. To consent to participation and earn your first R75 airtime, please send *YES* to continue.",
     "thanks": "\U00002705 Thank you for completing the survey. "
 }
 

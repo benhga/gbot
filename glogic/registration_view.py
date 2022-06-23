@@ -45,8 +45,7 @@ def answers(question_id, response, num):
         response.message(questions(next_question.id))
 
     else:
-        response.message("The first part of the survey has been completed. Please continue to finish registration and "
-                         "receive your airtime")
+        response.message("REG DONE")
         del (session['question_id'])
         response.redirect(url_for("baseline"))
 
