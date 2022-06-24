@@ -70,7 +70,7 @@ def upgrade():
     sa.Column('content', sa.String(length=1600), nullable=False),
     sa.Column('question_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['question_id'], ['monthyl_questions.id']),
+    sa.ForeignKeyConstraint(['question_id'], ['monthly_questions.id']),
     sa.ForeignKeyConstraint(['user_id'], ['users.id']),
     sa.PrimaryKeyConstraint('id'),
     ),
@@ -96,6 +96,8 @@ def downgrade():
     op.drop_table('registration_questions')
     op.drop_table('baseline_answers')
     op.drop_table('baseline_questions')
+    op.drop_table('monthly_answers')
+    op.drop_table('monthly_questions')
     op.drop_table('users')
     op.drop_table('responses')
     # ### end Alembic commands ###

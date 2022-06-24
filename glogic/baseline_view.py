@@ -30,12 +30,18 @@ def answers(question_id, response, num):
     question = BaselineQuestions.query.get(question_id)
 
     incoming_msg = request.form.get('Body').lower()
+    next_question = question.next()
+
+    if question_id == 14:
+        if incoming_msg == 'skip':
+            response.message(questions(next_question.id))
+
 
     db.save(BaselineAnswers(content=incoming_msg,
                              question=question,
                              user=User.query.filter(User.number == num).first()))
 
-    next_question = question.next()
+
 
     if next_question:
         response.message(questions(next_question.id))
