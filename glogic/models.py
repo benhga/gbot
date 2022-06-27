@@ -30,6 +30,20 @@ class BaselineQuestions(db.Model):
         return self.query.filter(BaselineQuestions.id > self.id) \
             .order_by('id').first()
 
+class MonthlyQuestions(db.Model):
+    __tablename__ = 'monthly_questions'
+
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String, nullable=False)
+    answers = db.relationship("MonthlyAnswers", backref='question', lazy='dynamic')
+
+    def __init__(self, content):
+        self.content = content
+
+    def next(self):
+        return self.query.filter(MonthlyQuestions.id > self.id) \
+            .order_by('id').first()
+
 class RegistrationAnswers(db.Model):
     __tablename__ = 'registration_answers'
 
@@ -59,19 +73,6 @@ class BaselineAnswers(db.Model):
         self.question = question
         self.user = user
 
-class MonthlyQuestions(db.Model):
-    __tablename__ = 'monthly_questions'
-
-    id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String, nullable=False)
-    answers = db.relationship("MonthlyAnswers", backref='question', lazy='dynamic')
-
-    def __init__(self, content):
-        self.content = content
-
-    def next(self):
-        return self.query.filter(MonthlyQuestions.id > self.id) \
-            .order_by('id').first()
 
 
 class MonthlyAnswers(db.Model):
@@ -96,6 +97,8 @@ class User(db.Model):
     last_month_completed = db.Column(db.Integer, default=0)
 
     registration = db.relationship("RegistrationAnswers", backref='user', lazy='dynamic')
+    baseline = db.relationship("BaselineAnswers", backref='user', lazy='dynamic')
+    monthly = db.relationship("MonthlyAnswers", backref='user', lazy='dynamic')
 
     def __init__(self, number):
         self.number = number

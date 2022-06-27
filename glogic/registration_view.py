@@ -34,12 +34,19 @@ def answers(question_id, response, num):
     question = RegistrationQuestions.query.get(question_id)
 
     incoming_msg = request.form.get('Body').lower()
+    next_question = question.next()
+
+
+
+
+
+
+
+
 
     db.save(RegistrationAnswers(content=incoming_msg,
                              question=question,
                              user=User.query.filter(User.number == num).first()))
-
-    next_question = question.next()
 
     if next_question:
         response.message(questions(next_question.id))
@@ -51,6 +58,18 @@ def answers(question_id, response, num):
 
 
     return str(response)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def questions(question_id):

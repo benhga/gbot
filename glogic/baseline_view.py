@@ -8,7 +8,6 @@ from .gresponses import Dictionary
 # view for collecting organisation details
 from .send_airtime import send_airtime_after_survey
 
-
 @app.route('/baseline', methods=["GET", "POST"])
 def baseline():
     session['View'] = 'baseline'
@@ -25,6 +24,12 @@ def baseline():
     return str(response)
 
 
+
+
+
+
+
+
 def answers(question_id, response, num):
     question = BaselineQuestions.query.get(question_id)
 
@@ -35,13 +40,10 @@ def answers(question_id, response, num):
         if incoming_msg == 'skip':
             response.message(questions(next_question.id))
     #
-    user = User.query.filter(User.number == num).first()
 
-    assert User.query.filter(User.number == num).first()
-    print(num)
     db.save(BaselineAnswers(content=incoming_msg,
                             question=question,
-                            user=User.query.filter(User.id == user.id).first()))
+                            user=User.query.filter(User.number == num).first()))
 
     if next_question:
         response.message(questions(next_question.id))

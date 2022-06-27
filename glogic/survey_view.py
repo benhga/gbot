@@ -1,5 +1,5 @@
 from datetime import datetime
-from urllib import response
+
 from flask import request, session
 from twilio.twiml.messaging_response import MessagingResponse
 
@@ -40,16 +40,16 @@ def survey():
 
     incoming_msg = incoming_msg.lower()
     if 'question_id' in session:
-        return answers(session['question_id'], response, num)
+        return answers(session['question_id'], resp, num)
     else:
         if user_error(num):
             mydate = datetime.now()
             mon = mydate.strftime("%B")
             resp.message(f"Our records indicate that you have already completed the survey for {mon}. We look forward to hearing from you next month.")
             return str(resp)
-        first_question = redirect_to_first_question(response)
-        response.message(first_question.content)
-    return str(response)
+        first_question = redirect_to_first_question(resp)
+        resp.message(first_question.content)
+    return str(resp)
 
 def answers(question_id, response, num):
     question = MonthlyQuestions.query.get(question_id)
@@ -104,7 +104,7 @@ def redirect_to_first_question(response):
     starting_q = 1
     session['question_id'] = starting_q
 
-    return MonthlyQuestions.query.filter(MonthlyQuestions.id == starting_q)
+    return MonthlyQuestions.query.filter(MonthlyQuestions.id == starting_q).first()
 
 
 # checks to see if user is in DB and, if not, adds them
