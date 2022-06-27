@@ -6,7 +6,7 @@ today = date.today()
 Dictionary = {
 
     "welcome1": "Hello 😀 \n\n\
-    WageWise supports workers to gain financial knowledge and skills to manage their 💰 better and positively influence \
+WageWise supports workers to gain financial knowledge and skills to manage their 💰 better and positively influence \
 financial behaviour and attitudes. On behalf of the ASISA Foundation, Genesis invites you to participate in a research \
 study to understand the impact of Wage Wise over 3️ years.\
 ",

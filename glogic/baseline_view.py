@@ -5,7 +5,6 @@ from glogic import app, db
 from glogic.models import BaselineAnswers, BaselineQuestions, User
 from .gresponses import Dictionary
 
-
 # view for collecting organisation details
 from .send_airtime import send_airtime_after_survey
 
@@ -35,13 +34,14 @@ def answers(question_id, response, num):
     if question_id == 14:
         if incoming_msg == 'skip':
             response.message(questions(next_question.id))
+    #
+    user = User.query.filter(User.number == num).first()
 
-
+    assert User.query.filter(User.number == num).first()
+    print(num)
     db.save(BaselineAnswers(content=incoming_msg,
-                             question=question,
-                             user=User.query.filter(User.number == num).first()))
-
-
+                            question=question,
+                            user=User.query.filter(User.id == user.id).first()))
 
     if next_question:
         response.message(questions(next_question.id))

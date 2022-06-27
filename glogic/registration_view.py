@@ -45,8 +45,8 @@ def answers(question_id, response, num):
         response.message(questions(next_question.id))
 
     else:
-        response.message("REG DONE")
         del (session['question_id'])
+        session['view'] = "baseline"
         response.redirect(url_for("baseline"))
 
 
