@@ -39,7 +39,7 @@ def bot():
 
             if not registered(num):
                 out = Dictionary['welcome3']
-                session['view'] = 'registration'
+                session['view'] = 'baseline'
 
             else:
                 resp.message("You have completed your registration.")

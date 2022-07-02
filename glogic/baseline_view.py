@@ -18,9 +18,19 @@ def baseline():
 
     if 'question_id' in session:
         return answers(session['question_id'], response, num)
+    # else:
+    #     first_question = redirect_to_first_question(response)
+    #     response.message(first_question.content)
+
     else:
-        first_question = redirect_to_first_question(response)
-        response.message(first_question.content)
+        # response.message("Please type _only the number_ of your answer.")
+        if "YES" not in request.form.get('Body'):
+            response.message(Dictionary["welcome3"])
+
+        else:
+            first_question = redirect_to_first_question(response)
+            response.message(first_question.content)
+
     return str(response)
 
 
