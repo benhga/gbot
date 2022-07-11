@@ -46,6 +46,7 @@ def upgrade():
     op.create_table("baseline_questions",
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('content', sa.String(length=1600), nullable=False),
+    sa.Column('num_ops', sa.Integer, nullable=False),
     sa.PrimaryKeyConstraint('id'),
     ),
 
@@ -62,6 +63,7 @@ def upgrade():
     op.create_table("monthly_questions",
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('content', sa.String(length=1600), nullable=False),
+    sa.Column('num_ops', sa.Integer, nullable=False),
     sa.PrimaryKeyConstraint('id'),
     ),
 

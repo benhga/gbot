@@ -20,7 +20,7 @@ def registration():
         return answers(session['question_id'], response, num)
     else:
         # response.message("Please type _only the number_ of your answer.")
-        if "YES" not in request.form.get('Body'):
+        if "yes" not in request.form.get('Body').lower():
             response.message(Dictionary["welcome3"])
 
         else:

@@ -12,9 +12,9 @@ manager.add_command('db', MigrateCommand)
 @manager.command
 def dbseed():
 
-    with open('dbseeding/registration.json') as survey_file:
-        for i in parser.questions_parse(survey_file.read(), models.RegistrationQuestions):
-            db.save(i)
+    # with open('dbseeding/registration.json') as survey_file:
+    #     for i in parser.questions_parse(survey_file.read(), models.RegistrationQuestions):
+    #         db.save(i)
 
     with open('dbseeding/baseline.json') as survey_file:
         for i in parser.questions_parse(survey_file.read(), models.BaselineQuestions):

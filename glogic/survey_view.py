@@ -56,6 +56,7 @@ def answers(question_id, response, num):
 
     incoming_msg = request.form.get('Body').lower()
 
+
     db.save(MonthlyAnswers(content=incoming_msg,
                              question=question,
                              user=User.query.filter(User.number == num).first()))

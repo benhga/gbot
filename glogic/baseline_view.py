@@ -24,7 +24,7 @@ def baseline():
 
     else:
         # response.message("Please type _only the number_ of your answer.")
-        if "YES" not in request.form.get('Body'):
+        if "yes" not in request.form.get('Body').lower():
             response.message(Dictionary["welcome3"])
 
         else:
@@ -66,12 +66,12 @@ def answers(question_id, response, num):
         airtime = send_airtime_after_survey(num)
         # airtime = 0
 
-        response.message(
-            'Thank you! You have completed our first survey and you’ve earned R75 airtime which is on its way to you '
-            'now.')
         response.message("You are now registered for our monthly surveys and we kindly ask you to complete the 3 "
-                         "questions every month, for the next one and a half years. You will be notified when a new "
-                         "survey is available.\n\nIf you want to stop receiving the surveys, please send *STOP*.")
+                         "question survey every month to receive R17. If you answer the monthly surveys for 4 months "
+                         "in a row you will earn an additional R20. You will be notified when a new survey is "
+                         "available.")
+
+        response.message("If you want to stop receiving the surveys, please send *STOP*.")
         del (session['question_id'])
         del session['view']
 

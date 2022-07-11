@@ -35,10 +35,10 @@ def bot():
         if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg):
             resp.message(Dictionary['welcome1'])
             resp.message(Dictionary['welcome2'])
-            resp.message(Dictionary['welcome2_1'])
+            # resp.message(Dictionary['welcome2_1'])
 
             if not registered(num):
-                out = Dictionary['welcome3']
+                out = Dictionary['welcome2_1'] + Dictionary['welcome3']
                 session['view'] = 'baseline'
 
             else:
@@ -58,6 +58,12 @@ with *Y*. You can also restart this chat at any time to do the survey."
 
         elif "thank" in incoming_msg:
             out = "You're welcome :)"
+
+        elif "stop" in incoming_msg:
+            out = "We are sad to see you go? Please advise what this message should be"
+
+            User.query.filter(User.num == num).delete()
+            db.session.commit()
 
         else:
             out = f"I'm sorry, but there's been a problem. \

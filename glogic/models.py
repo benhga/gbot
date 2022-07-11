@@ -21,10 +21,12 @@ class BaselineQuestions(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String, nullable=False)
+    num_ops = db.Column(db.Integer, nullable=False)
     answers = db.relationship("BaselineAnswers", backref='question', lazy='dynamic')
 
-    def __init__(self, content):
+    def __init__(self, content, num_ops):
         self.content = content
+        self.num_ops = num_ops
 
     def next(self):
         return self.query.filter(BaselineQuestions.id > self.id) \
@@ -35,10 +37,12 @@ class MonthlyQuestions(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String, nullable=False)
+    num_ops = db.Column(db.Integer, nullable=False)
     answers = db.relationship("MonthlyAnswers", backref='question', lazy='dynamic')
 
-    def __init__(self, content):
+    def __init__(self, content, num_ops):
         self.content = content
+        self.num_ops = num_ops
 
     def next(self):
         return self.query.filter(MonthlyQuestions.id > self.id) \
