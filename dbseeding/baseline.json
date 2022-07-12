@@ -53,7 +53,7 @@
       "num_ans": 2
     },
     {
-      "body": "*[12/15]*\nHave you been for debt rescue, debt review or debt counselling?\n\n1) Yes, I have and I am managing my financial obligations\n2) Yes, I have and it has not helped\n3) No, I don't have debt or my debt is under control\n4) I don't feel comfortable going for debt rescue\n5) No, I have not because I don’t see the purpose of it\n6) Other (please elaborate TODO FIX FOR SENTENCES)",
+      "body": "*[12/15]*\nHave you been for debt rescue, debt review or debt counselling?\n\n1) Yes, I have and I am managing my financial obligations\n2) Yes, I have and it has not helped\n3) No, I don't have debt or my debt is under control\n4) I don't feel comfortable going for debt rescue\n5) No, I have not because I don’t see the purpose of it\n6) Other (please elaborate in less than 1500 characters)",
       "num_ans": 6
     },
     {

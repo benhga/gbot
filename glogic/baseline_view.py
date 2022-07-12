@@ -79,9 +79,9 @@ def answers(question_id, response, num):
         response.message(questions(next_question.id))
 
     else:
-        user = User.query.filter(User.number == num).first()
-        user.registered = 1
-        db.session.commit()
+        # user = User.query.filter(User.number == num).first()
+        # user.registered = 1
+        # db.session.commit()
 
         airtime = send_airtime_after_survey(num)
         # airtime = 0
@@ -93,8 +93,8 @@ def answers(question_id, response, num):
 
         response.message("If you want to stop receiving the surveys, please send *STOP*.")
         del (session['question_id'])
-        del session['view']
-
+        # del session['view']
+        session['view'] = 'monthly'
     return str(response)
 
 
