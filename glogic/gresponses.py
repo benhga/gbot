@@ -8,9 +8,9 @@ Dictionary = {
     "welcome1": "Hello 😀 \n\n\
 WageWise supports workers to gain financial knowledge and skills to manage their 💰 better and positively influence \
 financial behaviour and attitudes. On behalf of the ASISA Foundation, Genesis invites you to participate in a research \
-study to understand the impact of Wage Wise over 3️ years.\
+study to understand the impact of Wage Wise over 3 years.\
 ",
-    "welcome2_1": "You earn R1️7 each month in airtime by answering 3️ questions monthly via WhatsApp AND you can earn R75 in airtime by responding to an annual survey.",
+    "welcome2_1": "You earn R17 each month in airtime by answering 3 questions monthly via WhatsApp AND you can earn R75 in airtime by responding to an annual survey.",
     "welcome2":"Your personal information and responses will not be shared and are only used for research purposes. Your participation will not impact your ability to participate in WageWise or affect your ability to receive future financial or training support. Please see our T&Cs here: XXXXXXXXXX",
 
     "welcome3": "You can opt out at any time by sending *STOP*. To consent to participation and earn your first R75 airtime, please send *YES* to continue.",

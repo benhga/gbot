@@ -28,6 +28,7 @@ def baseline():
             response.message(Dictionary["welcome3"])
 
         else:
+            response.message("Please wait a few seconds between responses. If there is no reply, wait 30 seconds and try agan. If the problem persists, please notify us at digital@genesis-analytics.com")
             first_question = redirect_to_first_question(response)
             response.message(first_question.content)
 
@@ -49,22 +50,24 @@ def answers(question_id, response, num):
     # skip logic (hopefully)
     if question_id == 3 or question_id == 5:
         if '3' not in incoming_msg:
-            response.message(questions(next_question.id))
+            next_question = next_question.next()
 
-    # fix for sentence response
-    for i in incoming_msg:
-        if i == " " or i == ',':
-            i += 1
-        else:
-            try:
-                int(i)
-            except ValueError:
-                response.message("Please respond with the number of your response. Separate multiple options with a space or a comma only.")
-                return str(response)
+    if question_id == 14 and len(incoming_msg) > 1:
+        incoming_msg = "6 - "+ incoming_msg
+    else:
+        for i in incoming_msg:
+            if i == " " or i == ',':
+                continue
             else:
-                if int(i) > question.num_ops:
-                    response.message("Your answer is invalid. Please respond with one of the given options.")
+                try:
+                    int(i)
+                except ValueError:
+                    response.message("Please respond with the number of your response. Separate multiple options with a space or a comma only.")
                     return str(response)
+                else:
+                    if int(i) > question.num_ops:
+                        response.message("Your answer is invalid. Please respond with one of the given options.")
+                        return str(response)
 
 
 
