@@ -46,10 +46,27 @@ def answers(question_id, response, num):
     incoming_msg = request.form.get('Body').lower()
     next_question = question.next()
 
-    if question_id == 14:
-        if incoming_msg == 'skip':
+    # skip logic (hopefully)
+    if question_id == 3 or question_id == 5:
+        if '3' not in incoming_msg:
             response.message(questions(next_question.id))
-    #
+
+    # fix for sentence response
+    for i in incoming_msg:
+        if i == " " or i == ',':
+            i += 1
+        else:
+            try:
+                int(i)
+            except ValueError:
+                response.message("Please respond with the number of your response. Separate multiple options with a space or a comma only.")
+                return str(response)
+            else:
+                if int(i) > question.num_ops:
+                    response.message("Your answer is invalid. Please respond with one of the given options.")
+                    return str(response)
+
+
 
     db.save(BaselineAnswers(content=incoming_msg,
                             question=question,
