@@ -94,7 +94,7 @@ def answers(question_id, response, num):
         response.message("If you want to stop receiving the surveys, please send *STOP*.")
         del (session['question_id'])
         # del session['view']
-        session['view'] = 'monthly'
+        session['view'] = 'survey'
     return str(response)
 
 
