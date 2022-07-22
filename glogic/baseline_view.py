@@ -52,8 +52,12 @@ def answers(question_id, response, num):
         if '3' not in incoming_msg:
             next_question = next_question.next()
 
+    if question_id == 15 and len(incoming_msg >1) and '5' in incoming_msg:
+        response.message("Your answer is invalid. If you have answered *5*, you cannot select any other options. Please reply again with your answer.")
+        return str(response)
+
     if question_id == 14 and len(incoming_msg) > 1:
-        incoming_msg = "6 - "+ incoming_msg
+        incoming_msg = "6 - " + incoming_msg
     else:
         for i in incoming_msg:
             if i == " " or i == ',':
