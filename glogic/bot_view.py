@@ -34,11 +34,10 @@ def bot():
 
         if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg):
             resp.message(Dictionary['welcome1'])
-            resp.message(Dictionary['welcome2'])
-            # resp.message(Dictionary['welcome2_1'])
+
 
             if not registered(num):
-                out = Dictionary['welcome2_1'] + Dictionary['welcome3']
+                out = Dictionary['welcome2'] + Dictionary['welcome3']
                 session['view'] = 'baseline'
 
             else:
