@@ -56,8 +56,12 @@ def answers(question_id, response, num):
         response.message("Your answer is invalid. If you have answered *5*, you cannot select any other options. Please reply again with your answer.")
         return str(response)
 
-    if question_id == 14 and len(incoming_msg) > 1:
-        incoming_msg = "6 - " + incoming_msg
+    if question_id == 14:
+        if len(incoming_msg) > 1:
+            incoming_msg = "6 - " + incoming_msg
+        else:
+            response.message("Please respond with your elaboration.")
+            return str(response)
     else:
         for i in incoming_msg:
             if i == " " or i == ',':
