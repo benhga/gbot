@@ -62,6 +62,7 @@ def answers(question_id, response, num):
         else:
             response.message("Please respond with your elaboration.")
             return str(response)
+
     else:
         for i in incoming_msg:
             if i == " " or i == ',':
