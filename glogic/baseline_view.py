@@ -86,7 +86,7 @@ def answers(question_id, response, num):
         # user = User.query.filter(User.number == num).first()
         # user.registered = 1
         # db.session.commit()
-
+        #TODO ^^
         airtime = send_airtime_after_survey(num)
         # airtime = 0
 

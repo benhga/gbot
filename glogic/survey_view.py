@@ -67,6 +67,9 @@ def answers(question_id, response, num):
         response.message(questions(next_question.id))
 
     else:
+        user = User.query.filter(User.number == num).first()
+        user.last_month_completed = int(datetime.now().month)
+        db.session.commit()
         airtime = send_airtime_after_survey(num)
         # airtime = 0
         if airtime > 0:

@@ -19,7 +19,7 @@ class SMS:
     def send(self):
             # Set the numbers you want to send to in international format
             # recipients = ["+27833888281", "+27780730005", "+27618129719"]
-            recipients = ["+27725437490"]
+            recipients = ["+27833888281"]
             # 827245713
 
             # Set your message
