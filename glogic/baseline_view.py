@@ -100,7 +100,7 @@ def answers(question_id, response, num):
                          "in a row you will earn an additional R20. You will be notified when a new survey is "
                          "available.")
 
-        response.message("If you want to stop receiving the surveys, please send *STOP*.")
+        response.message("If you have has any problems with the bot or want to give feedback, please email digital@genesis-analytics.com. \n\nIf you want to stop receiving the surveys, please send *STOP*.")
         del (session['question_id'])
         # del session['view']
         session['view'] = 'survey'

@@ -72,11 +72,10 @@ def answers(question_id, response, num):
         db.session.commit()
         airtime = send_airtime_after_survey(num)
         # airtime = 0
-        if airtime > 0:
-            out = "Thank you for completing the survey. Your R17 is on its way to you now. If " \
-                  "you have not received your airtime, please contact XXXXXXXXXX for assistance "
-        else:
-            out = "Unfortunately there has been an error getting you your airtime. Please contact XXXXXXXXXX to follow up."
+
+        response.message("Thank you for completing the survey. Your R17 is on its way to you now. If " \
+"you have not received your airtime or you would like to give feedback for the bot, please contact digital@genesis-analytics.com")
+
         del (session['question_id'])
         del session["view"]
 
