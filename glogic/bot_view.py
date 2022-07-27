@@ -25,6 +25,14 @@ def bot():
     resp = MessagingResponse()
     # msg = resp.message()
 
+    if "stop" in incoming_msg:
+        resp.message("We will be sad to see you go. BETTER MESSAGE HERE")
+
+        user = User.query.filter(User.number==num).first()
+        User.delete(user)
+        db.session.commit()
+
+        return resp.message()
 
 
     if "view" in session:
@@ -37,7 +45,7 @@ def bot():
 
 
             if not registered(num):
-                out = Dictionary['welcome2'] + Dictionary['welcome3']
+                out = Dictionary['welcome2'] + " " + Dictionary['welcome3']
                 session['view'] = 'baseline'
 
             else:
