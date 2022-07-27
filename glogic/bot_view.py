@@ -28,7 +28,7 @@ def bot():
     if "stop" in incoming_msg:
         resp.message("We will be sad to see you go. BETTER MESSAGE HERE")
 
-        user = User.query.filter(User.number==num).delete()
+        User.query.filter(User.number==num).delete()
         # User.delete(user)
         db.session.commit()
 

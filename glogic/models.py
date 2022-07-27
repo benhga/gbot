@@ -86,6 +86,7 @@ class MonthlyAnswers(db.Model):
     content = db.Column(db.String, nullable=False)
     question_id = db.Column(db.Integer, db.ForeignKey('monthly_questions.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    month = db.column(db.Integer, default=0)
 
     def __init__(self, content, question, user):
         self.content = content
@@ -97,6 +98,7 @@ class User(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     number = db.Column(db.String, unique=True)
+    number_2 = db.Column(db.String, unique=True)
     registered = db.Column(db.Integer, default=0)
     last_month_completed = db.Column(db.Integer, default=0)
 
