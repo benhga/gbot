@@ -52,18 +52,17 @@ def bot():
 
             else:
                 resp.message("You have completed your registration.")
-                out = "You are able to take part in the monthly surveys. You can start now by replying to this message \
-with *Y*. You can also restart this chat at any time to do the survey."
+                out = "You will be notified when a new monthly survey is available."
 
 
 
         elif ('are you still working' in incoming_msg):
             out = "Yes, all is well"
 
-        elif 'y' in incoming_msg:
-            out = survey_questions['question1']
-            session['view'] = 'survey'
-            session.modified = True
+        # elif 'y' in incoming_msg:
+        #     out = survey_questions['question1']
+        #     session['view'] = 'survey'
+        #     session.modified = True
 
         elif "thank" in incoming_msg:
             out = "You're welcome :)"
