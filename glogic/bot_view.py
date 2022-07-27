@@ -3,8 +3,7 @@ from .gresponses import Dictionary, survey_questions
 from .models import Responses, User
 from flask import request, session, url_for
 from twilio.twiml.messaging_response import MessagingResponse
-from datetime import datetime
-
+import pandas as pd
 
 @app.route('/message', methods=['GET', 'POST'])
 def bot():
@@ -34,6 +33,9 @@ def bot():
 
         return resp.message()
 
+    # if invalid_user(num):
+    #     resp.message("Your number is not in our records. Please contact ASISA if you believe this to be an error")
+    #     return str(resp)
 
     if "view" in session:
         print("Redirect to: " + session['view'])
@@ -102,3 +104,6 @@ def registered(num):
         db.save(User(number=num))
 
     return False
+
+def invalid_user(num):
+    demos = pd.read_csv("../demographics/ww_test_csv.csv")
