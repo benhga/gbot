@@ -45,7 +45,7 @@ def bot():
 
 
             if not registered(num):
-                out = Dictionary['welcome2'] + " " + Dictionary['welcome3']
+                out = Dictionary['welcome2'] + "\n\n" + Dictionary['welcome3']
                 session['view'] = 'baseline'
 
             else:
