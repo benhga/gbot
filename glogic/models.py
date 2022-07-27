@@ -86,7 +86,7 @@ class MonthlyAnswers(db.Model):
     content = db.Column(db.String, nullable=False)
     question_id = db.Column(db.Integer, db.ForeignKey('monthly_questions.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    month = db.Column(db.Integer, default=0)
+    month = db.Column(db.Integer)
 
     def __init__(self, content, question, user):
         self.content = content
