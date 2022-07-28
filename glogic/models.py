@@ -1,8 +1,13 @@
 from datetime import datetime
 
+from sqlalchemy.ext.automap import automap_base
+
 from . import db
 
-class RegistrationQuestions(db.Model):
+Base = automap_base()
+
+
+class RegistrationQuestions(db.Model, Base):
     __tablename__ = 'registration_questions'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -16,7 +21,7 @@ class RegistrationQuestions(db.Model):
         return self.query.filter(RegistrationQuestions.id > self.id) \
             .order_by('id').first()
 
-class BaselineQuestions(db.Model):
+class BaselineQuestions(db.Model, Base):
     __tablename__ = 'baseline_questions'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -32,7 +37,7 @@ class BaselineQuestions(db.Model):
         return self.query.filter(BaselineQuestions.id > self.id) \
             .order_by('id').first()
 
-class MonthlyQuestions(db.Model):
+class MonthlyQuestions(db.Model, Base):
     __tablename__ = 'monthly_questions'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -93,7 +98,7 @@ class MonthlyAnswers(db.Model):
         self.question = question
         self.user = user
 
-class User(db.Model):
+class User(db.Model, Base):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -106,8 +111,9 @@ class User(db.Model):
     baseline = db.relationship("BaselineAnswers", backref='user', lazy='dynamic')
     monthly = db.relationship("MonthlyAnswers", backref='user', lazy='dynamic')
 
-    def __init__(self, number):
+    def __init__(self, number, number_2):
         self.number = number
+        self.number_2 = number_2
 
 
 class Responses(db.Model):

@@ -1,9 +1,18 @@
+import os
+import urllib
+
+from sqlalchemy import create_engine
+from sqlalchemy.ext.automap import automap_base
+
 from . import app, db
 from .gresponses import Dictionary, survey_questions
 from .models import Responses, User
 from flask import request, session, url_for
 from twilio.twiml.messaging_response import MessagingResponse
 import pandas as pd
+
+from .validation_test import get_data
+
 
 @app.route('/message', methods=['GET', 'POST'])
 def bot():
@@ -100,7 +109,10 @@ def registered(num):
         if user.registered == 1:
             return True
     else:
-        db.save(User(number=num))
+        allowed, num2 = get_data(num)
+
+        if allowed:
+            db.save(User(number=num, number_2=num2))
 
     return False
 
