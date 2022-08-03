@@ -92,13 +92,16 @@ def answers(question_id, response, num):
         user.registered = 1
         db.session.commit()
 
-        airtime = send_airtime_after_survey(num, 75)
+#         airtime = send_airtime_after_survey(num, 75)
         # airtime = 0
-
+        
+        response.message("Sit tight! Your airtime will be with you once we confirm your participation in the WageWise programme.")
+        
         response.message("You are now registered for our monthly surveys and we kindly ask you to complete the 3 "
                          "question survey every month to receive R17. If you answer the monthly surveys for 4 months "
                          "in a row you will earn an additional R20. You will be notified when a new survey is "
                          "available.")
+        
 
         response.message("If you have has any problems with the bot or want to give feedback, please email digital@genesis-analytics.com. \n\nIf you want to stop receiving the surveys, please send *STOP*.")
         del (session['question_id'])
