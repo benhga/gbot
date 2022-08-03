@@ -13,26 +13,28 @@ def get_data(num):
     username = os.environ.get('NAME')
     password = os.environ.get('PASSWORD')
 
-
+    num = str(num[1:])
     conn = pyodbc.connect('DRIVER={ODBC Driver 18 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
     cursor = conn.cursor()
 
-    cursor.execute(f"""SELECT * FROM user_demographics_test100 WHERE user_demographics_test100.Phone_Number_1 = {num}""")
+    cursor.execute(f"""SELECT * FROM user_demographics WHERE user_demographics.Phone_Number_1 = {num}""")
 
     row = cursor.fetchone()
 
     print(row)
 
     if row:
-        return True, row[9]
+        return True, row[12]
     else:
-        cursor.execute(f"""SELECT * FROM user_demographics_test100 WHERE user_demographics_test100.Phone_Number_2 = {num}""")
+        # print("NO PHONE NUMBER 1")
+        cursor.execute(f"""SELECT * FROM user_demographics WHERE user_demographics.Phone_Number_2 = {num}""")
         row = cursor.fetchone()
         if row:
-            return True, row[8]
+            return True, row[11]
 
         return False, 0
 
 if __name__ == "__main__":
-    num = "+27832682716"
+    num = "+27822205729"
+    # num = "+27639447541"
     print(get_data(num))

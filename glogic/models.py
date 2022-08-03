@@ -7,7 +7,7 @@ from . import db
 Base = automap_base()
 
 
-class RegistrationQuestions(db.Model, Base):
+class RegistrationQuestions(db.Model):
     __tablename__ = 'registration_questions'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -21,7 +21,7 @@ class RegistrationQuestions(db.Model, Base):
         return self.query.filter(RegistrationQuestions.id > self.id) \
             .order_by('id').first()
 
-class BaselineQuestions(db.Model, Base):
+class BaselineQuestions(db.Model):
     __tablename__ = 'baseline_questions'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -37,7 +37,7 @@ class BaselineQuestions(db.Model, Base):
         return self.query.filter(BaselineQuestions.id > self.id) \
             .order_by('id').first()
 
-class MonthlyQuestions(db.Model, Base):
+class MonthlyQuestions(db.Model):
     __tablename__ = 'monthly_questions'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -98,7 +98,7 @@ class MonthlyAnswers(db.Model):
         self.question = question
         self.user = user
 
-class User(db.Model, Base):
+class User(db.Model):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)

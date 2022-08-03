@@ -22,23 +22,21 @@ class SMS:
             # recipients = ["+27833888281", "+27780730005", "+27618129719"]
 
             # 827245713
-            nums = pd.read_csv("test_nums.csv")
-
-            num_l = nums.numbs.values.tolist()
+            nums = pd.read_csv("./demographics/FinalPhoneNumbers.csv")
+            num_l = nums["Phone Number 1 (ready format)"].values.tolist()
             cleaned = []
             for i in num_l:
-                i = i[1:]
-                i = i.replace(" ", "")
-                i = i.replace(" ", "")
-                i = "+27" + i
+                i = "+27" + str(i)
                 cleaned.append(i)
 
+
             recipients = cleaned
+            print(len(recipients))
 
             # Set your message
             message = "Genesis invites you to the WageWise WhatsApp study. Earn R75 airtime by answering 15 questions. Click the link and send “Hi” https://wa.me/27600185052?text=Hi";
 
-
+            print(recipients)
             # Set your shortCode or senderId
             sender = "GENESIS"
             try:

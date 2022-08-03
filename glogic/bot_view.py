@@ -34,13 +34,13 @@ def bot():
     # msg = resp.message()
 
     if "stop" in incoming_msg:
-        resp.message("We will be sad to see you go. BETTER MESSAGE HERE")
+        resp.message("We will be sad to see you go.")
 
         User.query.filter(User.number==num).delete()
         # User.delete(user)
         db.session.commit()
 
-        return resp.message()
+        return str(resp)
 
     # if invalid_user(num):
     #     resp.message("Your number is not in our records. Please contact ASISA if you believe this to be an error")
@@ -54,11 +54,12 @@ def bot():
         if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg):
             resp.message(Dictionary['welcome1'])
 
-
-            if not registered(num):
+            reg = registered(num)
+            if reg == 0:
                 out = Dictionary['welcome2'] + "\n\n" + Dictionary['welcome3']
                 session['view'] = 'baseline'
-
+            elif reg == -1:
+                out = "Your phone number is not in our database. If you have participated in the WageWise program and beleive this to be an error, please contact digital@genesis-analytics.com."
             else:
                 resp.message("You have completed your registration.")
                 out = "You will be notified when a new monthly survey is available."
@@ -79,7 +80,7 @@ def bot():
         elif "stop" in incoming_msg:
             out = "We are sad to see you go? Please advise what this message should be"
 
-            User.query.filter(User.num == num).delete()
+            User.query.filter(User.number == num).delete()
             db.session.commit()
 
         else:
@@ -105,16 +106,24 @@ def user_error(num):
 
 def registered(num):
     user = User.query.filter(User.number == num).first()
+    # user = db.session.execute(f"SELECT * from users where users.number = {num}")[0]
+    # print(user)
+
+    # return 0
     if user is not None:
         if user.registered == 1:
-            return True
+            return 1
+        else:
+            return 0
     else:
         allowed, num2 = get_data(num)
-
+        # print(allowed, num2)
         if allowed:
             db.save(User(number=num, number_2=num2))
+            return 0
 
-    return False
+
+    return -1
 
 def invalid_user(num):
     demos = pd.read_csv("../demographics/ww_test_csv.csv")

@@ -2,6 +2,7 @@ import os
 
 import africastalking
 import pandas as pd
+import numpy as np
 
 def multiple_send():
     # nums = pd.read_csv("Airtime 29+30.xlsx - Sheet1.csv")
@@ -36,5 +37,26 @@ def send_airtime_after_survey(num, amt=5):
         print(f"Encountered an error while sending airtime. More error details below\n {e}")
         return -1
 
+
+
+def send_many_retrospective():
+    nums = pd.read_csv("AirtimeTransactions-martinat@genesis-analytics.com-2022-08-02 (2).csv")
+    nums = nums.dropna()
+    nums["Status"] = nums["Status"].map({"Success": 1, "Failed": 0})
+    nums = nums[nums["Status"]==0]
+    nums = nums.drop_duplicates(subset="Recipient", keep="first")
+    nums = nums.reset_index()
+    print(nums["Recipient"])
+    nums = nums.astype(str)
+    nums['Recipient'] = nums['Recipient'].apply(lambda x: "+" + x)
+    num_l = nums["Recipient"].values.tolist()
+
+    print(num_l)
+    print(len(num_l))
+    for i in num_l:
+        send_airtime_after_survey(i, 75)
+
+
 if __name__ == "__main__":
-    multiple_send()
+    # multiple_send()
+    send_many_retrospective()
