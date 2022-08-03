@@ -16,6 +16,7 @@ from .validation_test import get_data
 
 @app.route('/message', methods=['GET', 'POST'])
 def bot():
+
     # del session['view']
     # del session['question_id']
     # session.pop('q1')
