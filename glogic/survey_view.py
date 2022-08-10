@@ -56,6 +56,21 @@ def answers(question_id, response, num):
 
     incoming_msg = request.form.get('Body').lower()
 
+    # multi select for all
+    for i in incoming_msg:
+        if i == " " or i == ',':
+            continue
+        else:
+            try:
+                int(i)
+            except ValueError:
+                response.message(
+                    "Please respond with the number of your response. Separate multiple options with a space or a comma only.")
+                return str(response)
+            else:
+                if int(i) > question.num_ops:
+                    response.message("Your answer is invalid. Please respond with one of the given options.")
+                    return str(response)
 
     db.save(MonthlyAnswers(content=incoming_msg,
                              question=question,
