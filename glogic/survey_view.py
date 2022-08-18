@@ -21,31 +21,19 @@ def survey():
     num = request.form.get('From')
     num = num.replace('whatsapp:', '')
 
-    incoming_msg = request.form.get('Body')
+    incoming_msg = request.form.get('Body').lower()
     resp = MessagingResponse()
 
-    if incoming_msg == "STOP":
-        resp.message("We will be sad to see you go. BETTER MESSAGE HERE")
-
-        #TODO: write this not in pseudocode
-        """
-        user = User.query.filter(User.number = num).first()
-        Users.delete(user)
-        """
-        return resp.message()
-
-
-
-
-
-    incoming_msg = incoming_msg.lower()
     if 'question_id' in session:
+        session['count'] += 1
+
         return answers(session['question_id'], resp, num)
     else:
         if user_error(num):
             mydate = datetime.now()
             mon = mydate.strftime("%B")
             resp.message(f"Our records indicate that you have already completed the survey for {mon}. We look forward to hearing from you next month.")
+            del session['view']
             return str(resp)
         first_question = redirect_to_first_question(resp)
         resp.message(first_question.content)
@@ -74,18 +62,19 @@ def answers(question_id, response, num):
 
     db.save(MonthlyAnswers(content=incoming_msg,
                              question=question,
-                             user=User.query.filter(User.number == num).first()))
+                             user=User.query.filter(User.number == num).first(),
+                             month=((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8)))
 
     next_question = question.next()
 
-    if next_question:
+    if next_question and session['count'] < 3:
         response.message(questions(next_question.id))
 
     else:
         user = User.query.filter(User.number == num).first()
-        user.last_month_completed = int(datetime.now().month)
+        user.last_month_completed = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8)
         db.session.commit()
-        airtime = send_airtime_after_survey(num)
+        # airtime = send_airtime_after_survey(num)
         # airtime = 0
 
         response.message("Thank you for completing the survey. Your R17 is on its way to you now. If " \
@@ -93,8 +82,6 @@ def answers(question_id, response, num):
 
         del (session['question_id'])
         del session["view"]
-
-
 
     return str(response)
 
@@ -107,19 +94,18 @@ def questions(question_id):
 
 # goes to question view and finds first question
 def redirect_to_first_question(response):
-    current_month = int(datetime.now().month)
+    current_month = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8)
 
     # for running every 3 months
-    # starting_q_mo = current_month % 3
-    #
-    # if starting_q_mo == 1:
-    #     starting_q = 1
-    # elif starting_q_mo == 2:
-    #     stating_q = 4
-    # else:
-    #     starting_q = 7
+    starting_q_mo = current_month % 3
 
-    starting_q = 1
+    if starting_q_mo == 1:
+        starting_q = 1
+    elif starting_q_mo == 2:
+        starting_q = 4
+    else:
+        starting_q = 7
+
     session['question_id'] = starting_q
 
     return MonthlyQuestions.query.filter(MonthlyQuestions.id == starting_q).first()
@@ -130,7 +116,7 @@ def user_error(num):
     user = User.query.filter(User.number == num).first()
 
     if user is not None:
-        current_month = int(datetime.now().month)
+        current_month = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8)
         if user.last_month_completed >= current_month:
             return True
 

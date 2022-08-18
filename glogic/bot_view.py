@@ -19,6 +19,7 @@ def bot():
 
     # del session['view']
     # del session['question_id']
+
     # session.pop('q1')
     #
     # session.pop('q2')
@@ -55,6 +56,12 @@ def bot():
         if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg):
             resp.message(Dictionary['welcome1'])
 
+            if num == "+27822205729":
+                session['view'] = 'survey'
+                session['count'] = 0
+                resp.message("Send *yes* if you would like to start the survey")
+                return str(resp)
+
             reg = registered(num)
             if reg == 0:
                 out = Dictionary['welcome2'] + "\n\n" + Dictionary['welcome3']
@@ -70,19 +77,9 @@ def bot():
         elif ('are you still working' in incoming_msg):
             out = "Yes, all is well"
 
-        # elif 'y' in incoming_msg:
-        #     out = survey_questions['question1']
-        #     session['view'] = 'survey'
-        #     session.modified = True
 
         elif "thank" in incoming_msg:
             out = "You're welcome :)"
-
-        elif "stop" in incoming_msg:
-            out = "We are sad to see you go? Please advise what this message should be"
-
-            User.query.filter(User.number == num).delete()
-            db.session.commit()
 
         else:
             out = f"I'm sorry, but there's been a problem. \

@@ -93,10 +93,11 @@ class MonthlyAnswers(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     month = db.Column(db.Integer)
 
-    def __init__(self, content, question, user):
+    def __init__(self, content, question, user, month):
         self.content = content
         self.question = question
         self.user = user
+        self.month = month
 
 class User(db.Model):
     __tablename__ = "users"
