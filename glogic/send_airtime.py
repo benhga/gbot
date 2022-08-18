@@ -40,16 +40,16 @@ def send_airtime_after_survey(num, amt=5):
 
 
 def send_many_retrospective():
-    nums = pd.read_csv(os.path.join(os.getcwd(), "AirtimeTransactions-martinat@genesis-analytics.com-2022-08-10.csv"))
+    nums = pd.read_csv(os.path.join("glogic", "ASISA Phone numbers 15Aug22.csv"))
     # nums = nums.dropna()
     # nums["Status"] = nums["Status"].map({"Success": 1, "Failed": 0})
     # nums = nums[nums["Status"]==0]
     # nums = nums.drop_duplicates(subset="Recipient", keep="first")
     # nums = nums.reset_index()
-    print(nums["Recipient"])
+    print(nums["Phone Number"])
     nums = nums.astype(str)
-    nums['Recipient'] = nums['Recipient'].apply(lambda x: "+" + x)
-    num_l = nums["Recipient"].values.tolist()
+    nums['Phone Number'] = nums['Phone Number'].apply(lambda x: "+" + x)
+    num_l = nums["Phone Number"].values.tolist()
 
     print(num_l)
     print(len(num_l))

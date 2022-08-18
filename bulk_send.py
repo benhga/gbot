@@ -22,20 +22,22 @@ class SMS:
             # recipients = ["+27833888281", "+27780730005", "+27618129719"]
 
             # 827245713
-            nums = pd.read_csv("Users Not Interacted With Survey Bot_04Aug.csv")
+            nums = pd.read_excel("glogic/not_interacted.xlsx")
 
-            num_l = nums["Phone_Number_1"].values.tolist()
+            num_l = nums["WAB"].values.tolist()
 
             cleaned = []
             for i in num_l:
-                i = "+" + str(i)
+                i = str(i)
+                i = '+' + i
                 cleaned.append(i)
 
             recipients = cleaned
-            # print(recipients)
+            print(recipients)
+            print(len(recipients))
 
             # Set your message
-            message = "There’s still time to participate in the WageWise survey and earn R75 airtime. Click the link and send “Hi” https://wa.me/27600185052?text=Hi";
+            message = "There’s still time to participate in the WageWise survey and earn R75 airtime. Click and send “Hi” https://wa.me/27600185052?text=Hi";
 
             # print(recipients)
             # Set your shortCode or senderId
