@@ -17,6 +17,7 @@ if __name__ == "__main__":
     conn = pyodbc.connect(
         'DRIVER={ODBC Driver 18 for SQL Server};SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
     cursor = conn.cursor()
+
     # params = urllib.parse.quote_plus(
     #     "DRIVER={ODBC Driver 18 for SQL Server};SERVER=" + server + ';DATABASE=' + database +
     #     ";UID=" + username + ';PWD=' + password)

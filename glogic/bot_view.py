@@ -48,11 +48,11 @@ def bot():
     #     resp.message("Your number is not in our records. Please contact ASISA if you believe this to be an error")
     #     return str(resp)
 
-    if "view" in session:
-        print("Redirect to: " + session['view'])
-        resp.redirect(url_for(session["view"]))
-    else:
-        resp.message("The regostration period has ended. If you have registered, you will be notified when a new monthly survey is available.")
+    # if "view" in session:
+    #     print("Redirect to: " + session['view'])
+    #     resp.redirect(url_for(session["view"]))
+    # else:
+    resp.message("The registration period has ended. If you have registered, you will be notified when a new monthly survey is available.")
 #         if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg):
 #             resp.message(Dictionary['welcome1'])
 #
