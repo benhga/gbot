@@ -11,6 +11,7 @@ from flask import request, session, url_for
 from twilio.twiml.messaging_response import MessagingResponse
 import pandas as pd
 
+
 from .validation_test import get_data
 
 
