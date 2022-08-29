@@ -20,7 +20,7 @@ def bot():
 
     # del session['view']
     # del session['question_id']
-
+    # del session['count']
     # session.pop('q1')
     #
     # session.pop('q2')
@@ -49,18 +49,17 @@ def bot():
     #     resp.message("Your number is not in our records. Please contact ASISA if you believe this to be an error")
     #     return str(resp)
 
-    # if "view" in session:
-    #     print("Redirect to: " + session['view'])
-    #     resp.redirect(url_for(session["view"]))
-    # else:
-    resp.message("The registration period has ended. If you have registered, you will be notified when a new monthly survey is available.")
-#         if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg):
-#             resp.message(Dictionary['welcome1'])
-#
+    if "view" in session:
+        print("Redirect to: " + session['view'])
+        resp.redirect(url_for(session["view"]))
+    else:
+    # resp.message("The registration period has ended. If you have registered, you will be notified when a new monthly survey is available.")
+        if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg):
+            # resp.message(Dictionary['welcome1'])
 #             if num == "+27822205729":
-#                 session['view'] = 'survey'
-#                 session['count'] = 0
-#                 resp.message("Send *yes* if you would like to start the survey")
+            session['view'] = 'survey'
+            session['count'] = 0
+            out = "Thank you for participating in the WageWise 3 year survey. " + Dictionary['welcome3']
 #                 return str(resp)
 #
 #             reg = registered(num)
@@ -78,15 +77,16 @@ def bot():
 #         elif ('are you still working' in incoming_msg):
 #             out = "Yes, all is well"
 #
-#
-#         elif "thank" in incoming_msg:
-#             out = "You're welcome :)"
-#
-#         else:
-#             out = f"I'm sorry, but there's been a problem. \
-# Please say \"Hi\" to try again."
-#
-#         resp.message(out)
+
+
+        elif "thank" in incoming_msg:
+            out = "You're welcome :)"
+
+        else:
+            out = f"I'm sorry, but there's been a problem. \
+Please say \"Hi\" to try again."
+
+        resp.message(out)
 #         # try resp.message or other format where there's no msg.body
 #     if session:
 #         print('*' * 20)

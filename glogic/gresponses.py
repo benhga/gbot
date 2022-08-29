@@ -12,7 +12,7 @@ Your personal information and responses will not be shared and are only used for
     "welcome2_1": "You earn R17 each month in airtime by answering 3 questions monthly via WhatsApp AND you can earn R75 in airtime by responding to an annual survey.",
     "welcome2":"This will not take up much of your time and you will be rewarded for answering our questions. Once the first survey is completed, you will earn R75 airtime, and you will be registered to complete monthly surveys that will earn you R17 airtime. You will receive messages each month to invite you to complete the monthly survey. _You will not receive any remuneration if you did not pariticipate in the WageWise programme_.",
 
-    "welcome3": "You can opt out at any time by sending *STOP*. To consent to participation and earn your first R75 airtime, please send *YES* to continue.",
+    "welcome3": "You can opt out at any time by sending *STOP*. To consent to participation and earn your R17 airtime, please send *YES* to continue.",
     "thanks": "\U00002705 Thank you for completing the survey. "
 }
 

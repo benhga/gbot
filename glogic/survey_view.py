@@ -29,14 +29,21 @@ def survey():
 
         return answers(session['question_id'], resp, num)
     else:
-        if user_error(num):
+        if user_error(num) == 1:
             mydate = datetime.now()
             mon = mydate.strftime("%B")
             resp.message(f"Our records indicate that you have already completed the survey for {mon}. We look forward to hearing from you next month.")
             del session['view']
+            del session['count']
             return str(resp)
-        first_question = redirect_to_first_question(resp)
-        resp.message(first_question.content)
+        if user_error(num) == 2:
+            resp.message("Our records indicate that you did not complete the registration. Consequently, you will not be able to participate in the monthly questionairre.")
+            del session['view']
+            del session['count']
+            return str(resp)
+        else:
+            first_question = redirect_to_first_question(resp)
+            resp.message(first_question.content)
     return str(resp)
 
 def answers(question_id, response, num):
@@ -57,13 +64,13 @@ def answers(question_id, response, num):
                 return str(response)
             else:
                 if int(i) > question.num_ops:
-                    response.message("Your answer is invalid. Please respond with one of the given options.")
+                    response.message("Your answer is invalid. Please respond with one or more of the given options.")
                     return str(response)
 
     db.save(MonthlyAnswers(content=incoming_msg,
                              question=question,
                              user=User.query.filter(User.number == num).first(),
-                             month=((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8)))
+                             month=((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 7)))
 
     next_question = question.next()
 
@@ -72,9 +79,9 @@ def answers(question_id, response, num):
 
     else:
         user = User.query.filter(User.number == num).first()
-        user.last_month_completed = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8)
+        user.last_month_completed = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 7)
         db.session.commit()
-        # airtime = send_airtime_after_survey(num)
+        airtime = send_airtime_after_survey(num, 17)
         # airtime = 0
 
         response.message("Thank you for completing the survey. Your R17 is on its way to you now. If " \
@@ -114,10 +121,12 @@ def redirect_to_first_question(response):
 # checks to see if user is in DB and, if not, adds them
 def user_error(num):
     user = User.query.filter(User.number == num).first()
-
+    if user is None:
+        return 2
     if user is not None:
-        current_month = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8)
+        current_month = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 7)
         if user.last_month_completed >= current_month:
-            return True
-
-    return False
+            return 1
+        if user.registered !=1:
+            return 2
+    return -1
