@@ -45,9 +45,9 @@ def bot():
 
         return str(resp)
 
-    # if invalid_user(num):
-    #     resp.message("Your number is not in our records. Please contact ASISA if you believe this to be an error")
-    #     return str(resp)
+    if registered(num) == 0:
+        resp.message("Your number is not in our records. Please contact ASISA if you believe this to be an error")
+        return str(resp)
 
     if "view" in session:
         print("Redirect to: " + session['view'])
@@ -115,11 +115,11 @@ def registered(num):
         else:
             return 0
     else:
-        allowed, num2 = get_data(num)
-        # print(allowed, num2)
-        if allowed:
-            db.save(User(number=num, number_2=num2))
-            return 0
+        # allowed, num2 = get_data(num)
+        # # print(allowed, num2)
+        # if allowed:
+        #     db.save(User(number=num, number_2=num2))
+        return 0
 
 
     return -1

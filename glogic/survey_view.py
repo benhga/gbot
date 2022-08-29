@@ -52,6 +52,12 @@ def answers(question_id, response, num):
     incoming_msg = request.form.get('Body').lower()
 
     # multi select for all
+
+    if question_id == 4 or question_id == 6 or question_id== 7:
+        if len(incoming_msg) > 1:
+            response.message("Your answer is invalid. Please select _one_ option that is most true for you.")
+            return str(response)
+
     for i in incoming_msg:
         if i == " " or i == ',':
             continue
