@@ -46,7 +46,7 @@ def bot():
         return str(resp)
 
     if registered(num) == 0:
-        resp.message("Your number is not in our records. Please contact ASISA if you believe this to be an error")
+        resp.message("Your number is not in our records. Please contact digital@genesis-analytics.com if you believe this to be an error")
         return str(resp)
 
     if "view" in session:

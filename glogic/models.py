@@ -94,12 +94,12 @@ class MonthlyAnswers(db.Model):
     month = db.Column(db.Integer)
     date = db.Column(db.DateTime, nullable=True)
 
-    def __init__(self, content, question, user, month):
+    def __init__(self, content, question, user, month, date):
         self.content = content
         self.question = question
         self.user = user
         self.month = month
-        self.date_completed = datetime.now()
+        self.date_completed = date
 
 class User(db.Model):
     __tablename__ = "users"

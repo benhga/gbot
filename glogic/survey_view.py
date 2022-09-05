@@ -76,7 +76,8 @@ def answers(question_id, response, num):
     db.save(MonthlyAnswers(content=incoming_msg,
                              question=question,
                              user=User.query.filter(User.number == num).first(),
-                             month=((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 7)))
+                             month=((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8),
+                             date=datetime.now()))
 
     next_question = question.next()
 
@@ -85,7 +86,7 @@ def answers(question_id, response, num):
 
     else:
         user = User.query.filter(User.number == num).first()
-        user.last_month_completed = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 7)
+        user.last_month_completed = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8)
         db.session.commit()
         airtime = send_airtime_after_survey(num, 17)
         # airtime = 0
@@ -107,7 +108,7 @@ def questions(question_id):
 
 # goes to question view and finds first question
 def redirect_to_first_question(response):
-    current_month = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8)
+    current_month = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 9)
 
     # for running every 3 months
     starting_q_mo = current_month % 3
@@ -130,7 +131,7 @@ def user_error(num):
     if user is None:
         return 2
     if user is not None:
-        current_month = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 7)
+        current_month = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8)
         if user.last_month_completed >= current_month:
             return 1
         if user.registered !=1:
