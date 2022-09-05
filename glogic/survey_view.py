@@ -76,8 +76,7 @@ def answers(question_id, response, num):
     db.save(MonthlyAnswers(content=incoming_msg,
                              question=question,
                              user=User.query.filter(User.number == num).first(),
-                             month=((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8),
-                             date=datetime.now()))
+                             month=((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8)))
 
     next_question = question.next()
 
