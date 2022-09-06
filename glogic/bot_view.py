@@ -45,23 +45,25 @@ def bot():
 
         return str(resp)
 
-    if registered(num) == 0:
-        resp.message("Your number is not in our records. Please contact digital@genesis-analytics.com if you believe this to be an error")
-        return str(resp)
+    # if registered(num) == 0:
+    #     resp.message("Your number is not in our records. Please contact digital@genesis-analytics.com if you believe this to be an error")
+    #     return str(resp)
 
     if "view" in session:
         print("Redirect to: " + session['view'])
         resp.redirect(url_for(session["view"]))
     else:
     # resp.message("The registration period has ended. If you have registered, you will be notified when a new monthly survey is available.")
-        if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg):
+    #     if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg):
             # resp.message(Dictionary['welcome1'])
 #             if num == "+27822205729":
-            session['view'] = 'survey'
-            session['count'] = 0
-            out = "Thank you for participating in the WageWise 3 year survey. " + Dictionary['welcome3']
+        """
+        TO BE UNDONE
+#             session['view'] = 'survey'
+#             session['count'] = 0
+#             out = "Thank you for participating in the WageWise 3 year survey. " + Dictionary['welcome3']
 #                 return str(resp)
-#
+        """
 #             reg = registered(num)
 #             if reg == 0:
 #                 out = Dictionary['welcome2'] + "\n\n" + Dictionary['welcome3']
@@ -77,10 +79,11 @@ def bot():
 #         elif ('are you still working' in incoming_msg):
 #             out = "Yes, all is well"
 #
+        if True:
+            out = "Hi, the bot is currently inactive. If you were part of the WageWise program, you will be notified when new surveys are ready."
 
-
-        elif "thank" in incoming_msg:
-            out = "You're welcome :)"
+        # elif "thank" in incoming_msg:
+        #     out = "You're welcome :)"
 
         else:
             out = f"I'm sorry, but there's been a problem. \
