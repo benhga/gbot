@@ -54,33 +54,35 @@ def bot():
         resp.redirect(url_for(session["view"]))
     else:
     # resp.message("The registration period has ended. If you have registered, you will be notified when a new monthly survey is available.")
-    #     if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg):
+        if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg):
             # resp.message(Dictionary['welcome1'])
 #             if num == "+27822205729":
-        """
-        TO BE UNDONE
-#             session['view'] = 'survey'
-#             session['count'] = 0
-#             out = "Thank you for participating in the WageWise 3 year survey. " + Dictionary['welcome3']
-#                 return str(resp)
-        """
-#             reg = registered(num)
-#             if reg == 0:
-#                 out = Dictionary['welcome2'] + "\n\n" + Dictionary['welcome3']
-#                 session['view'] = 'baseline'
-#             elif reg == -1:
-#                 out = "Your phone number is not in our database. If you have participated in the WageWise program and beleive this to be an error, please contact digital@genesis-analytics.com."
-#             else:
-#                 resp.message("You have completed your registration.")
-#                 out = "You will be notified when a new monthly survey is available."
-#
-#
-#
-#         elif ('are you still working' in incoming_msg):
-#             out = "Yes, all is well"
-#
-        if True:
-            out = "Hi, the bot is currently inactive. If you were part of the WageWise program, you will be notified when new surveys are ready."
+
+            reg = registered(num)
+            if reg == 1:
+                session['view'] = 'survey'
+                session['count'] = 0
+                out = "Thank you for participating in the WageWise 3 year survey. " + Dictionary['welcome3']
+                return str(resp)
+
+
+                out = Dictionary['welcome2'] + "\n\n" + Dictionary['welcome3']
+                session['view'] = 'baseline'
+            # elif reg == -1:
+            #     out = "Your phone number is not in our database. If you have participated in the WageWise program and completed the registration, please contact digital@genesis-analytics.com."
+            else:
+                out = "Your phone number is not in our database. If you have participated in the WageWise program and completed the registration, please contact digital@genesis-analytics.com."
+
+                # resp.message("You have completed your registration.")
+                # out = "You will be notified when a new monthly survey is available."
+
+
+
+        elif ('are you still working' in incoming_msg):
+            out = "Yes, all is well"
+
+        # if True:
+        #     out = "Hi, the bot is currently inactive. If you were part of the WageWise program, you will be notified when new surveys are ready."
 
         # elif "thank" in incoming_msg:
         #     out = "You're welcome :)"
@@ -107,22 +109,24 @@ def user_error(num):
     return False
 
 def registered(num):
+    """
+    Returns -1 if user not in demos, 0 if user is not registered, 1 if registered
+    """
     user = User.query.filter(User.number == num).first()
-    # user = db.session.execute(f"SELECT * from users where users.number = {num}")[0]
-    # print(user)
 
-    # return 0
-    if user is not None:
-        if user.registered == 1:
-            return 1
+    allowed, _ = get_data(num)
+    if allowed:
+        if user is not None:
+            if user.registered == 1:
+                return 1
+            else:
+                return 0
         else:
+            # allowed, num2 = get_data(num)
+            # # print(allowed, num2)
+            # if allowed:
+            #     db.save(User(number=num, number_2=num2))
             return 0
-    else:
-        # allowed, num2 = get_data(num)
-        # # print(allowed, num2)
-        # if allowed:
-        #     db.save(User(number=num, number_2=num2))
-        return 0
 
 
     return -1
