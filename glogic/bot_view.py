@@ -53,45 +53,45 @@ def bot():
         print("Redirect to: " + session['view'])
         resp.redirect(url_for(session["view"]))
     else:
-    # resp.message("The registration period has ended. If you have registered, you will be notified when a new monthly survey is available.")
-        if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg):
-            # resp.message(Dictionary['welcome1'])
-#             if num == "+27822205729":
-
-            reg = registered(num)
-            if reg == 1:
-                session['view'] = 'survey'
-                session['count'] = 0
-                out = "Thank you for participating in the WageWise 3 year survey. " + Dictionary['welcome3']
-                return str(resp)
-
-
-                out = Dictionary['welcome2'] + "\n\n" + Dictionary['welcome3']
-                session['view'] = 'baseline'
-            # elif reg == -1:
-            #     out = "Your phone number is not in our database. If you have participated in the WageWise program and completed the registration, please contact digital@genesis-analytics.com."
-            else:
-                out = "Your phone number is not in our database. If you have participated in the WageWise program and completed the registration, please contact digital@genesis-analytics.com."
-
-                # resp.message("You have completed your registration.")
-                # out = "You will be notified when a new monthly survey is available."
-
-
-
-        elif ('are you still working' in incoming_msg):
-            out = "Yes, all is well"
-
-        # if True:
-        #     out = "Hi, the bot is currently inactive. If you were part of the WageWise program, you will be notified when new surveys are ready."
-
-        # elif "thank" in incoming_msg:
-        #     out = "You're welcome :)"
-
-        else:
-            out = f"I'm sorry, but there's been a problem. \
-Please say \"Hi\" to try again."
-
-        resp.message(out)
+        resp.message("The registration period has ended. If you have registered, you will be notified when a new monthly survey is available.")
+#         if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg):
+#             # resp.message(Dictionary['welcome1'])
+# #             if num == "+27822205729":
+#
+#             reg = registered(num)
+#             if reg == 1:
+#                 session['view'] = 'survey'
+#                 session['count'] = 0
+#                 out = "Thank you for participating in the WageWise 3 year survey. " + Dictionary['welcome3']
+#                 return str(resp)
+#
+#
+#                 out = Dictionary['welcome2'] + "\n\n" + Dictionary['welcome3']
+#                 session['view'] = 'baseline'
+#             # elif reg == -1:
+#             #     out = "Your phone number is not in our database. If you have participated in the WageWise program and completed the registration, please contact digital@genesis-analytics.com."
+#             else:
+#                 out = "Your phone number is not in our database. If you have participated in the WageWise program and completed the registration, please contact digital@genesis-analytics.com."
+#
+#                 # resp.message("You have completed your registration.")
+#                 # out = "You will be notified when a new monthly survey is available."
+#
+#
+#
+#         elif ('are you still working' in incoming_msg):
+#             out = "Yes, all is well"
+#
+#         # if True:
+#         #     out = "Hi, the bot is currently inactive. If you were part of the WageWise program, you will be notified when new surveys are ready."
+#
+#         # elif "thank" in incoming_msg:
+#         #     out = "You're welcome :)"
+#
+#         else:
+#             out = f"I'm sorry, but there's been a problem. \
+# Please say \"Hi\" to try again."
+#
+#         resp.message(out)
 #         # try resp.message or other format where there's no msg.body
 #     if session:
 #         print('*' * 20)
