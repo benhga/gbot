@@ -78,6 +78,7 @@ def bot():
         elif ('are you still working' in incoming_msg):
             out = "Yes, all is well"
 
+
         # if True:
         #     out = "Hi, the bot is currently inactive. If you were part of the WageWise program, you will be notified when new surveys are ready."
 
