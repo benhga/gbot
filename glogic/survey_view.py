@@ -25,7 +25,7 @@ def survey():
     resp = MessagingResponse()
 
     if 'question_id' in session:
-        session['count'] += 1
+
 
         return answers(session['question_id'], resp, num)
     else:
@@ -60,10 +60,12 @@ def answers(question_id, response, num):
 
     for i in incoming_msg:
         if i == " " or i == ',':
+
             continue
         else:
             try:
                 int(i)
+
             except ValueError:
                 response.message(
                     "Please respond with the number of your response. Separate multiple options with a space or a comma only.")
@@ -77,6 +79,7 @@ def answers(question_id, response, num):
                              question=question,
                              user=User.query.filter(User.number == num).first(),
                              month=((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8)))
+    session['count'] += 1
 
     next_question = question.next()
 
@@ -87,7 +90,7 @@ def answers(question_id, response, num):
         user = User.query.filter(User.number == num).first()
         user.last_month_completed = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8)
         db.session.commit()
-        airtime = send_airtime_after_survey(num, 17)
+        # airtime = send_airtime_after_survey(num, 17)
         # airtime = 0
 
         response.message("Thank you for completing the survey. Your R17 is on its way to you now. If " \
@@ -95,6 +98,7 @@ def answers(question_id, response, num):
 
         del (session['question_id'])
         del session["view"]
+        del session["count"]
 
     return str(response)
 
@@ -107,7 +111,7 @@ def questions(question_id):
 
 # goes to question view and finds first question
 def redirect_to_first_question(response):
-    current_month = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 9)
+    current_month = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8)
 
     # for running every 3 months
     starting_q_mo = current_month % 3
