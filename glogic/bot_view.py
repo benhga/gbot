@@ -11,7 +11,7 @@ from flask import request, session, url_for
 from twilio.twiml.messaging_response import MessagingResponse
 import pandas as pd
 
-
+from .sql_stuff import del_from_db
 from .validation_test import get_data
 
 
@@ -32,14 +32,7 @@ def bot():
     resp = MessagingResponse()
     # msg = resp.message()
 
-    if "stop" in incoming_msg:
-        resp.message("We will be sad to see you go.")
 
-        User.query.filter(User.number==num).delete()
-        # User.delete(user)
-        db.session.commit()
-
-        return str(resp)
 
     # if registered(num) == 0:
     #     resp.message("Your number is not in our records. Please contact digital@genesis-analytics.com if you believe this to be an error")
