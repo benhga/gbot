@@ -1,18 +1,9 @@
-import os
-import urllib
-
-from sqlalchemy import create_engine
-from sqlalchemy.ext.automap import automap_base
-
-from . import app, db
-from .gresponses import Dictionary, survey_questions
+from . import app
+from .gresponses import Dictionary
 from .models import Responses, User
 from flask import request, session, url_for
 from twilio.twiml.messaging_response import MessagingResponse
 import pandas as pd
-
-from .sql_stuff import del_from_db
-from .validation_test import get_data
 
 
 @app.route('/message', methods=['GET', 'POST'])
@@ -43,7 +34,7 @@ def bot():
         resp.redirect(url_for(session["view"]))
     else:
         # resp.message("The registration period has ended. If you have registered, you will be notified when a new monthly survey is available.")
-        if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg):
+        if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg) or ("yes" in incoming_msg):
             # resp.message(Dictionary['welcome1'])
 #             if num == "+27822205729":
 #             out = "The registration period has ended. If you have registered, you will be notified when a new monthly survey is available."

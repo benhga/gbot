@@ -1,10 +1,5 @@
-import urllib
 
-import pandas as pd
 import os
-from sqlalchemy import create_engine
-from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.orm import Session
 import pyodbc
 
 
@@ -29,7 +24,7 @@ def del_from_db(num):
         cursor.commit()
 
 
-def get_data_ud(id, num, cursor):
+def get_data_ud(num, cursor):
 
     num = str(num[1:])
 
@@ -38,25 +33,15 @@ def get_data_ud(id, num, cursor):
 
     row = cursor.fetchone()
 
-    print(row)
+
     if not row:
         cursor.execute(f"""SELECT * FROM user_demographics WHERE user_demographics.Phone_Number_2 = {num}""")
         row = cursor.fetchone()
-        print(row)
-        if not row:
+        # print(row)
+        return row[8]
 
-            cursor.execute(f"SELECT * FROM baseline_answers WHERE user_id = {id}")
-            ans = cursor.fetchall()
-            for row in ans:
-                print(row)
-            cursor.execute(f"DELETE FROM baseline_answers WHERE user_id = {id}")
-            cursor.execute(f"DELETE FROM monthly_answers WHERE user_id = {id}")
-            cursor.execute(f"DELETE FROM users WHERE id = {id}")
-            cursor.commit()
-            cursor.execute(f"SELECT * FROM baseline_answers WHERE user_id = {id}")
-            ans = cursor.fetchall()
-            for row in ans:
-                print(row)
+    return row[8]
+
             # print(f"User: {id} with number {num} not in demos")
 
 if __name__ == "__main__":
