@@ -1,4 +1,4 @@
-from . import app
+from . import app, db
 from .gresponses import Dictionary
 from .models import Responses, User
 from flask import request, session, url_for
@@ -24,6 +24,12 @@ def bot():
     # msg = resp.message()
 
 
+    if 'stop' in incoming_msg:
+        resp.message("We will be sad to see you go.")
+        user = User.query.filter(User.number==num).first()
+        user.last_month_completed = 100
+        db.session.commit()
+        return str(resp)
 
     # if registered(num) == 0:
     #     resp.message("Your number is not in our records. Please contact digital@genesis-analytics.com if you believe this to be an error")

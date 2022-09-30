@@ -11,7 +11,7 @@ def send_invite(num, name):
     message = client.messages \
         .create(
         from_='whatsapp:+27600185052',
-        body=f'Hello, {name}. You opted into the WageWise 3-year survey brought to you by Genesis Analytics. It’s time to complete this month’s survey. Reply *Hi* to get started and earn your R17 of airtime.',
+        body=f'Hello again, {name}. I see you haven’t completed the survey this month yet although you have requested to receive surveys as part of the WageWise 3 year survey. Would you like to get started now? Reply *Yes* to get started and earn your R17 of airtime.',
         to=f'whatsapp:{num}'
     )
 
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     cursor.execute(f"SELECT * FROM users")
 
     rows = cursor.fetchall()
-
+    count = 0
     for row in rows:
         if int(row[3]) == 1 and int(row[4]) == 0:
             print(row)
@@ -39,9 +39,9 @@ if __name__ == '__main__':
             namel = namel.split(" ")
             name = namel[0]
             name = name[0].upper() + name[1:].lower()
-
+            count+=1
             send_invite(row[1], name)
 
-    print(len(rows))
+    print(count)
     # send_invite("+27822205729", "Ben")
 
