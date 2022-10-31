@@ -1,4 +1,6 @@
 import os
+from datetime import datetime
+
 from twilio.rest import Client
 import pyodbc
 from sql_stuff import get_data_ud
@@ -31,6 +33,8 @@ if __name__ == '__main__':
 
     rows = cursor.fetchall()
     count = 0
+    month=((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8)
+
     for row in rows:
         if int(row[3]) == 1 and int(row[4]) == 0:
             print(row)

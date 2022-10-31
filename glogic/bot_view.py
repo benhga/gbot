@@ -40,6 +40,7 @@ def bot():
         resp.redirect(url_for(session["view"]))
     else:
         # resp.message("The registration period has ended. If you have registered, you will be notified when a new monthly survey is available.")
+        """
         if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg) or ("yes" in incoming_msg):
             # resp.message(Dictionary['welcome1'])
 #             if num == "+27822205729":
@@ -74,11 +75,12 @@ def bot():
 
         # elif "thank" in incoming_msg:
         #     out = "You're welcome :)"
-
+        
         else:
             out = f"I'm sorry, but there's been a problem. \
 Please say \"Hi\" to try again."
-
+        """
+        out = "We are unfortunately eperiencing problems with our airtime provider. To ensure that you receive your reward, we ask that you please wait for our invitation to complete the November survey."
         resp.message(out)
         # try resp.message or other format where there's no msg.body
     # if session:
