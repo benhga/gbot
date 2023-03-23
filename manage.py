@@ -1,15 +1,16 @@
-from flask_script import Manager
+# from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from flask_migrate import upgrade as upgrade_database
+from flask.cli import FlaskGroup
 from glogic import app, db, prepare_app, parser, models
 
 prepare_app(environment='ms')
-migrate = Migrate(app, db)
+# migrate = Migrate(app, db)
 
-manager = Manager(app)
-manager.add_command('db', MigrateCommand)
+cli = FlaskGroup(app)
+# migrate.add_command('db', MigrateCommand)
 
-@manager.command
+@cli.command
 def dbseed():
 
     # with open('dbseeding/registration.json') as survey_file:
@@ -27,4 +28,4 @@ def dbseed():
 
 if __name__ == "__main__":
     app.jinja_env.cache = {}
-    manager.run()
+    cli()

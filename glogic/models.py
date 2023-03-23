@@ -108,6 +108,7 @@ class User(db.Model):
     number_2 = db.Column(db.String, unique=True)
     registered = db.Column(db.Integer, default=0)
     last_month_completed = db.Column(db.Integer, default=0)
+    airtime_number = db.Column(db.String, unique=True)
 
     registration = db.relationship("RegistrationAnswers", backref='user', lazy='dynamic')
     baseline = db.relationship("BaselineAnswers", backref='user', lazy='dynamic')

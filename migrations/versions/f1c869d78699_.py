@@ -25,6 +25,7 @@ def upgrade():
     # sa.Column('number_2', sa.String(length=20), nullable=True),
     # sa.Column('registered', sa.Integer(), nullable=True),
     # sa.Column('last_month_completed', sa.Integer(), nullable=False),
+    # sa.Column('airtime_number', sa.String(length=20), nullable=False),
     # sa.PrimaryKeyConstraint('id'),
     # )
     #

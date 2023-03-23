@@ -10,7 +10,7 @@ from .gresponses import Dictionary
 @app.route('/registration', methods=["GET", "POST"])
 def registration():
 
-    session['View'] = 'registration'
+    session['view'] = 'registration'
     response = MessagingResponse()
 
     num = request.form.get('From')

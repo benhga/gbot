@@ -1,15 +1,17 @@
 from . import app, db
-from .gresponses import Dictionary
+from .gresponses import Dictionary, numbers_list, num_l
 from .models import Responses, User
 from flask import request, session, url_for
 from twilio.twiml.messaging_response import MessagingResponse
 import pandas as pd
+from bulk_sending.template_send import check_user_in_airtime_list
 
 
 @app.route('/message', methods=['GET', 'POST'])
 def bot():
 
     # del session['view']
+    # del session['otp']
     # del session['question_id']
     # del session['count']
 
@@ -40,8 +42,15 @@ def bot():
         resp.redirect(url_for(session["view"]))
     else:
         # resp.message("The registration period has ended. If you have registered, you will be notified when a new monthly survey is available.")
+        # if num[1:] in numbers_list:
+        if check_user_in_airtime_list(num):
+            out ="Hi! You have opted into the WageWise survey brought to you by Genesis Analytics. We understand that you have been having issues receiving your R17 airtime for completing the survey."
+            out += " Please follow this simple process for us to verify your phone number and get your airtime to you.\n\n"
+            out += f"You are messaging us from 0{num[3:]}. Is this the number you would like to receive your airtime on? Answer *yes* or *no*."
 
-        if ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg) or ("yes" in incoming_msg):
+            session['view'] = 'correct_number'
+
+        elif ('hi' in incoming_msg) or ('hello' in incoming_msg) or ('menu' in incoming_msg) or ('ok' in incoming_msg) or ("yes" in incoming_msg):
             # resp.message(Dictionary['welcome1'])
 #             if num == "+27822205729":
 #             out = "The registration period has ended. If you have registered, you will be notified when a new monthly survey is available."

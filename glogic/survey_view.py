@@ -15,7 +15,7 @@ from .utils import return_to_menu
 def survey():
     session['view'] = 'survey'
     """
-    Redirect for the careers view. Holds careers logic.
+    Redirect for the survey view. Holds survey logic.
     :return str: response
     """
     num = request.form.get('From')
@@ -90,7 +90,7 @@ def answers(question_id, response, num):
         user = User.query.filter(User.number == num).first()
         user.last_month_completed = ((int(datetime.now().year) - 2022)*12) +  (int(datetime.now().month) - 8)
         db.session.commit()
-        airtime = send_airtime_after_survey(num, 17)
+        airtime = send_airtime_after_survey(user.airtime_number, 17)
         # airtime = 0
 
         response.message("Thank you for completing the survey. Your R17 is on its way to you now. If " \
