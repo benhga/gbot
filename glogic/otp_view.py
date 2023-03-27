@@ -23,7 +23,9 @@ def otp():
 
     if str(incoming_msg) == session['otp']:
         response.message("Thank you, the one-time pin you entered was correct and your phone number has been saved on our system. If you have any more issues receiving your airtime please contact digital@genesis-analytics.com and someone will help you. We look forward to hearing the rest of your survey responses.")
+        print(num)
         user = User.query.filter(User.number == num).first()
+        print(f"User ID: {user.id}")
         if session['airtime_num']:
             user.airtime_number = session['airtime_num']
         else:
