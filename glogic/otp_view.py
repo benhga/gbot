@@ -12,6 +12,10 @@ import os
 
 @app.route('/otp', methods=["GET", "POST"])
 def otp():
+    """
+    Collects and checks otp for airtime changes
+    :return:
+    """
     session['view'] = 'otp'
 
     response = MessagingResponse()
@@ -62,7 +66,6 @@ def otp():
             f"A one-time pin has been sent to {incoming_msg}. Please respond to this message with that pin only. If " +
             "the phone number the pin was sent to is incorrect, please reply with only the phone number in the " +
             "correct format.")
-        # response.redirect(url_for("otp"))
         session['airtime_num'] = to_phone
     else:
         response.message("The OTP you entered was incorrect and so we are unable to update your details. Please contact digital@genesis-analytics.com to resolve this issue.")
