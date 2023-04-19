@@ -7,36 +7,6 @@ from . import db
 Base = automap_base()
 
 
-class RegistrationQuestions(db.Model):
-    __tablename__ = 'registration_questions'
-
-    id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String, nullable=False)
-    answers = db.relationship("RegistrationAnswers", backref='question', lazy='dynamic')
-
-    def __init__(self, content):
-        self.content = content
-
-    def next(self):
-        return self.query.filter(RegistrationQuestions.id > self.id) \
-            .order_by('id').first()
-
-class BaselineQuestions(db.Model):
-    __tablename__ = 'baseline_questions'
-
-    id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String, nullable=False)
-    num_ops = db.Column(db.Integer, nullable=False)
-    answers = db.relationship("BaselineAnswers", backref='question', lazy='dynamic')
-
-    def __init__(self, content, num_ops):
-        self.content = content
-        self.num_ops = num_ops
-
-    def next(self):
-        return self.query.filter(BaselineQuestions.id > self.id) \
-            .order_by('id').first()
-
 class MonthlyQuestions(db.Model):
     __tablename__ = 'monthly_questions'
 
