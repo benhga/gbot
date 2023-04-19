@@ -1,12 +1,9 @@
 import os
 
-from flask import url_for, session, request
+from flask import session, request
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
-import re
-from glogic import app, db
-from glogic.models import RegistrationQuestions, RegistrationAnswers, User
-from .gresponses import Dictionary
+from glogic import app
 import string
 import random
 
