@@ -10,6 +10,9 @@ from .send_airtime import send_airtime_after_survey
 
 @app.route('/baseline', methods=["GET", "POST"])
 def baseline():
+    """
+    View for the baseline survey, similar logic can be used for the longer mid and end surveys
+    """
     session['View'] = 'baseline'
     response = MessagingResponse()
 
@@ -18,12 +21,8 @@ def baseline():
 
     if 'question_id' in session:
         return answers(session['question_id'], response, num)
-    # else:
-    #     first_question = redirect_to_first_question(response)
-    #     response.message(first_question.content)
 
     else:
-        # response.message("Please type _only the number_ of your answer.")
         if "yes" not in request.form.get('Body').lower():
             response.message(Dictionary["welcome3"])
 
