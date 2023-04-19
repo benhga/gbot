@@ -1,8 +1,8 @@
-from flask import url_for, session, request
+from flask import session, request
 from twilio.twiml.messaging_response import MessagingResponse
 
 from glogic import app, db
-from glogic.models import RegistrationQuestions, RegistrationAnswers, User
+from glogic.models import User
 from bulk_sending.template_send import delete_user_from_airtime_list
 from .get_new_number_view import valid_num
 from .correct_number_view import generate_random_string

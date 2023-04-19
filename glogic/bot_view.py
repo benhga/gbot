@@ -1,9 +1,8 @@
 from . import app, db
-from .gresponses import Dictionary, numbers_list, num_l
+from .gresponses import Dictionary
 from .models import Responses, User
 from flask import request, session, url_for
 from twilio.twiml.messaging_response import MessagingResponse
-import pandas as pd
 from bulk_sending.template_send import check_user_in_airtime_list
 
 

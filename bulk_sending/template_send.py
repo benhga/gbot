@@ -12,7 +12,7 @@ def send_invite(num, name):
     message = client.messages \
         .create(
         from_='whatsapp:+27600185052',
-        body="Hi! You have opted into the WageWise survey brought to you by Genesis Analytics. We understand that you have been having issues receiving your R17 airtime for completing the survey. Please follow this simple two step process for us to verify your phone number and get your airtime to you. To get started, just respond to this message. ",
+        body="Hello again. We realise that were problems with confirming the correct phone number to send your airtime to, we apologise for the inconvenience. We have rectified the technical issues and invite you to follow this simple two step process for us to verify your phone number and get your airtime to you. To get started, just respond to this message.",
         to=f'whatsapp:{num}'
     )
 
@@ -25,7 +25,7 @@ def delete_user_from_airtime_list(num):
     password = os.environ.get('PASSWORD')
 
     conn = pyodbc.connect(
-        'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
+        'DRIVER={ODBC Driver 18 for SQL Server};SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
     cursor = conn.cursor()
 
     cursor.execute(f"DELETE FROM airtime_correction_numbers WHERE number={num}")
@@ -40,7 +40,7 @@ def check_user_in_airtime_list(num):
     password = os.environ.get('PASSWORD')
 
     conn = pyodbc.connect(
-        'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
+        'DRIVER={ODBC Driver 18 for SQL Server};SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
     cursor = conn.cursor()
 
     cursor.execute(f"SELECT * FROM airtime_correction_numbers WHERE number={num}")
@@ -60,7 +60,7 @@ if __name__ == '__main__':
     password = os.environ.get('PASSWORD')
 
     conn = pyodbc.connect(
-        'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
+        'DRIVER={ODBC Driver 18 for SQL Server};SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
     cursor = conn.cursor()
 
     cursor.execute(f"SELECT * FROM airtime_correction_numbers")
@@ -78,10 +78,11 @@ if __name__ == '__main__':
         # name = namel[0]
         # name = name[0].upper() + name[1:].lower()
         count+=1
-            # send_invite(row[1], name)
+
+        send_invite(row[1], 'a')
 
     print(count)
-    send_invite("+27725437490", "Ben")
+    # send_invite("+27725437490", "Ben")
 
 
 

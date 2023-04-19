@@ -1,10 +1,6 @@
-import urllib
 
-import pandas as pd
 import os
-from sqlalchemy import create_engine
-from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.orm import Session
+
 import pyodbc
 
 def get_data(num):

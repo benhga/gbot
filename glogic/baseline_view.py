@@ -1,11 +1,10 @@
-from flask import url_for, session, request
+from flask import session, request
 from twilio.twiml.messaging_response import MessagingResponse
 
 from glogic import app, db
 from glogic.models import BaselineAnswers, BaselineQuestions, User
 from .gresponses import Dictionary
 
-# view for collecting organisation details
 from .send_airtime import send_airtime_after_survey
 
 @app.route('/baseline', methods=["GET", "POST"])
