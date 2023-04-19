@@ -12,16 +12,15 @@ import random
 
 @app.route('/correct_number', methods=["GET", "POST"])
 def correct_number():
+    """
+    View for user correcting their airtime number.
+    """
     session['view'] = 'correct_number'
     response = MessagingResponse()
 
     num = request.form.get('From')
     num = num.replace('whatsapp:', '')
     incoming_msg = request.form.get('Body').lower()
-
-
-    # before this view is called, a question like "we have had some troubles sending airtime and we want to fix
-    # an issue is that SMS numbers, where the airtime is sent, are different to whatsapp numbers, this is to consolidate
 
 
     if 'yes' in incoming_msg:
@@ -52,7 +51,7 @@ def correct_number():
             f"A one-time pin has been sent to 0{num[3:]}. Please respond to this message with that one-time pin number only. If you do not receive a one-time pin after 5 minutes, please check if the phone number is correct. It must be a South African number and cannot be a whatsapp number only. If the phone number the pin was sent to is incorrect, please reply with only the phone number in the correct format (0{num[3:]}).")
         session['airtime_num'] = to_phone
         session['view'] = 'otp'
-        # response.redirect(url_for("otp"))
+
 
 
     elif "no" in incoming_msg:
