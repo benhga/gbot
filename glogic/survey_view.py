@@ -7,9 +7,6 @@ from . import app, db
 from .models import MonthlyQuestions, MonthlyAnswers, User
 from .send_airtime import send_airtime_after_survey
 
-from .survey_runner import do_survey
-from .utils import return_to_menu
-
 
 @app.route('/survey', methods=['GET', 'POST'])
 def survey():
