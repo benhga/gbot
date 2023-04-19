@@ -1,14 +1,12 @@
 import os
 
-from flask import url_for, session, request
+from flask import session, request
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 import re
 from glogic import app, db
 import random
 import string
-from glogic.models import RegistrationQuestions, RegistrationAnswers, User
-from .gresponses import Dictionary
 
 
 @app.route('/get_new_number', methods=["GET", "POST"])
@@ -48,7 +46,6 @@ def get_new_number():
             f"A one-time pin has been sent to {incoming_msg}. Please respond to this message with that pin only. If " +
             "the phone number the pin was sent to is incorrect, please reply with only the phone number in the " +
             "correct format.")
-        # response.redirect(url_for("otp"))
         session['airtime_num'] = to_phone
         session['view'] = 'otp'
 
