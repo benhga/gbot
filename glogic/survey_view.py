@@ -125,7 +125,7 @@ def redirect_to_first_question(response):
     return MonthlyQuestions.query.filter(MonthlyQuestions.id == starting_q).first()
 
 
-# checks to see if user is in DB and, if not, adds them
+# checks to see if user is in DB and has not completed current month
 def user_error(num):
     user = User.query.filter(User.number == num).first()
     if user is None:
